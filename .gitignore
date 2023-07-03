@@ -33,7 +33,7 @@ CMakeFiles/
 [Pp]ublish/
 x64/
 x86/
-build/
+build*/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -46,4 +46,4 @@ msbuild.wrn
 node_modules
 
 # Folders
-build-*
+build-*/
