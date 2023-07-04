@@ -184,19 +184,6 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Json Viewer</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="pushButton_5">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -221,9 +208,6 @@
        </sizepolicy>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="1">
-        <widget class="QTextBrowser" name="textBrowser"/>
-       </item>
        <item row="0" column="0">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
@@ -363,6 +347,35 @@
          <attribute name="verticalHeaderDefaultSectionSize">
           <number>150</number>
          </attribute>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QTextBrowser" name="jsonViewer">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignBottom">
+        <widget class="QCheckBox" name="viewJsonCheckBox">
+         <property name="text">
+          <string>View Json</string>
+         </property>
         </widget>
        </item>
       </layout>

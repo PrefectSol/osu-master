@@ -32,8 +32,14 @@ private slots:
 
     void on_chooseButton_clicked();
 
+    void on_viewJsonCheckBox_stateChanged(int arg1);
+
+    void on_userTable_cellClicked(int row, int column);
+
 private:
     void loadAvatar(QPixmap *pixmap);
+
+    QString getUsernameFromCell(int row, int column);
 
     Ui::MainWindow *ui;
 

@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+QMap<QString, QString> users;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->jsonViewer->hide();
 }
 
 MainWindow::~MainWindow()
@@ -57,17 +60,19 @@ void MainWindow::on_addButton_clicked()
         return;
     }
 
-    ui->textBrowser->setText(m_osuParser.getUserInfo());
-
     QJsonDocument userJson = m_osuParser.getUserJson();
 
     m_avatarUrl = userJson["avatar_url"].toString().replace("\\/", "/");
     m_username = userJson["username"].toString();
 
+    const QString userInfo = m_osuParser.getUserInfo();
+    ui->jsonViewer->setText(userInfo);
+    users.insert(m_username, userInfo);
+
     const size_t pixmapSizes = 100;
 
     QWidget *player = new QWidget();
-    QLabel *usernameLabel = new QLabel(username);
+    QLabel *usernameLabel = new QLabel(m_username);
     QPixmap pixmap;
     loadAvatar(&pixmap);
 
@@ -91,6 +96,23 @@ void MainWindow::on_colsSpinBox_valueChanged(int columns)
     ui->userTable->setColumnCount(columns);
 }
 
+QString MainWindow::getUsernameFromCell(int row, int column)
+{
+    QWidget *widget = ui->userTable->cellWidget(row, column);
+    if (widget)
+    {
+        QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(widget->layout());
+        if (layout)
+        {
+            QLabel *usernameLabel = qobject_cast<QLabel*>(layout->itemAt(0)->widget());
+
+            return usernameLabel->text();
+        }
+    }
+
+    return QString();
+}
+
 void MainWindow::on_clearButton_clicked()
 {
     QTableWidget *table = ui->userTable;
@@ -102,7 +124,18 @@ void MainWindow::on_clearButton_clicked()
     }
     else
     {
-        table->setCellWidget(currentIndex.row(), currentIndex.column(), nullptr);
+        const int row = currentIndex.row();
+        const int column = currentIndex.column();
+
+        table->setCellWidget(row, column, nullptr);
+
+        const QString username = getUsernameFromCell(row, column);
+        if (!username.isEmpty())
+        {
+            users.remove(username);
+        }
+
+        ui->jsonViewer->setText("");
     }
 }
 
@@ -140,5 +173,39 @@ void MainWindow::on_chooseButton_clicked()
     }
 
     QMessageBox::warning(nullptr, "Choose a player...", "Selected error");
+}
+
+void MainWindow::on_viewJsonCheckBox_stateChanged(int)
+{
+    if (!ui->viewJsonCheckBox->isChecked())
+    {
+        ui->jsonViewer->hide();
+    }
+    else
+    {
+        ui->jsonViewer->show();
+    }
+}
+
+void MainWindow::on_userTable_cellClicked(int row, int column)
+{
+    QTableWidget *table = ui->userTable;
+
+    QWidget *widget = table->cellWidget(row, column);
+    if (widget)
+    {
+        QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(widget->layout());
+        if (layout)
+        {
+            QLabel *usernameLabel = qobject_cast<QLabel*>(layout->itemAt(0)->widget());
+            QString username = usernameLabel->text();
+
+            ui->jsonViewer->setText(users.value(username));
+
+            return;
+        }
+    }
+
+    ui->jsonViewer->setText("");
 }
 

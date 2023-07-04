@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -47,11 +48,9 @@ public:
     QPushButton *pushButton_13;
     QPushButton *pushButton_12;
     QSpacerItem *verticalSpacer_2;
-    QPushButton *pushButton_2;
     QPushButton *pushButton_5;
     QWidget *viewer;
     QGridLayout *gridLayout;
-    QTextBrowser *textBrowser;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *chooseButton;
@@ -67,6 +66,8 @@ public:
     QSpinBox *colsSpinBox;
     QSpacerItem *horizontalSpacer_2;
     QTableWidget *userTable;
+    QTextBrowser *jsonViewer;
+    QCheckBox *viewJsonCheckBox;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -172,13 +173,6 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        pushButton_2 = new QPushButton(buttonPanel);
-        pushButton_2->setObjectName("pushButton_2");
-        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy);
-
-        verticalLayout->addWidget(pushButton_2);
-
         pushButton_5 = new QPushButton(buttonPanel);
         pushButton_5->setObjectName("pushButton_5");
         sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
@@ -195,11 +189,6 @@ public:
         viewer->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(viewer);
         gridLayout->setObjectName("gridLayout");
-        textBrowser = new QTextBrowser(viewer);
-        textBrowser->setObjectName("textBrowser");
-
-        gridLayout->addWidget(textBrowser, 1, 1, 1, 1);
-
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout = new QHBoxLayout();
@@ -289,6 +278,20 @@ public:
 
         gridLayout->addWidget(userTable, 1, 0, 1, 1);
 
+        jsonViewer = new QTextBrowser(viewer);
+        jsonViewer->setObjectName("jsonViewer");
+        sizePolicy1.setHeightForWidth(jsonViewer->sizePolicy().hasHeightForWidth());
+        jsonViewer->setSizePolicy(sizePolicy1);
+        jsonViewer->setMinimumSize(QSize(30, 0));
+        jsonViewer->setMaximumSize(QSize(500, 16777215));
+
+        gridLayout->addWidget(jsonViewer, 1, 1, 1, 1);
+
+        viewJsonCheckBox = new QCheckBox(viewer);
+        viewJsonCheckBox->setObjectName("viewJsonCheckBox");
+
+        gridLayout->addWidget(viewJsonCheckBox, 0, 1, 1, 1, Qt::AlignRight|Qt::AlignBottom);
+
 
         formLayout->setWidget(0, QFormLayout::FieldRole, viewer);
 
@@ -311,13 +314,13 @@ public:
         pushButton_11->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_13->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Json Viewer", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         chooseButton->setText(QCoreApplication::translate("MainWindow", "Choose a player", nullptr));
         addButton->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
         clearButton->setText(QCoreApplication::translate("MainWindow", "Clear player", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
+        viewJsonCheckBox->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
     } // retranslateUi
 
 };
