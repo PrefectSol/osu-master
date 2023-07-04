@@ -11,6 +11,6 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 <br>
 
 ## Development Notes
-
+ - Added osu player verification
  - Added a table of players
  - Added player selection
