@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,10 +13,12 @@ TARGET = osu-Manager-Stats
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    osurequest.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    osurequest.h
 
 FORMS += \
     mainwindow.ui

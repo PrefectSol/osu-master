@@ -21,6 +21,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -31,7 +32,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QFormLayout *formLayout;
-    QWidget *widget;
+    QWidget *buttonPanel;
     QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
     QWidget *widget_3;
@@ -46,9 +47,11 @@ public:
     QPushButton *pushButton_13;
     QPushButton *pushButton_12;
     QSpacerItem *verticalSpacer_2;
+    QPushButton *pushButton_2;
     QPushButton *pushButton_5;
-    QWidget *widget_2;
+    QWidget *viewer;
     QGridLayout *gridLayout;
+    QTextBrowser *textBrowser;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *chooseButton;
@@ -74,17 +77,17 @@ public:
         centralwidget->setObjectName("centralwidget");
         formLayout = new QFormLayout(centralwidget);
         formLayout->setObjectName("formLayout");
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
+        buttonPanel = new QWidget(centralwidget);
+        buttonPanel->setObjectName("buttonPanel");
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy);
-        verticalLayout = new QVBoxLayout(widget);
+        sizePolicy.setHeightForWidth(buttonPanel->sizePolicy().hasHeightForWidth());
+        buttonPanel->setSizePolicy(sizePolicy);
+        verticalLayout = new QVBoxLayout(buttonPanel);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(buttonPanel);
         pushButton->setObjectName("pushButton");
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
@@ -94,7 +97,7 @@ public:
 
         verticalLayout->addWidget(pushButton);
 
-        widget_3 = new QWidget(widget);
+        widget_3 = new QWidget(buttonPanel);
         widget_3->setObjectName("widget_3");
         sizePolicy.setHeightForWidth(widget_3->sizePolicy().hasHeightForWidth());
         widget_3->setSizePolicy(sizePolicy);
@@ -102,6 +105,11 @@ public:
         verticalLayout_3->setObjectName("verticalLayout_3");
         chooseUsername = new QLabel(widget_3);
         chooseUsername->setObjectName("chooseUsername");
+        QFont font;
+        font.setBold(true);
+        font.setItalic(false);
+        font.setUnderline(false);
+        chooseUsername->setFont(font);
 
         verticalLayout_3->addWidget(chooseUsername);
 
@@ -118,42 +126,42 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        pushButton_6 = new QPushButton(widget);
+        pushButton_6 = new QPushButton(buttonPanel);
         pushButton_6->setObjectName("pushButton_6");
         sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
         pushButton_6->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_6);
 
-        pushButton_8 = new QPushButton(widget);
+        pushButton_8 = new QPushButton(buttonPanel);
         pushButton_8->setObjectName("pushButton_8");
         sizePolicy1.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
         pushButton_8->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_8);
 
-        pushButton_10 = new QPushButton(widget);
+        pushButton_10 = new QPushButton(buttonPanel);
         pushButton_10->setObjectName("pushButton_10");
         sizePolicy1.setHeightForWidth(pushButton_10->sizePolicy().hasHeightForWidth());
         pushButton_10->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_10);
 
-        pushButton_11 = new QPushButton(widget);
+        pushButton_11 = new QPushButton(buttonPanel);
         pushButton_11->setObjectName("pushButton_11");
         sizePolicy1.setHeightForWidth(pushButton_11->sizePolicy().hasHeightForWidth());
         pushButton_11->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_11);
 
-        pushButton_13 = new QPushButton(widget);
+        pushButton_13 = new QPushButton(buttonPanel);
         pushButton_13->setObjectName("pushButton_13");
         sizePolicy1.setHeightForWidth(pushButton_13->sizePolicy().hasHeightForWidth());
         pushButton_13->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_13);
 
-        pushButton_12 = new QPushButton(widget);
+        pushButton_12 = new QPushButton(buttonPanel);
         pushButton_12->setObjectName("pushButton_12");
         sizePolicy1.setHeightForWidth(pushButton_12->sizePolicy().hasHeightForWidth());
         pushButton_12->setSizePolicy(sizePolicy1);
@@ -164,7 +172,14 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        pushButton_5 = new QPushButton(widget);
+        pushButton_2 = new QPushButton(buttonPanel);
+        pushButton_2->setObjectName("pushButton_2");
+        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy);
+
+        verticalLayout->addWidget(pushButton_2);
+
+        pushButton_5 = new QPushButton(buttonPanel);
         pushButton_5->setObjectName("pushButton_5");
         sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
         pushButton_5->setSizePolicy(sizePolicy1);
@@ -172,24 +187,29 @@ public:
         verticalLayout->addWidget(pushButton_5);
 
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, widget);
+        formLayout->setWidget(0, QFormLayout::LabelRole, buttonPanel);
 
-        widget_2 = new QWidget(centralwidget);
-        widget_2->setObjectName("widget_2");
-        sizePolicy.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
-        widget_2->setSizePolicy(sizePolicy);
-        gridLayout = new QGridLayout(widget_2);
+        viewer = new QWidget(centralwidget);
+        viewer->setObjectName("viewer");
+        sizePolicy.setHeightForWidth(viewer->sizePolicy().hasHeightForWidth());
+        viewer->setSizePolicy(sizePolicy);
+        gridLayout = new QGridLayout(viewer);
         gridLayout->setObjectName("gridLayout");
+        textBrowser = new QTextBrowser(viewer);
+        textBrowser->setObjectName("textBrowser");
+
+        gridLayout->addWidget(textBrowser, 1, 1, 1, 1);
+
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        chooseButton = new QPushButton(widget_2);
+        chooseButton = new QPushButton(viewer);
         chooseButton->setObjectName("chooseButton");
 
         horizontalLayout->addWidget(chooseButton);
 
-        addButton = new QPushButton(widget_2);
+        addButton = new QPushButton(viewer);
         addButton->setObjectName("addButton");
 
         horizontalLayout->addWidget(addButton);
@@ -198,7 +218,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        clearButton = new QPushButton(widget_2);
+        clearButton = new QPushButton(viewer);
         clearButton->setObjectName("clearButton");
 
         horizontalLayout->addWidget(clearButton);
@@ -210,12 +230,12 @@ public:
         horizontalLayout_4->setObjectName("horizontalLayout_4");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(widget_2);
+        label_2 = new QLabel(viewer);
         label_2->setObjectName("label_2");
 
         horizontalLayout_2->addWidget(label_2);
 
-        rowsSpinBox = new QSpinBox(widget_2);
+        rowsSpinBox = new QSpinBox(viewer);
         rowsSpinBox->setObjectName("rowsSpinBox");
         rowsSpinBox->setMinimum(0);
         rowsSpinBox->setMaximum(10);
@@ -228,12 +248,12 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(widget_2);
+        label_3 = new QLabel(viewer);
         label_3->setObjectName("label_3");
 
         horizontalLayout_3->addWidget(label_3);
 
-        colsSpinBox = new QSpinBox(widget_2);
+        colsSpinBox = new QSpinBox(viewer);
         colsSpinBox->setObjectName("colsSpinBox");
         colsSpinBox->setMaximum(20);
 
@@ -252,7 +272,7 @@ public:
 
         gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
 
-        userTable = new QTableWidget(widget_2);
+        userTable = new QTableWidget(viewer);
         userTable->setObjectName("userTable");
         userTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         userTable->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -270,7 +290,7 @@ public:
         gridLayout->addWidget(userTable, 1, 0, 1, 1);
 
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, widget_2);
+        formLayout->setWidget(0, QFormLayout::FieldRole, viewer);
 
         MainWindow->setCentralWidget(centralwidget);
 
@@ -291,6 +311,7 @@ public:
         pushButton_11->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_13->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Json Viewer", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         chooseButton->setText(QCoreApplication::translate("MainWindow", "Choose a player", nullptr));
         addButton->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));

@@ -1,6 +1,3 @@
-#include <QInputDialog>
-#include <QMessageBox>
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -16,10 +13,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-bool isCorrectUsername(QString username)
+void MainWindow::loadAvatar(QPixmap *pixmap)
 {
-    // osu check...
-    return rand() % 2;
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(QUrl(m_avatarUrl)));
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    if(reply->error() == QNetworkReply::NoError)
+    {
+        QByteArray imageData = reply->readAll();
+        pixmap->loadFromData(imageData);
+    }
+
+    reply->deleteLater();
 }
 
 void MainWindow::on_addButton_clicked()
@@ -42,17 +51,26 @@ void MainWindow::on_addButton_clicked()
         return;
     }
 
-    if (!isCorrectUsername(username))
+    if (username.isEmpty() || !m_osuParser.isPlayerExist(username))
     {
         QMessageBox::warning(nullptr, messageTitle, "Couldn't find a player");
         return;
     }
 
+    ui->textBrowser->setText(m_osuParser.getUserInfo());
+
+    QJsonDocument userJson = m_osuParser.getUserJson();
+
+    m_avatarUrl = userJson["avatar_url"].toString().replace("\\/", "/");
+    m_username = userJson["username"].toString();
+
     const size_t pixmapSizes = 100;
 
     QWidget *player = new QWidget();
     QLabel *usernameLabel = new QLabel(username);
-    QPixmap pixmap(":/Images/icon.png");
+    QPixmap pixmap;
+    loadAvatar(&pixmap);
+
     QLabel *imageLabel = new QLabel();
     imageLabel->setPixmap(pixmap.scaled(pixmapSizes, pixmapSizes, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
 
@@ -122,29 +140,5 @@ void MainWindow::on_chooseButton_clicked()
     }
 
     QMessageBox::warning(nullptr, "Choose a player...", "Selected error");
-}
-
-
-void MainWindow::on_spinBox_valueChanged(int)
-{
-
-}
-
-
-void MainWindow::on_spinBox_2_valueChanged(int)
-{
-
-}
-
-
-void MainWindow::on_spinBox_textChanged(const QString&)
-{
-
-}
-
-
-void MainWindow::on_spinBox_2_textChanged(const QString&)
-{
-
 }
 

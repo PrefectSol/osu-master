@@ -2,6 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QJsonDocument>
+#include <QTextBrowser>
+
+#include "osurequest.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,23 +24,23 @@ public:
 private slots:
     void on_addButton_clicked();
 
-    void on_spinBox_textChanged(const QString &arg1);
+    void on_rowsSpinBox_valueChanged(int rows);
 
-    void on_spinBox_valueChanged(int arg1);
-
-    void on_spinBox_2_valueChanged(int arg1);
-
-    void on_rowsSpinBox_valueChanged(int arg1);
-
-    void on_colsSpinBox_valueChanged(int arg1);
+    void on_colsSpinBox_valueChanged(int columns);
 
     void on_clearButton_clicked();
 
     void on_chooseButton_clicked();
 
-    void on_spinBox_2_textChanged(const QString &arg1);
-
 private:
+    void loadAvatar(QPixmap *pixmap);
+
     Ui::MainWindow *ui;
+
+    OsuRequest m_osuParser;
+
+    QString m_avatarUrl;
+
+    QString m_username;
 };
 #endif // MAINWINDOW_H
