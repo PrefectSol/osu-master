@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
@@ -35,7 +36,7 @@ public:
     QFormLayout *formLayout;
     QWidget *buttonPanel;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
+    QPushButton *goChoosePage;
     QWidget *widget_3;
     QVBoxLayout *verticalLayout_3;
     QLabel *chooseUsername;
@@ -48,26 +49,38 @@ public:
     QPushButton *pushButton_13;
     QPushButton *pushButton_12;
     QSpacerItem *verticalSpacer_2;
-    QPushButton *pushButton_5;
-    QWidget *viewer;
+    QPushButton *goSettingsPage;
+    QStackedWidget *stackedWidget;
+    QWidget *choosePage;
+    QGridLayout *gridLayout_8;
+    QVBoxLayout *verticalLayout_10;
+    QHBoxLayout *horizontalLayout_29;
+    QPushButton *chooseButton_8;
+    QPushButton *addButton_8;
+    QSpacerItem *horizontalSpacer_15;
+    QPushButton *clearButton_8;
+    QHBoxLayout *horizontalLayout_30;
+    QHBoxLayout *horizontalLayout_31;
+    QLabel *label_16;
+    QSpinBox *rowsSpinBox_8;
+    QHBoxLayout *horizontalLayout_32;
+    QLabel *label_17;
+    QSpinBox *colsSpinBox_8;
+    QSpacerItem *horizontalSpacer_16;
+    QCheckBox *viewJsonCheckBox_8;
+    QTableWidget *userTable_8;
+    QTextBrowser *jsonViewer_8;
+    QWidget *settingsPage;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_2;
+    QLabel *label_19;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout;
-    QPushButton *chooseButton;
-    QPushButton *addButton;
+    QCheckBox *saveDataCB;
+    QPushButton *removeData;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *label_18;
     QSpacerItem *horizontalSpacer;
-    QPushButton *clearButton;
-    QHBoxLayout *horizontalLayout_4;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
-    QSpinBox *rowsSpinBox;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_3;
-    QSpinBox *colsSpinBox;
-    QSpacerItem *horizontalSpacer_2;
-    QTableWidget *userTable;
-    QTextBrowser *jsonViewer;
-    QCheckBox *viewJsonCheckBox;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -88,15 +101,15 @@ public:
         verticalLayout = new QVBoxLayout(buttonPanel);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
-        pushButton = new QPushButton(buttonPanel);
-        pushButton->setObjectName("pushButton");
+        goChoosePage = new QPushButton(buttonPanel);
+        goChoosePage->setObjectName("goChoosePage");
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(goChoosePage->sizePolicy().hasHeightForWidth());
+        goChoosePage->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(goChoosePage);
 
         widget_3 = new QWidget(buttonPanel);
         widget_3->setObjectName("widget_3");
@@ -173,131 +186,183 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        pushButton_5 = new QPushButton(buttonPanel);
-        pushButton_5->setObjectName("pushButton_5");
-        sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
-        pushButton_5->setSizePolicy(sizePolicy1);
+        goSettingsPage = new QPushButton(buttonPanel);
+        goSettingsPage->setObjectName("goSettingsPage");
+        sizePolicy1.setHeightForWidth(goSettingsPage->sizePolicy().hasHeightForWidth());
+        goSettingsPage->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(pushButton_5);
+        verticalLayout->addWidget(goSettingsPage);
 
 
         formLayout->setWidget(0, QFormLayout::LabelRole, buttonPanel);
 
-        viewer = new QWidget(centralwidget);
-        viewer->setObjectName("viewer");
-        sizePolicy.setHeightForWidth(viewer->sizePolicy().hasHeightForWidth());
-        viewer->setSizePolicy(sizePolicy);
-        gridLayout = new QGridLayout(viewer);
+        stackedWidget = new QStackedWidget(centralwidget);
+        stackedWidget->setObjectName("stackedWidget");
+        choosePage = new QWidget();
+        choosePage->setObjectName("choosePage");
+        gridLayout_8 = new QGridLayout(choosePage);
+        gridLayout_8->setObjectName("gridLayout_8");
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setObjectName("verticalLayout_10");
+        horizontalLayout_29 = new QHBoxLayout();
+        horizontalLayout_29->setObjectName("horizontalLayout_29");
+        chooseButton_8 = new QPushButton(choosePage);
+        chooseButton_8->setObjectName("chooseButton_8");
+
+        horizontalLayout_29->addWidget(chooseButton_8);
+
+        addButton_8 = new QPushButton(choosePage);
+        addButton_8->setObjectName("addButton_8");
+
+        horizontalLayout_29->addWidget(addButton_8);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_29->addItem(horizontalSpacer_15);
+
+        clearButton_8 = new QPushButton(choosePage);
+        clearButton_8->setObjectName("clearButton_8");
+
+        horizontalLayout_29->addWidget(clearButton_8);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_29);
+
+        horizontalLayout_30 = new QHBoxLayout();
+        horizontalLayout_30->setObjectName("horizontalLayout_30");
+        horizontalLayout_31 = new QHBoxLayout();
+        horizontalLayout_31->setObjectName("horizontalLayout_31");
+        label_16 = new QLabel(choosePage);
+        label_16->setObjectName("label_16");
+
+        horizontalLayout_31->addWidget(label_16);
+
+        rowsSpinBox_8 = new QSpinBox(choosePage);
+        rowsSpinBox_8->setObjectName("rowsSpinBox_8");
+        rowsSpinBox_8->setMinimum(0);
+        rowsSpinBox_8->setMaximum(10);
+        rowsSpinBox_8->setValue(0);
+
+        horizontalLayout_31->addWidget(rowsSpinBox_8);
+
+
+        horizontalLayout_30->addLayout(horizontalLayout_31);
+
+        horizontalLayout_32 = new QHBoxLayout();
+        horizontalLayout_32->setObjectName("horizontalLayout_32");
+        label_17 = new QLabel(choosePage);
+        label_17->setObjectName("label_17");
+
+        horizontalLayout_32->addWidget(label_17);
+
+        colsSpinBox_8 = new QSpinBox(choosePage);
+        colsSpinBox_8->setObjectName("colsSpinBox_8");
+        colsSpinBox_8->setMaximum(20);
+
+        horizontalLayout_32->addWidget(colsSpinBox_8);
+
+        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_32->addItem(horizontalSpacer_16);
+
+
+        horizontalLayout_30->addLayout(horizontalLayout_32);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_30);
+
+
+        gridLayout_8->addLayout(verticalLayout_10, 0, 0, 1, 1);
+
+        viewJsonCheckBox_8 = new QCheckBox(choosePage);
+        viewJsonCheckBox_8->setObjectName("viewJsonCheckBox_8");
+
+        gridLayout_8->addWidget(viewJsonCheckBox_8, 0, 1, 1, 1);
+
+        userTable_8 = new QTableWidget(choosePage);
+        userTable_8->setObjectName("userTable_8");
+        userTable_8->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        userTable_8->setSelectionMode(QAbstractItemView::SingleSelection);
+        userTable_8->setRowCount(0);
+        userTable_8->setColumnCount(0);
+        userTable_8->horizontalHeader()->setVisible(false);
+        userTable_8->horizontalHeader()->setCascadingSectionResizes(true);
+        userTable_8->horizontalHeader()->setMinimumSectionSize(130);
+        userTable_8->horizontalHeader()->setDefaultSectionSize(130);
+        userTable_8->verticalHeader()->setVisible(false);
+        userTable_8->verticalHeader()->setCascadingSectionResizes(true);
+        userTable_8->verticalHeader()->setMinimumSectionSize(150);
+        userTable_8->verticalHeader()->setDefaultSectionSize(150);
+
+        gridLayout_8->addWidget(userTable_8, 1, 0, 1, 1);
+
+        jsonViewer_8 = new QTextBrowser(choosePage);
+        jsonViewer_8->setObjectName("jsonViewer_8");
+        sizePolicy1.setHeightForWidth(jsonViewer_8->sizePolicy().hasHeightForWidth());
+        jsonViewer_8->setSizePolicy(sizePolicy1);
+        jsonViewer_8->setMinimumSize(QSize(30, 0));
+        jsonViewer_8->setMaximumSize(QSize(500, 16777215));
+
+        gridLayout_8->addWidget(jsonViewer_8, 1, 1, 1, 1);
+
+        stackedWidget->addWidget(choosePage);
+        settingsPage = new QWidget();
+        settingsPage->setObjectName("settingsPage");
+        gridLayout = new QGridLayout(settingsPage);
         gridLayout->setObjectName("gridLayout");
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        label_19 = new QLabel(settingsPage);
+        label_19->setObjectName("label_19");
+
+        gridLayout->addWidget(label_19, 1, 2, 2, 1);
+
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName("verticalLayout_5");
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        chooseButton = new QPushButton(viewer);
-        chooseButton->setObjectName("chooseButton");
+        saveDataCB = new QCheckBox(settingsPage);
+        saveDataCB->setObjectName("saveDataCB");
 
-        horizontalLayout->addWidget(chooseButton);
+        horizontalLayout->addWidget(saveDataCB);
 
-        addButton = new QPushButton(viewer);
-        addButton->setObjectName("addButton");
+        removeData = new QPushButton(settingsPage);
+        removeData->setObjectName("removeData");
 
-        horizontalLayout->addWidget(addButton);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        clearButton = new QPushButton(viewer);
-        clearButton->setObjectName("clearButton");
-
-        horizontalLayout->addWidget(clearButton);
+        horizontalLayout->addWidget(removeData);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(viewer);
-        label_2->setObjectName("label_2");
-
-        horizontalLayout_2->addWidget(label_2);
-
-        rowsSpinBox = new QSpinBox(viewer);
-        rowsSpinBox->setObjectName("rowsSpinBox");
-        rowsSpinBox->setMinimum(0);
-        rowsSpinBox->setMaximum(10);
-        rowsSpinBox->setValue(0);
-
-        horizontalLayout_2->addWidget(rowsSpinBox);
+        verticalLayout_4->addLayout(horizontalLayout);
 
 
-        horizontalLayout_4->addLayout(horizontalLayout_2);
+        verticalLayout_5->addLayout(verticalLayout_4);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(viewer);
-        label_3->setObjectName("label_3");
+        verticalSpacer_3 = new QSpacerItem(20, 338, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        horizontalLayout_3->addWidget(label_3);
-
-        colsSpinBox = new QSpinBox(viewer);
-        colsSpinBox->setObjectName("colsSpinBox");
-        colsSpinBox->setMaximum(20);
-
-        horizontalLayout_3->addWidget(colsSpinBox);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_2);
+        verticalLayout_5->addItem(verticalSpacer_3);
 
 
-        horizontalLayout_4->addLayout(horizontalLayout_3);
+        gridLayout->addLayout(verticalLayout_5, 0, 0, 3, 2);
 
+        label_18 = new QLabel(settingsPage);
+        label_18->setObjectName("label_18");
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
+        gridLayout->addWidget(label_18, 2, 1, 1, 1);
 
+        horizontalSpacer = new QSpacerItem(95, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
+        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
 
-        userTable = new QTableWidget(viewer);
-        userTable->setObjectName("userTable");
-        userTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        userTable->setSelectionMode(QAbstractItemView::SingleSelection);
-        userTable->setRowCount(0);
-        userTable->setColumnCount(0);
-        userTable->horizontalHeader()->setVisible(false);
-        userTable->horizontalHeader()->setCascadingSectionResizes(true);
-        userTable->horizontalHeader()->setMinimumSectionSize(130);
-        userTable->horizontalHeader()->setDefaultSectionSize(130);
-        userTable->verticalHeader()->setVisible(false);
-        userTable->verticalHeader()->setCascadingSectionResizes(true);
-        userTable->verticalHeader()->setMinimumSectionSize(150);
-        userTable->verticalHeader()->setDefaultSectionSize(150);
+        stackedWidget->addWidget(settingsPage);
 
-        gridLayout->addWidget(userTable, 1, 0, 1, 1);
-
-        jsonViewer = new QTextBrowser(viewer);
-        jsonViewer->setObjectName("jsonViewer");
-        sizePolicy1.setHeightForWidth(jsonViewer->sizePolicy().hasHeightForWidth());
-        jsonViewer->setSizePolicy(sizePolicy1);
-        jsonViewer->setMinimumSize(QSize(30, 0));
-        jsonViewer->setMaximumSize(QSize(500, 16777215));
-
-        gridLayout->addWidget(jsonViewer, 1, 1, 1, 1);
-
-        viewJsonCheckBox = new QCheckBox(viewer);
-        viewJsonCheckBox->setObjectName("viewJsonCheckBox");
-
-        gridLayout->addWidget(viewJsonCheckBox, 0, 1, 1, 1, Qt::AlignRight|Qt::AlignBottom);
-
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, viewer);
+        formLayout->setWidget(0, QFormLayout::FieldRole, stackedWidget);
 
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
+
+        stackedWidget->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -305,7 +370,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Osu! Stats", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Choose a player...", nullptr));
+        goChoosePage->setText(QCoreApplication::translate("MainWindow", "Choose a player...", nullptr));
         chooseUsername->setText(QString());
         chooseAvatar->setText(QString());
         pushButton_6->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
@@ -314,13 +379,17 @@ public:
         pushButton_11->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_13->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
-        chooseButton->setText(QCoreApplication::translate("MainWindow", "Choose a player", nullptr));
-        addButton->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
-        clearButton->setText(QCoreApplication::translate("MainWindow", "Clear player", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
-        viewJsonCheckBox->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
+        goSettingsPage->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
+        chooseButton_8->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
+        addButton_8->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
+        clearButton_8->setText(QCoreApplication::translate("MainWindow", "Clear player", nullptr));
+        label_16->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
+        label_17->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
+        viewJsonCheckBox_8->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
+        label_19->setText(QString());
+        saveDataCB->setText(QCoreApplication::translate("MainWindow", "Save application data", nullptr));
+        removeData->setText(QCoreApplication::translate("MainWindow", "Remove data folder", nullptr));
+        label_18->setText(QString());
     } // retranslateUi
 
 };

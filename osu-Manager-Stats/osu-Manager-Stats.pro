@@ -12,15 +12,14 @@ TARGET = osu-Manager-Stats
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    filesaver.cpp \
     main.cpp \
     mainwindow.cpp \
     osurequest.cpp
 
 HEADERS += \
-    filesaver.h \
     mainwindow.h \
-    osurequest.h
+    osurequest.h \
+    settings.hpp
 
 FORMS += \
     mainwindow.ui

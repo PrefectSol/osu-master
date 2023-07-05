@@ -1,8 +1,6 @@
 #ifndef OSUREQUEST_H
 #define OSUREQUEST_H
 
-#define FAST_TOKEN true
-
 #include <QMainWindow>
 
 #include <QtNetwork/QNetworkAccessManager>
