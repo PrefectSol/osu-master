@@ -11,6 +11,7 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 <br>
 
 ## Development Notes
+ - Added saving of app settings and players (requires refactoring)
  - Added internet connection check
  - Added simple json viewer
  - Added user cache for optimization
