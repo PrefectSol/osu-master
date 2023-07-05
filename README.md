@@ -8,6 +8,21 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 ./osu-Manager-Stats
 ```
 
+- The Release will be available after the main features are added
+
+
+<br>
+
+## ERRORS
+
+ - If there are problems with launching the application, delete the ```appdata/``` folder in the ```build-osu-Manager-Stats-desktops_qt_6_4_2_gcc_64bit-Release/``` directory
+
+<br>
+
+## Collaboration
+
+ - This project is free for collaboration. Just contact me or make a fork
+
 <br>
 
 ## Development Notes
