@@ -3,18 +3,21 @@
 
 #include <QMainWindow>
 
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-
 #include <QJsonValue>
 #include <QJsonValueRef>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
+
 #include <QUrl>
 #include <QUrlQuery>
+
 #include <QEventLoop>
+
+#include <QStringList>
 
 class OsuRequest : public QMainWindow
 {
@@ -22,13 +25,13 @@ class OsuRequest : public QMainWindow
 public:
     explicit OsuRequest();
 
-    bool isPlayerExist(QString username);
-
-    QString getToken();
+    bool isPlayerExist(const QString &username);
 
     QJsonDocument getUserJson();
 
     QString getUserInfo();
+
+    void getSearchUsers(const QString &keyword, QStringList *users);
 
 protected:
 

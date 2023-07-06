@@ -7,6 +7,8 @@ namespace settings
 {
     bool isViewJson = false;
 
+    bool isSearcher = false;
+
     const QString endPoint = "-----------------END-----------------";
 };
 

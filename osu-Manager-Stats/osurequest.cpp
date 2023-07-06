@@ -27,15 +27,9 @@ OsuRequest::OsuRequest() : m_clientId("23205"), m_clientSecret("JBzsoPDOaIA0wdG2
     m_token = json["access_token"].toString();
 
     reply->deleteLater();
-
 }
 
-QString OsuRequest::getToken()
-{
-    return m_token;
-}
-
-bool OsuRequest::isPlayerExist(QString username)
+bool OsuRequest::isPlayerExist(const QString &username)
 {
     QUrl url(m_apiUrl + "/users/" + username);
 
@@ -69,6 +63,57 @@ bool OsuRequest::isPlayerExist(QString username)
     m_userJson = jsonDocument;
 
     return true;
+}
+
+void OsuRequest::getSearchUsers(const QString &keyword, QStringList *users)
+{
+    QUrl url(m_apiUrl + "/search");
+
+    QUrlQuery query;
+    query.addQueryItem("mode", "user");
+    query.addQueryItem("query", keyword);
+    query.addQueryItem("page", "1");
+
+    url.setQuery(query.query());
+
+    QNetworkRequest request(url);
+    request.setRawHeader("Content-Type", "application/json");
+    request.setRawHeader("Accept", "application/json");
+    request.setRawHeader("Authorization", ("Bearer " + m_token).toUtf8());
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(request);
+
+    QEventLoop loop;
+    QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    const QString response = QString(reply->readAll());
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(response.toUtf8());
+
+    reply->deleteLater();
+
+    if (jsonDocument["error"].isNull() || jsonDocument.isEmpty())
+    {
+        return;
+    }
+
+    const int pageSize = 20;
+    const int total = jsonDocument["user"]["total"].toInt();
+
+    int min = std::min(pageSize, total);
+
+    for(int i = 0; i < min; i++)
+    {
+        try
+        {
+            *users << jsonDocument["user"]["data"][i]["username"].toString();
+        }
+        catch(...)
+        {
+            break;
+        }
+    }
 }
 
 QString OsuRequest::getUserInfo()

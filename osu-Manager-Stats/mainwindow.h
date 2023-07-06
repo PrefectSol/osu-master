@@ -2,18 +2,25 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include <QInputDialog>
 #include <QMessageBox>
+
 #include <QJsonDocument>
 #include <QTextBrowser>
 #include <QProcess>
+
 #include <QFileDialog>
 #include <QFile>
 
 #include "osurequest.h"
+#include "addplayerdialog.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -48,9 +55,15 @@ private:
 
     void loadData();
 
+    QString getSearchPlayer(bool *isOk);
+
+    QString getDirectPlayer(bool *isOk);
+
     QString getUsernameFromCell(int row, int column);
 
     Ui::MainWindow *ui;
+
+    addPlayerDialog *addDialog;
 
     OsuRequest m_osuParser;
 
@@ -61,5 +74,7 @@ private:
     QString m_saveDataFolderPath;
 
     QString m_saveDataFilePath;
+
+    bool m_isChoosePlayer;
 };
 #endif // MAINWINDOW_H

@@ -42,12 +42,11 @@ public:
     QLabel *chooseUsername;
     QLabel *chooseAvatar;
     QSpacerItem *verticalSpacer;
-    QPushButton *pushButton_6;
+    QPushButton *goOverviewButton;
     QPushButton *pushButton_8;
     QPushButton *pushButton_10;
     QPushButton *pushButton_11;
     QPushButton *pushButton_13;
-    QPushButton *pushButton_12;
     QSpacerItem *verticalSpacer_2;
     QPushButton *goSettingsPage;
     QStackedWidget *stackedWidget;
@@ -70,6 +69,7 @@ public:
     QCheckBox *viewJsonCheckBox_8;
     QTableWidget *userTable_8;
     QTextBrowser *jsonViewer_8;
+    QWidget *overviewPage;
     QWidget *settingsPage;
     QGridLayout *gridLayout;
     QLabel *label_19;
@@ -78,6 +78,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QCheckBox *saveDataCB;
     QPushButton *removeData;
+    QCheckBox *searcherCB;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_18;
     QSpacerItem *horizontalSpacer;
@@ -99,7 +100,7 @@ public:
         sizePolicy.setHeightForWidth(buttonPanel->sizePolicy().hasHeightForWidth());
         buttonPanel->setSizePolicy(sizePolicy);
         verticalLayout = new QVBoxLayout(buttonPanel);
-        verticalLayout->setSpacing(0);
+        verticalLayout->setSpacing(2);
         verticalLayout->setObjectName("verticalLayout");
         goChoosePage = new QPushButton(buttonPanel);
         goChoosePage->setObjectName("goChoosePage");
@@ -140,12 +141,12 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        pushButton_6 = new QPushButton(buttonPanel);
-        pushButton_6->setObjectName("pushButton_6");
-        sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
-        pushButton_6->setSizePolicy(sizePolicy1);
+        goOverviewButton = new QPushButton(buttonPanel);
+        goOverviewButton->setObjectName("goOverviewButton");
+        sizePolicy1.setHeightForWidth(goOverviewButton->sizePolicy().hasHeightForWidth());
+        goOverviewButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(pushButton_6);
+        verticalLayout->addWidget(goOverviewButton);
 
         pushButton_8 = new QPushButton(buttonPanel);
         pushButton_8->setObjectName("pushButton_8");
@@ -174,13 +175,6 @@ public:
         pushButton_13->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton_13);
-
-        pushButton_12 = new QPushButton(buttonPanel);
-        pushButton_12->setObjectName("pushButton_12");
-        sizePolicy1.setHeightForWidth(pushButton_12->sizePolicy().hasHeightForWidth());
-        pushButton_12->setSizePolicy(sizePolicy1);
-
-        verticalLayout->addWidget(pushButton_12);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -306,6 +300,9 @@ public:
         gridLayout_8->addWidget(jsonViewer_8, 1, 1, 1, 1);
 
         stackedWidget->addWidget(choosePage);
+        overviewPage = new QWidget();
+        overviewPage->setObjectName("overviewPage");
+        stackedWidget->addWidget(overviewPage);
         settingsPage = new QWidget();
         settingsPage->setObjectName("settingsPage");
         gridLayout = new QGridLayout(settingsPage);
@@ -337,6 +334,11 @@ public:
 
         verticalLayout_5->addLayout(verticalLayout_4);
 
+        searcherCB = new QCheckBox(settingsPage);
+        searcherCB->setObjectName("searcherCB");
+
+        verticalLayout_5->addWidget(searcherCB);
+
         verticalSpacer_3 = new QSpacerItem(20, 338, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_5->addItem(verticalSpacer_3);
@@ -361,7 +363,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -373,12 +375,11 @@ public:
         goChoosePage->setText(QCoreApplication::translate("MainWindow", "Choose a player...", nullptr));
         chooseUsername->setText(QString());
         chooseAvatar->setText(QString());
-        pushButton_6->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_10->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_11->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_13->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_12->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        goOverviewButton->setText(QCoreApplication::translate("MainWindow", "Overview", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "Recent plays", nullptr));
+        pushButton_10->setText(QCoreApplication::translate("MainWindow", "Visualizer", nullptr));
+        pushButton_11->setText(QCoreApplication::translate("MainWindow", "Top", nullptr));
+        pushButton_13->setText(QCoreApplication::translate("MainWindow", "Duel", nullptr));
         goSettingsPage->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         chooseButton_8->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
         addButton_8->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
@@ -389,6 +390,7 @@ public:
         label_19->setText(QString());
         saveDataCB->setText(QCoreApplication::translate("MainWindow", "Save application data", nullptr));
         removeData->setText(QCoreApplication::translate("MainWindow", "Remove data folder", nullptr));
+        searcherCB->setText(QCoreApplication::translate("MainWindow", "Use player search", nullptr));
         label_18->setText(QString());
     } // retranslateUi
 

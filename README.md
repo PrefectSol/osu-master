@@ -10,7 +10,6 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 
 - The Release will be available after the main features are added
 
-
 <br>
 
 ## ERRORS
@@ -26,6 +25,7 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 <br>
 
 ## Development Notes
+ - Added player search
  - Added saving of app settings and players (requires refactoring)
  - Added internet connection check
  - Added simple json viewer

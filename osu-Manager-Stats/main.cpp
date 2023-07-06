@@ -1,10 +1,10 @@
-#include "mainwindow.h"
-
 #include <QApplication>
 #include <QMessageBox>
 #include <QtNetwork>
 #include <QEventLoop>
 #include <QTimer>
+
+#include "mainwindow.h"
 
 bool isOnline()
 {
@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
     QApplication::setWindowIcon(QIcon(":/Images/icon.png"));
 
     MainWindow window;
+
     window.show();
 
     if (!isOnline())

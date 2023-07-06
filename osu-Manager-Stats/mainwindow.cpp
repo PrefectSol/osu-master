@@ -1,12 +1,13 @@
 #include "mainwindow.h"
-#include "settings.hpp"
 #include "ui_mainwindow.h"
+
+#include "settings.hpp"
 
 QMap<QString, QString> m_users;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), addDialog(new addPlayerDialog(&m_osuParser, this)), m_isChoosePlayer(false)
 {
     ui->setupUi(this);
 
@@ -27,9 +28,21 @@ MainWindow::MainWindow(QWidget *parent)
         ui->stackedWidget->setCurrentIndex(0);
     });
 
+    connect(ui->goOverviewButton, &QPushButton::clicked, [=]()
+    {
+        if (m_isChoosePlayer)
+        {
+            ui->stackedWidget->setCurrentIndex(1);
+        }
+        else
+        {
+            QMessageBox::warning(nullptr, "Overview", "The player is not choosed");
+        }
+    });
+
     connect(ui->goSettingsPage, &QPushButton::clicked, [=]()
     {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentIndex(2);
     });
 }
 
@@ -38,6 +51,7 @@ MainWindow::~MainWindow()
     saveData();
 
     delete ui;
+    delete addDialog;
 }
 
 void MainWindow::saveData()
@@ -60,6 +74,7 @@ void MainWindow::saveData()
     }
 
     out << ui->viewJsonCheckBox_8->isChecked();
+    out << ui->searcherCB->isChecked();
 
     QTableWidget *table = ui->userTable_8;
 
@@ -125,6 +140,9 @@ void MainWindow::loadData()
     in >> settings::isViewJson;
     ui->viewJsonCheckBox_8->setChecked(settings::isViewJson);
 
+    in >> settings::isSearcher;
+    ui->searcherCB->setChecked(settings::isSearcher);
+
     int row, column;
     in >> row;
     in >> column;
@@ -173,6 +191,11 @@ void MainWindow::loadData()
     in >> chooseUsername;
     in >> chooseAvatar;
 
+    if (!chooseUsername.isEmpty())
+    {
+        m_isChoosePlayer = true;
+    }
+
     ui->chooseUsername->setText(chooseUsername);
     ui->chooseUsername->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 
@@ -200,6 +223,21 @@ void MainWindow::loadAvatar(QPixmap *pixmap)
     reply->deleteLater();
 }
 
+QString MainWindow::getSearchPlayer(bool *isOk)
+{
+    addDialog->setWindowModality(Qt::ApplicationModal);
+    addDialog->setWindowFlags(Qt::Window);
+
+    addDialog->exec();
+    *isOk = addDialog->getIsOk();
+    return addDialog->getUsername();
+}
+
+QString MainWindow::getDirectPlayer(bool *isOk)
+{
+    return QInputDialog::getText(nullptr, "Add new player...", "Enter a nickname:", QLineEdit::Normal, "username", isOk);
+}
+
 void MainWindow::on_addButton_8_clicked()
 {
     const QString messageTitle = "Add new player...";
@@ -212,9 +250,17 @@ void MainWindow::on_addButton_8_clicked()
         QMessageBox::warning(nullptr, messageTitle, "The player is not selected");
         return;
     }
-
     bool isOk;
-    QString username = QInputDialog::getText(nullptr, messageTitle, "Enter a nickname:", QLineEdit::Normal, "username", &isOk);
+    QString username;
+    if (ui->searcherCB->isChecked())
+    {
+        username = getSearchPlayer(&isOk);
+    }
+    else
+    {
+        username = QInputDialog::getText(nullptr, "Add new player...", "Enter a nickname:", QLineEdit::Normal, "username", &isOk);
+    }
+
     if (!isOk)
     {
         return;
@@ -333,6 +379,8 @@ void MainWindow::on_chooseButton_8_clicked()
 
             ui->chooseAvatar->setPixmap(imageLabel->pixmap());
             ui->chooseAvatar->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+            m_isChoosePlayer = true;
 
             return;
         }
