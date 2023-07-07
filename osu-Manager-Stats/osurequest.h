@@ -2,6 +2,7 @@
 #define OSUREQUEST_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 
 #include <QJsonValue>
 #include <QJsonValueRef>

@@ -104,6 +104,8 @@ void MainWindow::on_addButton_pressed()
         username = QInputDialog::getText(nullptr, messageTitle, "Enter a nickname:", QLineEdit::Normal, "username", &isOk);
     }
 
+
+
     if (!isOk)
     {
         return;

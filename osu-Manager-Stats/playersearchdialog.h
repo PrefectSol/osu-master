@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QCompleter>
 #include <QStringListModel>
+#include <QtConcurrent/QtConcurrent>
 
 #include "osurequest.h"
 #include "ui.h"
@@ -30,10 +31,14 @@ private slots:
 
     void on_addButton_pressed();
 
+    void on_username_textChanged(const QString &arg1);
+
 private:
     Ui::PlayerSearchDialog *ui;
 
     OsuRequest *m_osuParser;
+
+    QCompleter *m_completer;
 
     QString m_username;
 

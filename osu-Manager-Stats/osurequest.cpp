@@ -94,11 +94,6 @@ void OsuRequest::getSearchUsers(const QString &keyword, QStringList *users)
 
     reply->deleteLater();
 
-    if (jsonDocument["error"].isNull() || jsonDocument.isEmpty())
-    {
-        return;
-    }
-
     const int pageSize = m_settings::searchPageSize;
     const int total = jsonDocument["user"]["total"].toInt();
     const int size = total - pageSize >= 0 ? pageSize : total;

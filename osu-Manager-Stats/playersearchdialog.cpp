@@ -9,22 +9,23 @@ PlayerSearchDialog::PlayerSearchDialog(OsuRequest *parser, QWidget *parent)
     m_isOk(false)
 {
     ui->setupUi(this);
+
+    m_completer = new QCompleter(this);
+    ui->username->setCompleter(m_completer);
 }
 
 PlayerSearchDialog::~PlayerSearchDialog()
 {
     delete ui;
+    delete m_completer;
 }
 
 void PlayerSearchDialog::on_username_textEdited(const QString &username)
 {
-    QCompleter *completer = new QCompleter(this);
+//    QStringList users;
+//    m_osuParser->getSearchUsers(username, &users);
 
-    QStringList users;
-    m_osuParser->getSearchUsers(username, &users);
-
-    completer->setModel(new QStringListModel(users, completer));
-    ui->username->setCompleter(completer);
+//    m_completer->setModel(new QStringListModel(users, m_completer));
 }
 
 void PlayerSearchDialog::on_closeButton_pressed()
@@ -42,7 +43,8 @@ void PlayerSearchDialog::on_addButton_pressed()
 
 void PlayerSearchDialog::reset()
 {
-    m_username = QString();
+    m_username = QString("");
+    ui->username->setText(m_username);
     m_isOk = false;
 }
 
@@ -55,3 +57,12 @@ bool PlayerSearchDialog::getIsOk()
 {
     return m_isOk;
 }
+
+void PlayerSearchDialog::on_username_textChanged(const QString &username)
+{
+    QStringList users;
+    m_osuParser->getSearchUsers(username, &users);
+
+    m_completer->setModel(new QStringListModel(users, m_completer));
+}
+
