@@ -1,4 +1,5 @@
 #include "osurequest.h"
+#include "settings.hpp"
 
 OsuRequest::OsuRequest() : m_clientId("23205"), m_clientSecret("JBzsoPDOaIA0wdG2fiB5nfjy3rMbRa8Liy8ZYfzc"),
     m_apiUrl("https://osu.ppy.sh/api/v2"), m_tokenUrl("https://osu.ppy.sh/oauth/token")
@@ -98,21 +99,13 @@ void OsuRequest::getSearchUsers(const QString &keyword, QStringList *users)
         return;
     }
 
-    const int pageSize = 20;
+    const int pageSize = m_settings::searchPageSize;
     const int total = jsonDocument["user"]["total"].toInt();
+    const int size = total - pageSize >= 0 ? pageSize : total;
 
-    int min = std::min(pageSize, total);
-
-    for(int i = 0; i < min; i++)
+    for(int i = 0; i < size; i++)
     {
-        try
-        {
-            *users << jsonDocument["user"]["data"][i]["username"].toString();
-        }
-        catch(...)
-        {
-            break;
-        }
+        (*users) << jsonDocument["user"]["data"][i]["username"].toString();
     }
 }
 

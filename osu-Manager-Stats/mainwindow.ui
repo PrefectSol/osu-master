@@ -41,7 +41,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_3" native="true">
+        <widget class="QWidget" name="playerViewer" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -64,7 +64,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="chooseAvatar">
+           <widget class="QLabel" name="chooseImage">
             <property name="minimumSize">
              <size>
               <width>110</width>
@@ -106,7 +106,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_8">
+        <widget class="QPushButton" name="recentButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -119,7 +119,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_10">
+        <widget class="QPushButton" name="visualizerButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -132,7 +132,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_11">
+        <widget class="QPushButton" name="topButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -145,7 +145,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_13">
+        <widget class="QPushButton" name="goDuelButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -154,6 +154,19 @@
          </property>
          <property name="text">
           <string>Duel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Overlay</string>
          </property>
         </widget>
        </item>
@@ -187,32 +200,32 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QStackedWidget" name="contentViewer">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_10">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_29">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QPushButton" name="chooseButton_8">
+             <widget class="QPushButton" name="chooseButton">
               <property name="text">
                <string>Choose</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="addButton_8">
+             <widget class="QPushButton" name="addButton">
               <property name="text">
                <string>Add new player</string>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_15">
+             <spacer name="horizontalSpacer_2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -225,7 +238,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="clearButton_8">
+             <widget class="QPushButton" name="clearButton">
               <property name="text">
                <string>Clear player</string>
               </property>
@@ -234,9 +247,9 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_30">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_31">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
                <widget class="QLabel" name="label_16">
                 <property name="text">
@@ -245,7 +258,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="rowsSpinBox_8">
+               <widget class="QSpinBox" name="rowsSpinBox">
                 <property name="minimum">
                  <number>0</number>
                 </property>
@@ -269,14 +282,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="colsSpinBox_8">
+               <widget class="QSpinBox" name="colsSpinBox">
                 <property name="maximum">
                  <number>20</number>
                 </property>
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_16">
+               <spacer name="horizontalSpacer_3">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -295,14 +308,14 @@
          </layout>
         </item>
         <item row="0" column="1">
-         <widget class="QCheckBox" name="viewJsonCheckBox_8">
+         <widget class="QCheckBox" name="viewJsonCheckBox">
           <property name="text">
            <string>View Json</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QTableWidget" name="userTable_8">
+         <widget class="QTableWidget" name="userTable">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
@@ -342,7 +355,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QTextBrowser" name="jsonViewer_8">
+         <widget class="QTextBrowser" name="jsonViewer">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -382,14 +395,14 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QCheckBox" name="saveDataCB">
+               <widget class="QCheckBox" name="saveDataCheckBox">
                 <property name="text">
                  <string>Save application data</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="removeData">
+               <widget class="QPushButton" name="removeDataButton">
                 <property name="text">
                  <string>Remove data folder</string>
                 </property>
@@ -400,7 +413,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QCheckBox" name="searcherCB">
+           <widget class="QCheckBox" name="useSearchCheckBox">
             <property name="text">
              <string>Use player search</string>
             </property>

@@ -25,13 +25,13 @@ class OsuRequest : public QMainWindow
 public:
     explicit OsuRequest();
 
-    bool isPlayerExist(const QString &username);
+    void getSearchUsers(const QString &keyword, QStringList *users);
 
     QJsonDocument getUserJson();
 
     QString getUserInfo();
 
-    void getSearchUsers(const QString &keyword, QStringList *users);
+    bool isPlayerExist(const QString &username);
 
 protected:
 

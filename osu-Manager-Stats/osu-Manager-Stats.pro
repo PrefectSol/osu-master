@@ -12,20 +12,23 @@ TARGET = osu-Manager-Stats
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addplayerdialog.cpp \
+    datahandler.cpp \
     main.cpp \
     mainwindow.cpp \
-    osurequest.cpp
+    osurequest.cpp \
+    playersearchdialog.cpp
 
 HEADERS += \
-    addplayerdialog.h \
+    datahandler.h \
     mainwindow.h \
     osurequest.h \
-    settings.hpp
+    playersearchdialog.h \
+    settings.hpp \
+    ui.h
 
 FORMS += \
-    addplayerdialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    playersearchdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
