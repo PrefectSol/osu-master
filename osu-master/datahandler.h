@@ -19,8 +19,6 @@ public:
 
     void deleteData();
 
-    void getIsChooseUsername(bool *isChooseUsername);
-
     void usersRemove(const QString &key);
 
     void usersInsert(const QString &key, const QString &value);

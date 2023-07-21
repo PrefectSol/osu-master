@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     dataHandler = new DataHandler(QDir::currentPath() + m_settings::saveFolder, ui);
     dataHandler->loadData();
-    dataHandler->getIsChooseUsername(&m_isChoosePlayer);
 
     playerSearch = new PlayerSearchDialog(&m_osuParser, this);
     playerSearch->setWindowModality(Qt::ApplicationModal);
@@ -105,6 +104,8 @@ void MainWindow::on_goOverviewButton_pressed()
     if (m_isChoosePlayer)
     {
         ui->contentViewer->setCurrentIndex(1);
+        ui->usernamelabel_2->setText(ui->chooseUsername->text());
+        ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
     }
     else
     {
@@ -354,4 +355,8 @@ void MainWindow::on_removeDataButton_pressed()
 }
 
 
+void MainWindow::on_userTable_cellDoubleClicked(int, int)
+{
+    on_chooseButton_pressed();
+}
 

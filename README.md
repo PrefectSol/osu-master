@@ -2,10 +2,18 @@
 
 ## Pre-Running
 
-```bash
-cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
+### Linux run
+```bash 
+cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
 
 ./osu-Manager-Stats
+```
+
+### Windows run
+```cmd 
+cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
+
+.\osu-Manager-Stats.exe
 ```
 
 - The Release will be available after the main features are added
@@ -25,6 +33,7 @@ cd build-osu-Manager-Stats-Desktop_Qt_6_4_2_GCC_64bit-Release/
 <br>
 
 ## Development Notes
+ - tests and fixes.
  - Refactor
  - Added player search
  - Added saving of app settings and players (requires refactoring)

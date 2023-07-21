@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>910</width>
+    <width>961</width>
     <height>652</height>
    </rect>
   </property>
@@ -215,7 +215,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="contentViewer">
       <property name="currentIndex">
-       <number>6</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
@@ -391,18 +391,119 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>OVERVIEW...</string>
+      <widget class="QWidget" name="overviewPage_2">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="3">
+         <spacer name="horizontalSpacer_14">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-         </widget>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>238</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer_12">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>238</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <spacer name="verticalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QWidget" name="playerViewer_3" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <widget class="QLabel" name="usernamelabel_2">
+               <property name="font">
+                <font>
+                 <italic>false</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="text">
+                <string>name</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="picturelabel_2">
+               <property name="minimumSize">
+                <size>
+                 <width>110</width>
+                 <height>110</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>pic</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="3">
+         <spacer name="verticalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>297</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="talantPage">
+      <widget class="QWidget" name="recentPage">
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QLabel" name="label_2">
@@ -413,7 +514,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_2">
+      <widget class="QWidget" name="visualizerPage">
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
          <widget class="QLabel" name="label_3">
@@ -424,7 +525,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_3">
+      <widget class="QWidget" name="topPage">
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
          <widget class="QLabel" name="label_4">
@@ -435,7 +536,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_4">
+      <widget class="QWidget" name="duelPage">
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
          <widget class="QLabel" name="label_5">
@@ -446,7 +547,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_5">
+      <widget class="QWidget" name="bitmapDownloaderPage">
        <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -818,7 +919,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_6">
+      <widget class="QWidget" name="otherPage">
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
          <widget class="QLabel" name="label_7">
