@@ -73,8 +73,10 @@ public:
     QTableWidget *userTable;
     QTextBrowser *jsonViewer;
     QWidget *page;
-    QHBoxLayout *horizontalLayout_5;
-    QLabel *label;
+    QWidget *playerViewer_2;
+    QVBoxLayout *verticalLayout_12;
+    QLabel *chooseUsername_2;
+    QLabel *chooseImage_2;
     QWidget *talantPage;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_2;
@@ -378,12 +380,24 @@ public:
         contentViewer->addWidget(choosePage);
         page = new QWidget();
         page->setObjectName("page");
-        horizontalLayout_5 = new QHBoxLayout(page);
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
-        label = new QLabel(page);
-        label->setObjectName("label");
+        playerViewer_2 = new QWidget(page);
+        playerViewer_2->setObjectName("playerViewer_2");
+        playerViewer_2->setGeometry(QRect(20, 30, 132, 159));
+        sizePolicy.setHeightForWidth(playerViewer_2->sizePolicy().hasHeightForWidth());
+        playerViewer_2->setSizePolicy(sizePolicy);
+        verticalLayout_12 = new QVBoxLayout(playerViewer_2);
+        verticalLayout_12->setObjectName("verticalLayout_12");
+        chooseUsername_2 = new QLabel(playerViewer_2);
+        chooseUsername_2->setObjectName("chooseUsername_2");
+        chooseUsername_2->setFont(font);
 
-        horizontalLayout_5->addWidget(label);
+        verticalLayout_12->addWidget(chooseUsername_2);
+
+        chooseImage_2 = new QLabel(playerViewer_2);
+        chooseImage_2->setObjectName("chooseImage_2");
+        chooseImage_2->setMinimumSize(QSize(110, 110));
+
+        verticalLayout_12->addWidget(chooseImage_2);
 
         contentViewer->addWidget(page);
         talantPage = new QWidget();
@@ -704,7 +718,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        contentViewer->setCurrentIndex(6);
+        contentViewer->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -730,7 +744,8 @@ public:
         label_16->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
         viewJsonCheckBox->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "OVERVIEW...", nullptr));
+        chooseUsername_2->setText(QString());
+        chooseImage_2->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "RECENT PLAYS", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "VISUALIZER", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "TOP", nullptr));

@@ -218,11 +218,15 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="contentViewer">
       <property name="currentIndex">
+<<<<<<< HEAD
 <<<<<<< HEAD:osu-Manager-Stats/mainwindow.ui
        <number>1</number>
 =======
        <number>6</number>
 >>>>>>> befc6b9dcdc3812828eec94a5d39d0d1fb032f7c:osu-master/mainwindow.ui
+=======
+       <number>1</number>
+>>>>>>> 55cdbc89db00e9af2de934bd9ab0156c28bd811c
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
@@ -440,15 +444,51 @@
               <height>40</height>
 =======
       <widget class="QWidget" name="page">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>OVERVIEW...</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QWidget" name="playerViewer_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>132</width>
+          <height>159</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_12">
+         <item>
+          <widget class="QLabel" name="chooseUsername_2">
+           <property name="font">
+            <font>
+             <italic>false</italic>
+             <bold>true</bold>
+             <underline>false</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="chooseImage_2">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>110</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="talantPage">
        <layout class="QHBoxLayout" name="horizontalLayout_6">
