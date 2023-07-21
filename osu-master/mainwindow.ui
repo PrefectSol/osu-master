@@ -218,15 +218,9 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="contentViewer">
       <property name="currentIndex">
-<<<<<<< HEAD
-<<<<<<< HEAD:osu-Manager-Stats/mainwindow.ui
        <number>1</number>
-=======
        <number>6</number>
->>>>>>> befc6b9dcdc3812828eec94a5d39d0d1fb032f7c:osu-master/mainwindow.ui
-=======
        <number>1</number>
->>>>>>> 55cdbc89db00e9af2de934bd9ab0156c28bd811c
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
@@ -402,7 +396,6 @@
         </item>
        </layout>
       </widget>
-<<<<<<< HEAD:osu-Manager-Stats/mainwindow.ui
       <widget class="QWidget" name="overviewPage">
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
@@ -442,7 +435,6 @@
              <size>
               <width>20</width>
               <height>40</height>
-=======
       <widget class="QWidget" name="page">
        <widget class="QWidget" name="playerViewer_2" native="true">
         <property name="geometry">
@@ -547,13 +539,11 @@
              <size>
               <width>40</width>
               <height>20</height>
->>>>>>> befc6b9dcdc3812828eec94a5d39d0d1fb032f7c:osu-master/mainwindow.ui
              </size>
             </property>
            </spacer>
           </item>
           <item>
-<<<<<<< HEAD:osu-Manager-Stats/mainwindow.ui
            <widget class="QWidget" name="playerViewer_2" native="true">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -601,7 +591,6 @@
              <size>
               <width>20</width>
               <height>40</height>
-=======
            <widget class="QLabel" name="label_10">
             <property name="font">
              <font>
@@ -622,14 +611,12 @@
              <size>
               <width>40</width>
               <height>20</height>
->>>>>>> befc6b9dcdc3812828eec94a5d39d0d1fb032f7c:osu-master/mainwindow.ui
              </size>
             </property>
            </spacer>
           </item>
          </layout>
         </item>
-<<<<<<< HEAD:osu-Manager-Stats/mainwindow.ui
         <item row="1" column="1" colspan="2">
          <spacer name="verticalSpacer_7">
           <property name="orientation">
@@ -649,10 +636,8 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="2" rowspan="2">
          <widget class="QLabel" name="label_19">
-=======
         <item>
          <widget class="QLabel" name="label_21">
->>>>>>> befc6b9dcdc3812828eec94a5d39d0d1fb032f7c:osu-master/mainwindow.ui
           <property name="text">
            <string/>
           </property>
