@@ -60,6 +60,8 @@ private slots:
 
     void on_startDownloaderButton_pressed();
 
+    void on_userTable_cellDoubleClicked(int row, int column);
+
 private:
     void loadAvatar(QPixmap *pixmap);
 

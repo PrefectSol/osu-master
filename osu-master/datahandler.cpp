@@ -181,11 +181,6 @@ void DataHandler::deleteData()
     }
 }
 
-void DataHandler::getIsChooseUsername(bool *isChooseUsername)
-{
-    *isChooseUsername = m_isChooseUsername;
-}
-
 void DataHandler::usersRemove(const QString &key)
 {
     m_users.remove(key);
