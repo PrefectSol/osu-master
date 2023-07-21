@@ -38,6 +38,8 @@ void MainWindow::on_goOverviewButton_pressed()
     if (m_isChoosePlayer)
     {
         ui->contentViewer->setCurrentIndex(1);
+        ui->usernamelabel->setText(ui->chooseUsername->text());
+        ui->picturelabel->setPixmap(ui->chooseImage->pixmap());
     }
     else
     {
