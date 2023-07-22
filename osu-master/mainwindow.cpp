@@ -137,7 +137,6 @@ void MainWindow::on_goOverviewButton_pressed()
         ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
         ui->globalranklabel->setText(globalrank);
         ui->ranklabel->setText(rank);
-        QMessageBox::warning(nullptr, "Bitmap downloader", m_userInfo);
     }
     else
     {
