@@ -11,7 +11,7 @@ cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
 
 ### Windows run
 ```cmd 
-build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Release\release
+build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Profile\release
 
 .\osu-master.exe
 ```
