@@ -1,4 +1,4 @@
-# Osu Manager Stats ( in progress... )
+# Osu-Master ( in progress... )
 
 ## Pre-Running
 
@@ -6,14 +6,14 @@
 ```bash 
 cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
 
-./osu-Manager-Stats
+./osu-master
 ```
 
 ### Windows run
 ```cmd 
-cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
+build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Release\release
 
-.\osu-Manager-Stats.exe
+.\osu-master.exe
 ```
 
 - The Release will be available after the main features are added
@@ -33,6 +33,7 @@ cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
 <br>
 
 ## Development Notes
+ - Added stats visualizer
  - tests and fixes.
  - Refactor
  - Added player search

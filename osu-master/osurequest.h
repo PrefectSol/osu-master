@@ -40,6 +40,8 @@ public:
 
     bool isPlayerExist(const QString &username);
 
+    bool initUserJson(const QString &username);
+
 protected:
 
 private:

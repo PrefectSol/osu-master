@@ -18,6 +18,9 @@
 #include "playersearchdialog.h"
 #include "ui.h"
 
+#include <QGraphicsScene>
+#include <QGraphicsPolygonItem>
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -26,6 +29,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
+
+    QJsonDocument m_userJson;
 
 private slots:
     void on_addButton_pressed();
@@ -82,5 +87,11 @@ private:
     QString m_username;
 
     bool m_isChoosePlayer;
+
+    QString m_userInfo;
+
+    QGraphicsScene *scene;
+
+    QPoint *aimPoint,*staminaPoint,*speedPoint,*accuracyPoint;
 };
 #endif // MAINWINDOW_H

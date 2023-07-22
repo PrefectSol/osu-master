@@ -8,10 +8,37 @@ MainWindow::MainWindow(QWidget *parent)
     ui = new Ui::MainWindow;
     ui->setupUi(this);
 
+    ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none;");
+    scene = new QGraphicsScene();
+    ui->graphicsView->setScene(scene);
+
+    QColor color1(50, 50, 50, 255);
+    QColor color2(200, 200, 200, 255);
+    QColor colorPoint(255, 0, 0, 255);
+    QBrush brush(color2);
+
+    QPolygon mainpol;
+    mainpol << QPoint(0,110) << QPoint(110,0) << QPoint(0,-110) << QPoint(-110,0);
+    scene->addPolygon(mainpol,QPen(color1,6),brush);
+
+    aimPoint = new QPoint(0,-65);
+    staminaPoint = new QPoint(0,20);
+    speedPoint = new QPoint(40,0);
+    accuracyPoint = new QPoint(-90,0);
+
+    QPolygon statspol;
+    statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
+    scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView->setRenderHint(QPainter::TextAntialiasing);
+
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     ui->jsonViewer->hide();
 
     dataHandler = new DataHandler(QDir::currentPath() + m_settings::saveFolder, ui);
-    dataHandler->loadData();
+    dataHandler->loadData(&m_userJson);
 
     playerSearch = new PlayerSearchDialog(&m_osuParser, this);
     playerSearch->setWindowModality(Qt::ApplicationModal);
@@ -103,9 +130,14 @@ void MainWindow::on_goOverviewButton_pressed()
 {
     if (m_isChoosePlayer)
     {
+        QString globalrank=m_userJson["statistics"]["global_rank"].toString();
+        QString rank=m_userJson["statistics"]["country_rank"].toString();
         ui->contentViewer->setCurrentIndex(1);
         ui->usernamelabel_2->setText(ui->chooseUsername->text());
         ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
+        ui->globalranklabel->setText(globalrank);
+        ui->ranklabel->setText(rank);
+        QMessageBox::warning(nullptr, "Bitmap downloader", m_userInfo);
     }
     else
     {
@@ -191,14 +223,14 @@ void MainWindow::on_addButton_pressed()
         return;
     }
 
-    const QJsonDocument userJson = m_osuParser.getUserJson();
+    m_userJson = m_osuParser.getUserJson();
 
-    m_avatarUrl = userJson["avatar_url"].toString().replace("\\/", "/");
-    m_username = userJson["username"].toString();
+    m_avatarUrl = m_userJson["avatar_url"].toString().replace("\\/", "/");
+    m_username = m_userJson["username"].toString();
 
-    const QString userInfo = m_osuParser.getUserInfo();
-    ui->jsonViewer->setText(userInfo);
-    dataHandler->usersInsert(m_username, userInfo);
+    m_userInfo = m_osuParser.getUserInfo();
+    ui->jsonViewer->setText(m_userInfo);
+    dataHandler->usersInsert(m_username, m_userInfo);
 
     const int pixmapSize = m_settings::pixmapSize;
 

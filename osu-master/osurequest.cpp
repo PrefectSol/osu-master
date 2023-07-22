@@ -178,4 +178,8 @@ QJsonDocument OsuRequest::getUserJson()
     return m_userJson;
 }
 
+bool OsuRequest::initUserJson(const QString &username)
+{
+    return isPlayerExist(username);
+}
 

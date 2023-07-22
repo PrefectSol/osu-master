@@ -13,7 +13,7 @@ class DataHandler
 public:
     DataHandler(const QString &folderPath, Ui::MainWindow *ui);
 
-    void loadData();
+    void loadData(QJsonDocument *userJson);
 
     void saveData();
 

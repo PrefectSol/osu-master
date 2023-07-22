@@ -6,7 +6,7 @@ DataHandler::DataHandler(const QString &folderPath, Ui::MainWindow *ui)
     : m_folderPath(folderPath), m_filePath(folderPath + m_settings::saveFile),
       m_ui(ui) {}
 
-void DataHandler::loadData()
+void DataHandler::loadData(QJsonDocument *userJson)
 {
     QFile file(m_filePath);
     if (!file.open(QIODevice::ReadOnly))
@@ -42,6 +42,7 @@ void DataHandler::loadData()
     QString folderPath;
     in >> folderPath;
     m_ui->songsFolderPath->setText(folderPath);
+    //in >> *userJson;
 
     int rowCount, columnCount;
     in >> rowCount;
@@ -131,6 +132,8 @@ void DataHandler::saveData()
     out << m_ui->useSearchCheckBox->isChecked();
 
     out << m_ui->songsFolderPath->document()->toPlainText();
+
+    //out << m_userJson;
 
     const QTableWidget *table = m_ui->userTable;
 
