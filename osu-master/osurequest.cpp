@@ -240,7 +240,7 @@ float OsuRequest::getPpAvg()
     return avgPP;
 }
 
-void OsuRequest::setPpAvg(int avgPp)
+void OsuRequest::setPpAvg(float avgPp)
 {
     avgPP = avgPp;
 }
@@ -261,7 +261,7 @@ float OsuRequest::getCsAvg()
     return avgCs;
 }
 
-void OsuRequest::setCsAvg(int avgCs)
+void OsuRequest::setCsAvg(float avgCs)
 {
     this->avgCs = avgCs;
 }
@@ -282,7 +282,7 @@ float OsuRequest::getAccAvg()
     return avgAcc;
 }
 
-void OsuRequest::setAccAvg(int avgAcc)
+void OsuRequest::setAccAvg(float avgAcc)
 {
     this->avgAcc = avgAcc;
 }
@@ -303,7 +303,7 @@ float OsuRequest::getArAvg()
     return avgAr;
 }
 
-void OsuRequest::setArAvg(int avgAr)
+void OsuRequest::setArAvg(float avgAr)
 {
     this->avgAr = avgAr;
 }
@@ -324,7 +324,7 @@ float OsuRequest::getBpmAvg()
     return avgBpm;
 }
 
-void OsuRequest::setBpmAvg(int avgBpm)
+void OsuRequest::setBpmAvg(float avgBpm)
 {
     this->avgBpm = avgBpm;
 }
@@ -343,7 +343,7 @@ void OsuRequest::initBpmAvg()
 void OsuRequest::initStats()
 {
     const int limit = m_settings::playLimit;
-    avgAcc = avgAr = avgBpm = avgCs = avgPP = 0;
+    avgAcc = avgAr = avgBpm = avgCs = avgPP = avgLength = 0;
 
     for(int i = 0; i < limit; i++)
     {
@@ -352,6 +352,7 @@ void OsuRequest::initStats()
         avgAcc += m_topScoresJson[i]["accuracy"].toDouble() * 100;
         avgCs += m_topScoresJson[i]["beatmap"]["cs"].toDouble();
         avgPP += m_topScoresJson[i]["weight"]["pp"].toDouble();
+        avgLength += m_topScoresJson[i]["beatmap"]["count_circles"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_sliders"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_spinners"].toDouble();
     }
 
     avgBpm /= limit;
@@ -359,4 +360,26 @@ void OsuRequest::initStats()
     avgCs /= limit;
     avgAcc /= limit;
     avgPP /= limit;
+    avgLength /= limit;
+}
+
+float OsuRequest::getLengthAvg()
+{
+    return avgLength;
+}
+
+void OsuRequest::setLengthAvg(float avgLength)
+{
+    this->avgLength = avgLength;
+}
+
+void OsuRequest::initLengthAvg()
+{
+    avgLength = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgLength += m_topScoresJson[i]["beatmap"]["count_circles"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_sliders"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_spinners"].toDouble();
+    }
+
+    avgLength /= m_settings::playLimit;
 }

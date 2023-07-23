@@ -74,6 +74,9 @@ private:
 
     QString getUsernameFromCell(int row, int column);
 
+    int calculateEstimate(float cs, float ar, float acc, float pp, float bpm, float length,
+                          float csPriority, float arPriority, float accPriority, float ppPriority, float bpmPriority, float lengthPriority);
+
     void initOverview();
 
     void initStats();

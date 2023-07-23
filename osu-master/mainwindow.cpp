@@ -36,19 +36,36 @@ MainWindow::~MainWindow()
     delete playerSearch;
 }
 
+int MainWindow::calculateEstimate(float cs, float ar, float acc, float pp, float bpm, float length,
+                                  float csPriority, float arPriority, float accPriority, float ppPriority, float bpmPriority, float lengthPriority)
+{
+    float estimate = cs * csPriority + ar * arPriority + acc * accPriority + pp * ppPriority + bpm * bpmPriority + length * lengthPriority;
+    estimate = std::max(0.0f, std::min(estimate, 1000.0f));
+
+    return static_cast<int>(estimate);
+}
+
 void MainWindow::initStats()
 {
-    const QJsonDocument topScores = m_osuParser.getTopScores(m_osuParser.getUserId());
-    ui->jsonViewer->setText(QString::fromUtf8(topScores.toJson()));
+    m_osuParser.getTopScores(m_osuParser.getUserId());
     m_osuParser.initStats();
 
-    QString text = QString::number(m_osuParser.getPpAvg()) + " " +
-                   QString::number(m_osuParser.getCsAvg()) + " " +
-                   QString::number(m_osuParser.getArAvg()) + " " +
-                   QString::number(m_osuParser.getAccAvg()) + " " +
-                   QString::number(m_osuParser.getBpmAvg()) + " ";
+    const float cs = m_osuParser.getCsAvg();
+    const float pp = m_osuParser.getPpAvg();
+    const float ar = m_osuParser.getArAvg();
+    const float acc = m_osuParser.getAccAvg();
+    const float bpm = m_osuParser.getBpmAvg();
+    const float length = m_osuParser.getLengthAvg();
 
-   // QMessageBox::warning(nullptr, "overi plays", text);
+    aimValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
+    speedValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
+    accuracyValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
+    staminaValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
+
+    ui->aimValueLabel->setText(QString::number(aimValue));
+    ui->speedValueLabel->setText(QString::number(speedValue));
+    ui->accuracyValueLabel->setText(QString::number(accuracyValue));
+    ui->staminaValueLabel->setText(QString::number(staminaValue));
 }
 
 void MainWindow::initOverview()
@@ -376,6 +393,12 @@ void MainWindow::on_chooseButton_pressed()
 
             uiImage->setPixmap(imageLabel->pixmap());
             uiImage->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+            QString jsonString = dataHandler->getUsersValue(usernameLabel->text());
+            QJsonDocument json = QJsonDocument::fromJson(jsonString.toUtf8());
+
+            const int userId = json["id"].toInt();
+            m_osuParser.setUserId(userId);
 
             m_isChoosePlayer = true;
 

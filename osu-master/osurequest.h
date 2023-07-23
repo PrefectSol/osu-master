@@ -46,33 +46,39 @@ public:
 
     float getPpAvg();
 
-    void setPpAvg(int avgPp);
+    void setPpAvg(float avgPp);
 
     void initPpAvg();
 
     float getCsAvg();
 
-    void setCsAvg(int avgCs);
+    void setCsAvg(float avgCs);
 
     void initCspAvg();
 
     float getAccAvg();
 
-    void setAccAvg(int avgAcc);
+    void setAccAvg(float avgAcc);
 
     void initAccAvg();
 
     float getArAvg();
 
-    void setArAvg(int avgAr);
+    void setArAvg(float avgAr);
 
     void initArAvg();
 
     float getBpmAvg();
 
-    void setBpmAvg(int avgBpm);
+    void setBpmAvg(float avgBpm);
 
     void initBpmAvg();
+
+    float getLengthAvg();
+
+    void setLengthAvg(float avgLength);
+
+    void initLengthAvg();
 
     void initStats();
 
@@ -109,7 +115,7 @@ private:
 
     int m_userId;
 
-    float avgPP, avgCs, avgAcc, avgAr, avgBpm;
+    float avgPP, avgCs, avgAcc, avgAr, avgBpm, avgLength;
 
     int m_playCount;
 };
