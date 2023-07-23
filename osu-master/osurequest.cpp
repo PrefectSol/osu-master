@@ -61,6 +61,9 @@ bool OsuRequest::isPlayerExist(const QString &username)
         return false;
     }
 
+    m_userId = jsonDocument["id"].toInt();
+    m_playCount = jsonDocument["statistics"]["play_count"].toInt();
+
     m_userJson = jsonDocument;
 
     return true;
@@ -183,3 +186,177 @@ bool OsuRequest::initUserJson(const QString &username)
     return isPlayerExist(username);
 }
 
+QJsonDocument OsuRequest::getTopScores(int userId)
+{
+    QUrl url(m_apiUrl + "/users/" + QString::number(userId) + "/scores/best");
+    QUrlQuery query;
+    query.addQueryItem("limit", QString::number(m_settings::playLimit));
+    query.addQueryItem("mode", "osu");
+
+    url.setQuery(query.query());
+
+    QNetworkRequest request(url);
+    request.setRawHeader("Content-Type", "application/json");
+    request.setRawHeader("Accept", "application/json");
+    request.setRawHeader("Authorization", ("Bearer " + m_token).toUtf8());
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(request);
+
+    QEventLoop loop;
+    QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    const QString topScores = QString(reply->readAll());
+    m_topScoresJson = QJsonDocument::fromJson(topScores.toUtf8());
+
+    reply->deleteLater();
+
+    return m_topScoresJson;
+}
+
+void OsuRequest::setUserId(int userId)
+{
+    m_userId = userId;
+}
+
+int OsuRequest::getUserId()
+{
+    return m_userId;
+}
+
+void OsuRequest::setPlayCount(int playCount)
+{
+    m_playCount = playCount;
+}
+
+int OsuRequest::getPlayCount()
+{
+    return m_playCount;
+}
+
+float OsuRequest::getPpAvg()
+{
+    return avgPP;
+}
+
+void OsuRequest::setPpAvg(int avgPp)
+{
+    avgPP = avgPp;
+}
+
+void OsuRequest::initPpAvg()
+{
+    avgPP = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgPP += m_topScoresJson[i]["weight"]["pp"].toDouble();
+    }
+
+    avgPP /= m_settings::playLimit;
+}
+
+float OsuRequest::getCsAvg()
+{
+    return avgCs;
+}
+
+void OsuRequest::setCsAvg(int avgCs)
+{
+    this->avgCs = avgCs;
+}
+
+void OsuRequest::initCspAvg()
+{
+    avgCs = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgCs += m_topScoresJson[i]["beatmap"]["cs"].toDouble();
+    }
+
+    avgCs /= m_settings::playLimit;
+}
+
+float OsuRequest::getAccAvg()
+{
+    return avgAcc;
+}
+
+void OsuRequest::setAccAvg(int avgAcc)
+{
+    this->avgAcc = avgAcc;
+}
+
+void OsuRequest::initAccAvg()
+{
+    avgAcc = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgAcc += m_topScoresJson[i]["accuracy"].toDouble() * 100;
+    }
+
+    avgAcc /= m_settings::playLimit;
+}
+
+float OsuRequest::getArAvg()
+{
+    return avgAr;
+}
+
+void OsuRequest::setArAvg(int avgAr)
+{
+    this->avgAr = avgAr;
+}
+
+void OsuRequest::initArAvg()
+{
+    avgAr = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgAr += m_topScoresJson[i]["beatmap"]["ar"].toDouble();
+    }
+
+    avgAr /= m_settings::playLimit;
+}
+
+float OsuRequest::getBpmAvg()
+{
+    return avgBpm;
+}
+
+void OsuRequest::setBpmAvg(int avgBpm)
+{
+    this->avgBpm = avgBpm;
+}
+
+void OsuRequest::initBpmAvg()
+{
+    avgBpm = 0;
+    for(int i = 0; i < m_settings::playLimit; i++)
+    {
+        avgBpm += m_topScoresJson[i]["beatmap"]["bpm"].toDouble();
+    }
+
+    avgBpm /= m_settings::playLimit;
+}
+
+void OsuRequest::initStats()
+{
+    const int limit = m_settings::playLimit;
+    avgAcc = avgAr = avgBpm = avgCs = avgPP = 0;
+
+    for(int i = 0; i < limit; i++)
+    {
+        avgBpm += m_topScoresJson[i]["beatmap"]["bpm"].toDouble();
+        avgAr += m_topScoresJson[i]["beatmap"]["ar"].toDouble();
+        avgAcc += m_topScoresJson[i]["accuracy"].toDouble() * 100;
+        avgCs += m_topScoresJson[i]["beatmap"]["cs"].toDouble();
+        avgPP += m_topScoresJson[i]["weight"]["pp"].toDouble();
+    }
+
+    avgBpm /= limit;
+    avgAr /= limit;
+    avgCs /= limit;
+    avgAcc /= limit;
+    avgPP /= limit;
+}

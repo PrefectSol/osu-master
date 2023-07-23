@@ -25,6 +25,8 @@ namespace m_settings
     inline const int pixmapSize = 100;
 
     inline const int searchPageSize = 20;
+
+    inline const int playLimit = 50;
 };
 QT_END_NAMESPACE
 

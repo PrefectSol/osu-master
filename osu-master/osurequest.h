@@ -34,6 +34,48 @@ public:
 
     QJsonDocument getMatchJson(const QString &roomID);
 
+    QJsonDocument getTopScores(int userId);
+
+    int getUserId();
+
+    void setUserId(int userId);
+
+    int getPlayCount();
+
+    void setPlayCount(int playCount);
+
+    float getPpAvg();
+
+    void setPpAvg(int avgPp);
+
+    void initPpAvg();
+
+    float getCsAvg();
+
+    void setCsAvg(int avgCs);
+
+    void initCspAvg();
+
+    float getAccAvg();
+
+    void setAccAvg(int avgAcc);
+
+    void initAccAvg();
+
+    float getArAvg();
+
+    void setArAvg(int avgAr);
+
+    void initArAvg();
+
+    float getBpmAvg();
+
+    void setBpmAvg(int avgBpm);
+
+    void initBpmAvg();
+
+    void initStats();
+
     QString getUserInfo();
 
     QString getMatchInfo();
@@ -62,6 +104,14 @@ private:
     QJsonDocument m_userJson;
 
     QJsonDocument m_matchJson;
+
+    QJsonDocument m_topScoresJson;
+
+    int m_userId;
+
+    float avgPP, avgCs, avgAcc, avgAr, avgBpm;
+
+    int m_playCount;
 };
 
 #endif // OSUREQUEST_H

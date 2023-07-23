@@ -3,11 +3,56 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), m_isChoosePlayer(false)
+    : QMainWindow(parent), m_isChoosePlayer(false),
+    aimValue(0), staminaValue(0), speedValue(0), accuracyValue(0)
 {
     ui = new Ui::MainWindow;
     ui->setupUi(this);
 
+    ui->jsonViewer->hide();
+
+    dataHandler = new DataHandler(QDir::currentPath() + m_settings::saveFolder, ui);
+
+    int userId = -1;
+    int playCount = -1;
+    dataHandler->loadData(&m_userJson, &m_isChoosePlayer, &userId, &playCount);
+
+    m_osuParser.setUserId(userId);
+    m_osuParser.setPlayCount(playCount);
+
+    playerSearch = new PlayerSearchDialog(&m_osuParser, this);
+    playerSearch->setWindowModality(Qt::ApplicationModal);
+    playerSearch->setWindowFlags(Qt::Window);
+
+    ui->contentViewer->setCurrentIndex(0);
+}
+
+MainWindow::~MainWindow()
+{
+    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount());
+
+    delete ui;
+    delete dataHandler;
+    delete playerSearch;
+}
+
+void MainWindow::initStats()
+{
+    const QJsonDocument topScores = m_osuParser.getTopScores(m_osuParser.getUserId());
+    ui->jsonViewer->setText(QString::fromUtf8(topScores.toJson()));
+    m_osuParser.initStats();
+
+    QString text = QString::number(m_osuParser.getPpAvg()) + " " +
+                   QString::number(m_osuParser.getCsAvg()) + " " +
+                   QString::number(m_osuParser.getArAvg()) + " " +
+                   QString::number(m_osuParser.getAccAvg()) + " " +
+                   QString::number(m_osuParser.getBpmAvg()) + " ";
+
+   // QMessageBox::warning(nullptr, "overi plays", text);
+}
+
+void MainWindow::initOverview()
+{
     ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none;");
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
@@ -21,39 +66,29 @@ MainWindow::MainWindow(QWidget *parent)
     mainpol << QPoint(0,110) << QPoint(110,0) << QPoint(0,-110) << QPoint(-110,0);
     scene->addPolygon(mainpol,QPen(color1,6),brush);
 
-    aimPoint = new QPoint(0,-65);
-    staminaPoint = new QPoint(0,20);
-    speedPoint = new QPoint(40,0);
-    accuracyPoint = new QPoint(-90,0);
+    initStats();
+
+    const int normalize = 10;
+
+    aimPoint = new QPoint(0, -aimValue / normalize);
+    staminaPoint = new QPoint(0, staminaValue / normalize);
+    speedPoint = new QPoint(speedValue / normalize, 0);
+    accuracyPoint = new QPoint(-accuracyValue / normalize, 0);
 
     QPolygon statspol;
     statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
+
     scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
+
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setRenderHint(QPainter::TextAntialiasing);
 
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ui->jsonViewer->hide();
+    ui->usernamelabel_2->setText(ui->chooseUsername->text());
+    ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
 
-    dataHandler = new DataHandler(QDir::currentPath() + m_settings::saveFolder, ui);
-    dataHandler->loadData(&m_userJson);
-
-    playerSearch = new PlayerSearchDialog(&m_osuParser, this);
-    playerSearch->setWindowModality(Qt::ApplicationModal);
-    playerSearch->setWindowFlags(Qt::Window);
-
-    ui->contentViewer->setCurrentIndex(0);
-}
-
-MainWindow::~MainWindow()
-{
-    dataHandler->saveData();
-
-    delete ui;
-    delete dataHandler;
-    delete playerSearch;
 }
 
 void MainWindow::on_goChoosePage_pressed()
@@ -63,6 +98,13 @@ void MainWindow::on_goChoosePage_pressed()
 
 void MainWindow::on_goRecentButton_pressed()
 {
+    const int playCount = m_osuParser.getPlayCount();
+    if (playCount < 50)
+    {
+        QMessageBox::warning(nullptr, "Recent plays", "Insufficient number of maps played");
+        return;
+    }
+
     if (m_isChoosePlayer)
     {
         ui->contentViewer->setCurrentIndex(2);
@@ -128,20 +170,23 @@ void MainWindow::on_startDownloaderButton_pressed()
 
 void MainWindow::on_goOverviewButton_pressed()
 {
-    if (m_isChoosePlayer)
+    if (!m_isChoosePlayer)
     {
-        QString globalrank=m_userJson["statistics"]["global_rank"].toString();
-        QString rank=m_userJson["statistics"]["country_rank"].toString();
+        QMessageBox::warning(nullptr, "Overview", "The player is not choosed");
+        return;
+    }
+
+    const int playCount = m_osuParser.getPlayCount();
+    if (playCount >= m_settings::playLimit)
+    {
+        initOverview();
         ui->contentViewer->setCurrentIndex(1);
-        ui->usernamelabel_2->setText(ui->chooseUsername->text());
-        ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
-        ui->globalranklabel->setText(globalrank);
-        ui->ranklabel->setText(rank);
     }
     else
     {
-        QMessageBox::warning(nullptr, "Overview", "The player is not choosed");
+        QMessageBox::warning(nullptr, "Overview", "Insufficient number of maps played");
     }
+
 }
 
 void MainWindow::on_goOtherToolsButton_pressed()
@@ -207,8 +252,6 @@ void MainWindow::on_addButton_pressed()
     {
         username = QInputDialog::getText(nullptr, messageTitle, "Enter a nickname:", QLineEdit::Normal, "username", &isOk);
     }
-
-
 
     if (!isOk)
     {

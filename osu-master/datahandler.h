@@ -13,9 +13,9 @@ class DataHandler
 public:
     DataHandler(const QString &folderPath, Ui::MainWindow *ui);
 
-    void loadData(QJsonDocument *userJson);
+    void loadData(QJsonDocument *userJson, bool *isChooseUser, int *userId, int *playCount);
 
-    void saveData();
+    void saveData(bool isChooseUser, int userId, int playCount);
 
     void deleteData();
 

@@ -74,6 +74,10 @@ private:
 
     QString getUsernameFromCell(int row, int column);
 
+    void initOverview();
+
+    void initStats();
+
     Ui::MainWindow *ui;
 
     DataHandler *dataHandler;
@@ -92,6 +96,8 @@ private:
 
     QGraphicsScene *scene;
 
-    QPoint *aimPoint,*staminaPoint,*speedPoint,*accuracyPoint;
+    QPoint *aimPoint, *staminaPoint, *speedPoint, *accuracyPoint;
+
+    int aimValue, staminaValue, speedValue, accuracyValue;
 };
 #endif // MAINWINDOW_H
