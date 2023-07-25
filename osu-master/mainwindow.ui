@@ -406,22 +406,19 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="0" rowspan="2">
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="1" rowspan="2">
+        <item row="1" column="1" rowspan="2" colspan="2">
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="2" column="2">
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>STAMINA</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
            <widget class="QGraphicsView" name="graphicsView">
             <property name="minimumSize">
              <size>
@@ -431,7 +428,27 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>AIM</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_28">
+            <property name="text">
+             <string>SPEED</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
              <string>ACCURACY</string>
@@ -441,8 +458,59 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="4">
-           <spacer name="horizontalSpacer_12">
+         </layout>
+        </item>
+        <item row="1" column="4" colspan="2">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_35">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>Rank:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLabel" name="ranklabel">
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>rank</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="label_33">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>Playcount:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" colspan="2">
+           <spacer name="horizontalSpacer_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -454,82 +522,136 @@
             </property>
            </spacer>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
+           <widget class="QLabel" name="globalranklabel">
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>globalrank</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="label_34">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>pp:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="PPlabel">
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>PP</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="playcountlabel">
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>PlayCount</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="label_36">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>Country Rank:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>17</width>
-              <height>17</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="2">
-           <spacer name="verticalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>17</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="4">
-           <widget class="QLabel" name="label_28">
-            <property name="text">
-             <string>SPEED</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="label_27">
-            <property name="text">
-             <string>AIM</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <spacer name="verticalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>17</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="3">
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>13</width>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item row="4" column="2">
-           <widget class="QLabel" name="label_26">
+          <item row="2" column="0" rowspan="5">
+           <widget class="QLabel" name="picturelabel_2">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>3</number>
+            </property>
             <property name="text">
-             <string>STAMINA</string>
+             <string>pic</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="usernamelabel_2">
+            <property name="font">
+             <font>
+              <italic>false</italic>
+              <bold>true</bold>
+              <underline>true</underline>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="text">
+             <string>name</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -538,7 +660,7 @@
           </item>
          </layout>
         </item>
-        <item row="1" column="2" rowspan="2">
+        <item row="2" column="3">
          <spacer name="horizontalSpacer_7">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -551,72 +673,74 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="3">
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="1" column="0" rowspan="2">
-           <widget class="QLabel" name="picturelabel_2">
-            <property name="minimumSize">
-             <size>
-              <width>120</width>
-              <height>120</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>pic</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="ranklabel">
-            <property name="text">
-             <string>rank</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="globalranklabel">
-            <property name="text">
-             <string>globalrank</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="2">
-           <widget class="QLabel" name="usernamelabel_2">
-            <property name="font">
-             <font>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>false</underline>
-             </font>
-            </property>
-            <property name="text">
-             <string>name</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+        <item row="3" column="2">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>94</height>
+           </size>
+          </property>
+         </spacer>
         </item>
-        <item row="1" column="4" rowspan="2">
+        <item row="1" column="6">
          <spacer name="horizontalSpacer_10">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>36</width>
+            <width>43</width>
+            <height>17</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
-        <item row="2" column="3">
+        <item row="4" column="2">
+         <spacer name="verticalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>59</width>
+            <height>70</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="4" colspan="2">
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
              <widget class="QLabel" name="label_29">
+              <property name="font">
+               <font>
+                <stylestrategy>PreferAntialias</stylestrategy>
+               </font>
+              </property>
               <property name="text">
                <string>Aim:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -633,8 +757,16 @@
            <layout class="QHBoxLayout" name="horizontalLayout_18">
             <item>
              <widget class="QLabel" name="label_30">
+              <property name="font">
+               <font>
+                <stylestrategy>PreferAntialias</stylestrategy>
+               </font>
+              </property>
               <property name="text">
                <string>Accuracy:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -651,8 +783,16 @@
            <layout class="QHBoxLayout" name="horizontalLayout_19">
             <item>
              <widget class="QLabel" name="label_31">
+              <property name="font">
+               <font>
+                <stylestrategy>PreferAntialias</stylestrategy>
+               </font>
+              </property>
               <property name="text">
                <string>Speed:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -669,8 +809,16 @@
            <layout class="QHBoxLayout" name="horizontalLayout_20">
             <item>
              <widget class="QLabel" name="label_32">
+              <property name="font">
+               <font>
+                <stylestrategy>PreferAntialias</stylestrategy>
+               </font>
+              </property>
               <property name="text">
                <string>Stamina:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -684,32 +832,6 @@
            </layout>
           </item>
          </layout>
-        </item>
-        <item row="3" column="3">
-         <spacer name="verticalSpacer_11">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>59</width>
-            <height>70</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="1">
-         <spacer name="verticalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>69</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>

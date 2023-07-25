@@ -40,7 +40,7 @@ int MainWindow::calculateEstimate(float cs, float ar, float acc, float pp, float
                                   float csPriority, float arPriority, float accPriority, float ppPriority, float bpmPriority, float lengthPriority)
 {
     float estimate = cs * csPriority + ar * arPriority + acc * accPriority + pp * ppPriority + bpm * bpmPriority + length * lengthPriority;
-    estimate = std::max(0.0f, std::min(estimate, 1000.0f));
+    estimate = std::max(0.0f, estimate);
 
     return static_cast<int>(estimate);
 }
@@ -57,10 +57,10 @@ void MainWindow::initStats()
     const float bpm = m_osuParser.getBpmAvg();
     const float length = m_osuParser.getLengthAvg();
 
-    aimValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
-    speedValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
-    accuracyValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
-    staminaValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 1, 1, 1, 1, 1, 1);
+    aimValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
+    speedValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
+    accuracyValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
+    staminaValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
 
     ui->aimValueLabel->setText(QString::number(aimValue));
     ui->speedValueLabel->setText(QString::number(speedValue));
@@ -70,31 +70,38 @@ void MainWindow::initStats()
 
 void MainWindow::initOverview()
 {
-    ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none;");
+    initStats();
+    ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none; ");
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
 
-    QColor color1(50, 50, 50, 255);
-    QColor color2(200, 200, 200, 255);
-    QColor colorPoint(255, 0, 0, 255);
-    QBrush brush(color2);
+    QColor colorQPen(45, 45, 45, 255);
+    QColor colorPol(190, 190, 190, 255);
+    QColor colorPoint(30, 30, 30, 175);
+    const int normalize = 10;
 
     QPolygon mainpol;
-    mainpol << QPoint(0,110) << QPoint(110,0) << QPoint(0,-110) << QPoint(-110,0);
-    scene->addPolygon(mainpol,QPen(color1,6),brush);
-
-    initStats();
-
-    const int normalize = 10;
+    mainpol << QPoint(0,100) << QPoint(100,0) << QPoint(0,-100) << QPoint(-100,0);
+    scene->addPolygon(mainpol,QPen(colorQPen,4),QBrush(colorPol));
 
     aimPoint = new QPoint(0, -aimValue / normalize);
     staminaPoint = new QPoint(0, staminaValue / normalize);
     speedPoint = new QPoint(speedValue / normalize, 0);
     accuracyPoint = new QPoint(-accuracyValue / normalize, 0);
 
+    scene->addLine(-100,0,100,0);
+    scene->addLine(0,-100,0,100);
+    for(int i = 0;i<9;i++)
+    {
+        scene->addLine(100-20*(i+1),-5,100-20*(i+1),5);
+    }
+    for(int i = 0;i<9;i++)
+    {
+        scene->addLine(-5,100-20*(i+1),5,100-20*(i+1));
+    }
+
     QPolygon statspol;
     statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
-
     scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
 
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
@@ -105,6 +112,8 @@ void MainWindow::initOverview()
 
     ui->usernamelabel_2->setText(ui->chooseUsername->text());
     ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
+    ui->playcountlabel->setText(QString::number(m_osuParser.getPlayCount()));
+
 
 }
 

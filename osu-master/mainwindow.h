@@ -20,6 +20,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPolygonItem>
+#include <QtMath>
 
 class MainWindow : public QMainWindow
 {
