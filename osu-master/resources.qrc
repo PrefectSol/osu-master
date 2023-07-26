@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>Images/icon.png</file>
+        <file>Images/ranking-A.png</file>
+        <file>Images/ranking-S.png</file>
+        <file>Images/ranking-SH.png</file>
+        <file>Images/ranking-X.png</file>
+        <file>Images/ranking-XH.png</file>
+        <file>Images/earth.png</file>
     </qresource>
 </RCC>

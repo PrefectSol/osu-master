@@ -21,6 +21,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPolygonItem>
 #include <QtMath>
+#include <QGroupBox>
 
 class MainWindow : public QMainWindow
 {
@@ -103,5 +104,7 @@ private:
     QPoint *aimPoint, *staminaPoint, *speedPoint, *accuracyPoint;
 
     int aimValue, staminaValue, speedValue, accuracyValue;
+
+    void initRankspng();
 };
 #endif // MAINWINDOW_H

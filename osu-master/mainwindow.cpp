@@ -71,6 +71,7 @@ void MainWindow::initStats()
 void MainWindow::initOverview()
 {
     initStats();
+    initRankspng();
     ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none; ");
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
@@ -104,6 +105,15 @@ void MainWindow::initOverview()
     statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
     scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
 
+    QPixmap pixmapplanet(":/Images/earth.png");
+    QPixmap scaledPixmapplanet = pixmapplanet.scaled(ui->countrylabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->countrylabel->setAlignment(Qt::AlignCenter);
+    ui->countrylabel->setPixmap(scaledPixmapplanet);
+
+    //QGroupBox* groupBox = new QGroupBox("ProfileLayout");
+    //groupBox->setStyleSheet("border: 1px solid black; background-color: green;");
+    //groupBox->setLayout(/* ваш код компоновки заголовка */);
+
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setRenderHint(QPainter::TextAntialiasing);
 
@@ -114,7 +124,34 @@ void MainWindow::initOverview()
     ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
     ui->playcountlabel->setText(QString::number(m_osuParser.getPlayCount()));
 
+}
 
+void MainWindow::initRankspng()
+{
+    QPixmap pixmapsSS(":/Images/ranking-XH.png");
+    QPixmap scaledPixmapsSS = pixmapsSS.scaled(ui->label_37->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->label_37->setAlignment(Qt::AlignCenter);
+    ui->label_37->setPixmap(scaledPixmapsSS);
+
+    QPixmap pixmapSS(":/Images/ranking-X.png");
+    QPixmap scaledPixmapSS = pixmapSS.scaled(ui->label_38->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->label_38->setAlignment(Qt::AlignCenter);
+    ui->label_38->setPixmap(scaledPixmapSS);
+
+    QPixmap pixmapsS(":/Images/ranking-SH.png");
+    QPixmap scaledPixmapsS = pixmapsS.scaled(ui->label_39->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->label_39->setAlignment(Qt::AlignCenter);
+    ui->label_39->setPixmap(scaledPixmapsS);
+
+    QPixmap pixmapS(":/Images/ranking-S.png");
+    QPixmap scaledPixmapS = pixmapS.scaled(ui->label_40->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->label_40->setAlignment(Qt::AlignCenter);
+    ui->label_40->setPixmap(scaledPixmapS);
+
+    QPixmap pixmapA(":/Images/ranking-A.png");
+    QPixmap scaledPixmapA = pixmapA.scaled(ui->label_41->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->label_41->setAlignment(Qt::AlignCenter);
+    ui->label_41->setPixmap(scaledPixmapA);
 }
 
 void MainWindow::on_goChoosePage_pressed()

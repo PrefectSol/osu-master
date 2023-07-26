@@ -122,6 +122,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: ../osu-master/resources.qrc \
 		E:/Qt/6.5.2/mingw_64/bin/rcc.exe \
+		../osu-master/Images/earth.png \
+		../osu-master/Images/ranking-S.png \
+		../osu-master/Images/ranking-A.png \
+		../osu-master/Images/ranking-X.png \
+		../osu-master/Images/ranking-XH.png \
+		../osu-master/Images/ranking-SH.png \
 		../osu-master/Images/icon.png
 	E:\Qt\6.5.2\mingw_64\bin\rcc.exe -name resources --no-zstd ..\osu-master\resources.qrc -o release\qrc_resources.cpp
 
@@ -519,6 +525,7 @@ release/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPolygonItem \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainterpath.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/QtMath \
 		release/moc_predefs.h \
 		E:/Qt/6.5.2/mingw_64/bin/moc.exe
 	E:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/ALEX/Desktop/osu-master/build-osu-master-Desktop_Qt_6_5_2_MinGW_64_bit-Release/release/moc_predefs.h -IE:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ALEX/Desktop/osu-master/osu-master -IE:/Qt/6.5.2/mingw_64/include -IE:/Qt/6.5.2/mingw_64/include/QtWidgets -IE:/Qt/6.5.2/mingw_64/include/QtGui -IE:/Qt/6.5.2/mingw_64/include/QtNetwork -IE:/Qt/6.5.2/mingw_64/include/QtCore -I. -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IE:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\osu-master\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1813,7 +1820,8 @@ release/main.o: ../osu-master/main.cpp E:/Qt/6.5.2/mingw_64/include/QtWidgets/QA
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsscene.h \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPolygonItem \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
-		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainterpath.h
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainterpath.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/QtMath
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\osu-master\main.cpp
 
 release/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
@@ -2201,6 +2209,7 @@ release/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPolygonItem \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainterpath.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/QtMath \
 		../osu-master/settings.hpp \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
