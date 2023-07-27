@@ -36,15 +36,6 @@ MainWindow::~MainWindow()
     delete playerSearch;
 }
 
-int MainWindow::calculateEstimate(float cs, float ar, float acc, float pp, float bpm, float length,
-                                  float csPriority, float arPriority, float accPriority, float ppPriority, float bpmPriority, float lengthPriority)
-{
-    float estimate = cs * csPriority + ar * arPriority + acc * accPriority + pp * ppPriority + bpm * bpmPriority + length * lengthPriority;
-    estimate = std::max(0.0f, estimate);
-
-    return static_cast<int>(estimate);
-}
-
 void MainWindow::initStats()
 {
     m_osuParser.getTopScores(m_osuParser.getUserId());
@@ -55,12 +46,19 @@ void MainWindow::initStats()
     const float ar = m_osuParser.getArAvg();
     const float acc = m_osuParser.getAccAvg();
     const float bpm = m_osuParser.getBpmAvg();
-    const float length = m_osuParser.getLengthAvg();
+    const float length = qSqrt(m_osuParser.getLengthAvg());
 
-    aimValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
-    speedValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
-    accuracyValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
-    staminaValue = calculateEstimate(cs, ar, acc, pp, bpm, length, 0, 0, 0, 0, 0, 0);
+    aimValue = (ar * qPow(cs, 0.1) / qPow(6, 0.1) / qPow(ar + cs, 0.1) * pp / (ar + cs + pp) * 100) +
+                (1.25 * qPow((cs + pp + ar + acc) / 4, 1.3));
+
+    speedValue = (ar * qPow(ar, 0.1) / qPow(6, 0.1) / qPow(2 * ar, 0.1) * pp / (2 * ar + pp) * 100) +
+                (1.25 * qPow((cs + pp + ar + acc) / 4, 1.3));
+
+    accuracyValue = (ar * qPow(acc, 0.1) / qPow(6, 0.1) / qPow(ar + acc, 0.1) * pp / (ar + acc + pp) * 100) +
+                (1.25 * qPow((cs + pp + ar + acc) / 4, 1.3));
+
+    staminaValue = (ar * qPow(length, 0.1) / qPow(6, 0.1) / qPow(ar + bpm, 0.1) * pp / (ar + bpm + length + pp) * 100) +
+                (1.25 * qPow((bpm + length + pp + ar + acc) / 5, 1.3));
 
     ui->aimValueLabel->setText(QString::number(aimValue));
     ui->speedValueLabel->setText(QString::number(speedValue));
@@ -79,16 +77,23 @@ void MainWindow::initOverview()
     QColor colorQPen(45, 45, 45, 255);
     QColor colorPol(190, 190, 190, 255);
     QColor colorPoint(30, 30, 30, 175);
-    const int normalize = 10;
 
     QPolygon mainpol;
     mainpol << QPoint(0,100) << QPoint(100,0) << QPoint(0,-100) << QPoint(-100,0);
     scene->addPolygon(mainpol,QPen(colorQPen,4),QBrush(colorPol));
 
-    aimPoint = new QPoint(0, -aimValue / normalize);
-    staminaPoint = new QPoint(0, staminaValue / normalize);
-    speedPoint = new QPoint(speedValue / normalize, 0);
-    accuracyPoint = new QPoint(-accuracyValue / normalize, 0);
+    const int minValue = 100;
+    const float normalize = 15.5f;
+
+    const int aimV = int((float)aimValue / normalize);
+    const int staminaV = int((float)staminaValue / normalize);
+    const int speedV = int((float)speedValue / normalize);
+    const int accuracyV = int((float)accuracyValue / normalize);
+
+    aimPoint = new QPoint(0, -std::min(minValue, aimV));
+    staminaPoint = new QPoint(0, std::min(minValue, staminaV));
+    speedPoint = new QPoint(std::min(minValue, speedV), 0);
+    accuracyPoint = new QPoint(-std::min(minValue, accuracyV), 0);
 
     scene->addLine(-100,0,100,0);
     scene->addLine(0,-100,0,100);

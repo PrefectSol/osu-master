@@ -13,15 +13,16 @@
 #include <QFileDialog>
 #include <QFile>
 
+#include <QGraphicsScene>
+#include <QGraphicsPolygonItem>
+#include <QtMath>
+#include <QGroupBox>
+
 #include "datahandler.h"
 #include "osurequest.h"
 #include "playersearchdialog.h"
 #include "ui.h"
 
-#include <QGraphicsScene>
-#include <QGraphicsPolygonItem>
-#include <QtMath>
-#include <QGroupBox>
 
 class MainWindow : public QMainWindow
 {
@@ -75,9 +76,6 @@ private:
     QString getSearchPlayer(bool *isOk);
 
     QString getUsernameFromCell(int row, int column);
-
-    int calculateEstimate(float cs, float ar, float acc, float pp, float bpm, float length,
-                          float csPriority, float arPriority, float accPriority, float ppPriority, float bpmPriority, float lengthPriority);
 
     void initOverview();
 
