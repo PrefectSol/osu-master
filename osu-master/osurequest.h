@@ -36,6 +36,14 @@ public:
 
     QJsonDocument getTopScores(int userId);
 
+    void setUserVariables(const QJsonDocument &jsonDocument);
+
+    void setUserJson(const QString &json);
+
+    void setTopScoresJson(const QString &json);
+
+    QString getTopScoresInfo();
+
     int getUserId();
 
     void setUserId(int userId);
@@ -90,6 +98,9 @@ public:
 
     bool initUserJson(const QString &username);
 
+signals:
+    void topScoreFinished();
+
 protected:
 
 private:
@@ -106,6 +117,8 @@ private:
     QString m_userInfo;
 
     QString m_matchInfo;
+
+    QString m_topScoresInfo;
 
     QJsonDocument m_userJson;
 

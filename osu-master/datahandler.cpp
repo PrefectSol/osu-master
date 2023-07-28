@@ -6,7 +6,8 @@ DataHandler::DataHandler(const QString &folderPath, Ui::MainWindow *ui)
     : m_folderPath(folderPath), m_filePath(folderPath + m_settings::saveFile),
       m_ui(ui) {}
 
-void DataHandler::loadData(QJsonDocument *userJson, bool *isChooseUser, int *userId, int *playCount)
+void DataHandler::loadData(bool *isChooseUser, int *userId, int *playCount,
+                            float *cs, float *pp, float *ar, float *acc, float *bpm, float *length)
 {
     QFile file(m_filePath);
     if (!file.open(QIODevice::ReadOnly))
@@ -46,6 +47,12 @@ void DataHandler::loadData(QJsonDocument *userJson, bool *isChooseUser, int *use
     in >> *isChooseUser;
     in >> *userId;
     in >> *playCount;
+    in >> *cs;
+    in >> *pp;
+    in >> *ar;
+    in >> *acc;
+    in >> *bpm;
+    in >> *length;
 
     int rowCount, columnCount;
     in >> rowCount;
@@ -58,7 +65,7 @@ void DataHandler::loadData(QJsonDocument *userJson, bool *isChooseUser, int *use
     m_ui->rowsSpinBox->setValue(rowCount);
     m_ui->colsSpinBox->setValue(columnCount);
 
-    QString user, json;
+    QString user, json, topScore;
     QPixmap image;
     int row, column;
 
@@ -71,10 +78,12 @@ void DataHandler::loadData(QJsonDocument *userJson, bool *isChooseUser, int *use
     {
         in >> image;
         in >> json;
+        in >> topScore;
         in >> row;
         in >> column;
 
         m_users.insert(user, json);
+        m_topScores.insert(user, topScore);
 
         QLabel *usernameLabel = new QLabel();
         usernameLabel->setText(user);
@@ -112,7 +121,7 @@ void DataHandler::loadData(QJsonDocument *userJson, bool *isChooseUser, int *use
     file.close();
 }
 
-void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount)
+void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount, float cs, float pp, float ar, float acc, float bpm, float length)
 {
     QDir().mkdir(m_folderPath);
 
@@ -142,6 +151,13 @@ void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount)
     out << userId;
     out << playCount;
 
+    out << cs;
+    out << pp;
+    out << ar;
+    out << acc;
+    out << bpm;
+    out << length;
+
     const QTableWidget *table = m_ui->userTable;
 
     const int rows = table->rowCount();
@@ -167,6 +183,7 @@ void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount)
                     out << username;
                     out << imageLabel->pixmap();
                     out << m_users.value(username);
+                    out << m_topScores.value(username);
                     out << row;
                     out << column;
                 }
@@ -206,3 +223,17 @@ QString DataHandler::getUsersValue(const QString &key)
     return m_users.value(key);
 }
 
+void DataHandler::topScoresRemove(const QString &key)
+{
+    m_topScores.remove(key);
+}
+
+void DataHandler::topScoresInsert(const QString &key, const QString &value)
+{
+    m_topScores.insert(key, value);
+}
+
+QString DataHandler::getTopScoresValue(const QString &key)
+{
+    return m_topScores.value(key);
+}

@@ -61,12 +61,32 @@ bool OsuRequest::isPlayerExist(const QString &username)
         return false;
     }
 
+    setUserVariables(jsonDocument);
+
+    return true;
+}
+
+void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
+{
     m_userId = jsonDocument["id"].toInt();
     m_playCount = jsonDocument["statistics"]["play_count"].toInt();
 
     m_userJson = jsonDocument;
+}
 
-    return true;
+void OsuRequest::setUserJson(const QString &json)
+{
+    const QJsonDocument jsonDocument = QJsonDocument::fromJson(json.toUtf8());
+    m_userInfo = json;
+    setUserVariables(jsonDocument);
+}
+
+void OsuRequest::setTopScoresJson(const QString &json)
+{
+    const QJsonDocument jsonDocument = QJsonDocument::fromJson(json.toUtf8());
+    m_topScoresJson = jsonDocument;
+    m_topScoresInfo = json;
+    initStats();
 }
 
 void OsuRequest::getSearchUsers(const QString &keyword, QStringList *users)
@@ -207,12 +227,19 @@ QJsonDocument OsuRequest::getTopScores(int userId)
     QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     loop.exec();
 
-    const QString topScores = QString(reply->readAll());
-    m_topScoresJson = QJsonDocument::fromJson(topScores.toUtf8());
+    m_topScoresInfo = QString(reply->readAll());
+    m_topScoresJson = QJsonDocument::fromJson(m_topScoresInfo.toUtf8());
 
     reply->deleteLater();
 
+    emit topScoreFinished();
+
     return m_topScoresJson;
+}
+
+QString OsuRequest::getTopScoresInfo()
+{
+    return m_topScoresInfo;
 }
 
 void OsuRequest::setUserId(int userId)

@@ -15,10 +15,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     int userId = -1;
     int playCount = -1;
-    dataHandler->loadData(&m_userJson, &m_isChoosePlayer, &userId, &playCount);
+    float cs, pp, ar, acc, bpm, length;
+    cs = pp = ar = acc = bpm = length = -1;
+    dataHandler->loadData(&m_isChoosePlayer, &userId, &playCount, &cs, &pp, &ar, &acc, &bpm, &length);
 
     m_osuParser.setUserId(userId);
     m_osuParser.setPlayCount(playCount);
+    m_osuParser.setCsAvg(cs);
+    m_osuParser.setPpAvg(pp);
+    m_osuParser.setArAvg(ar);
+    m_osuParser.setAccAvg(acc);
+    m_osuParser.setBpmAvg(bpm);
+    m_osuParser.setLengthAvg(length);
 
     playerSearch = new PlayerSearchDialog(&m_osuParser, this);
     playerSearch->setWindowModality(Qt::ApplicationModal);
@@ -29,7 +37,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount());
+    const float cs = m_osuParser.getCsAvg();
+    const float pp = m_osuParser.getPpAvg();
+    const float ar = m_osuParser.getArAvg();
+    const float acc = m_osuParser.getAccAvg();
+    const float bpm = m_osuParser.getBpmAvg();
+    const float length = qSqrt(m_osuParser.getLengthAvg());
+
+    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), cs, pp, ar, acc, bpm, length);
 
     delete ui;
     delete dataHandler;
@@ -38,9 +53,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::initStats()
 {
-    m_osuParser.getTopScores(m_osuParser.getUserId());
-    m_osuParser.initStats();
-
     const float cs = m_osuParser.getCsAvg();
     const float pp = m_osuParser.getPpAvg();
     const float ar = m_osuParser.getArAvg();
@@ -254,7 +266,6 @@ void MainWindow::on_goOverviewButton_pressed()
     {
         QMessageBox::warning(nullptr, "Overview", "Insufficient number of maps played");
     }
-
 }
 
 void MainWindow::on_goOtherToolsButton_pressed()
@@ -333,6 +344,8 @@ void MainWindow::on_addButton_pressed()
         return;
     }
 
+    std::future<void> future = std::async(std::launch::async, &MainWindow::loadTopScores, this);
+
     m_userJson = m_osuParser.getUserJson();
 
     m_avatarUrl = m_userJson["avatar_url"].toString().replace("\\/", "/");
@@ -358,6 +371,10 @@ void MainWindow::on_addButton_pressed()
     layout->addWidget(imageLabel, 0, Qt::AlignHCenter | Qt::AlignVCenter);
 
     table->setCellWidget(currentIndex.row(), currentIndex.column(), player);
+
+    future.wait();
+
+    dataHandler->topScoresInsert(m_username, m_osuParser.getTopScoresInfo());
 }
 
 void MainWindow::on_rowsSpinBox_valueChanged(int rows)
@@ -408,6 +425,7 @@ void MainWindow::on_clearButton_pressed()
     if (!username.isEmpty())
     {
         dataHandler->usersRemove(username);
+        dataHandler->topScoresRemove(username);
     }
 
     ui->jsonViewer->clear();
@@ -446,10 +464,11 @@ void MainWindow::on_chooseButton_pressed()
             uiImage->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
             QString jsonString = dataHandler->getUsersValue(usernameLabel->text());
+            QString topScoresInfo = dataHandler->getTopScoresValue(usernameLabel->text());
             QJsonDocument json = QJsonDocument::fromJson(jsonString.toUtf8());
 
-            const int userId = json["id"].toInt();
-            m_osuParser.setUserId(userId);
+            m_osuParser.setUserJson(jsonString);
+            m_osuParser.setTopScoresJson(topScoresInfo);
 
             m_isChoosePlayer = true;
 
@@ -502,9 +521,13 @@ void MainWindow::on_removeDataButton_pressed()
     dataHandler->deleteData();
 }
 
-
 void MainWindow::on_userTable_cellDoubleClicked(int, int)
 {
     on_chooseButton_pressed();
 }
 
+void MainWindow::loadTopScores()
+{
+    m_osuParser.getTopScores(m_osuParser.getUserId());
+    m_osuParser.initStats();
+}

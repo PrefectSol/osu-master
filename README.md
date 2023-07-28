@@ -33,6 +33,8 @@ build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Profile\release
 <br>
 
 ## Development Notes
+ - Fix stas update
+ - Added optimization
  - Added pre-stats (aim, stamina, accuracy, speed) for Windows
  - Added stats visualizer
  - tests and fixes.

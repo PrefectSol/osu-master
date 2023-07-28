@@ -18,6 +18,8 @@
 #include <QtMath>
 #include <QGroupBox>
 
+#include <future>
+
 #include "datahandler.h"
 #include "osurequest.h"
 #include "playersearchdialog.h"
@@ -104,5 +106,7 @@ private:
     int aimValue, staminaValue, speedValue, accuracyValue;
 
     void initRankspng();
+
+    void loadTopScores();
 };
 #endif // MAINWINDOW_H

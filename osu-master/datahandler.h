@@ -13,9 +13,10 @@ class DataHandler
 public:
     DataHandler(const QString &folderPath, Ui::MainWindow *ui);
 
-    void loadData(QJsonDocument *userJson, bool *isChooseUser, int *userId, int *playCount);
+    void loadData(bool *isChooseUser, int *userId, int *playCount,
+                float *cs, float *pp, float *ar, float *acc, float *bpm, float *length);
 
-    void saveData(bool isChooseUser, int userId, int playCount);
+    void saveData(bool isChooseUser, int userId, int playCount, float cs, float pp, float ar, float acc, float bpm, float length);
 
     void deleteData();
 
@@ -25,6 +26,12 @@ public:
 
     QString getUsersValue(const QString &key);
 
+    void topScoresRemove(const QString &key);
+
+    void topScoresInsert(const QString &key, const QString &value);
+
+    QString getTopScoresValue(const QString &key);
+
 private:
     const QString m_folderPath;
 
@@ -33,6 +40,8 @@ private:
     Ui::MainWindow *m_ui;
 
     QMap<QString, QString> m_users;
+
+    QMap<QString, QString> m_topScores;
 
     bool m_isChooseUsername;
 
