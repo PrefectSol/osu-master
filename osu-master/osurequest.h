@@ -48,6 +48,22 @@ public:
 
     void setUserId(int userId);
 
+    int getGlobalRank();
+
+    void setGlobalRank(int globalrank);
+
+    double getPpCount();
+
+    void setPpCount(double ppCount);
+
+    int getcountryRank();
+
+    void setcountryRank(int countryRank);
+
+    double getaccuracy();
+
+    void setaccuracy(double accuracy);
+
     int getPlayCount();
 
     void setPlayCount(int playCount);
@@ -131,6 +147,15 @@ private:
     float avgPP, avgCs, avgAcc, avgAr, avgBpm, avgLength;
 
     int m_playCount;
+
+    int m_globalRank;
+
+    double m_ppCount;
+
+    int m_countryRank;
+
+    double m_accuracy;
+
 };
 
 #endif // OSUREQUEST_H

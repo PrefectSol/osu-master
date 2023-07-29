@@ -6,8 +6,8 @@ DataHandler::DataHandler(const QString &folderPath, Ui::MainWindow *ui)
     : m_folderPath(folderPath), m_filePath(folderPath + m_settings::saveFile),
       m_ui(ui) {}
 
-void DataHandler::loadData(bool *isChooseUser, int *userId, int *playCount,
-                            float *cs, float *pp, float *ar, float *acc, float *bpm, float *length)
+void DataHandler::loadData(bool *isChooseUser, int *userId,int *playCount, int *globalrank, double *ppCount,int *countryRank,
+                            float *cs, float *pp, float *ar, float *acc, float *bpm, float *length, double *userAccuracy)
 {
     QFile file(m_filePath);
     if (!file.open(QIODevice::ReadOnly))
@@ -53,6 +53,10 @@ void DataHandler::loadData(bool *isChooseUser, int *userId, int *playCount,
     in >> *acc;
     in >> *bpm;
     in >> *length;
+    in >> *globalrank;
+    in >> *ppCount;
+    in >> *countryRank;
+    in >> *userAccuracy;
 
     int rowCount, columnCount;
     in >> rowCount;
@@ -121,7 +125,8 @@ void DataHandler::loadData(bool *isChooseUser, int *userId, int *playCount,
     file.close();
 }
 
-void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount, float cs, float pp, float ar, float acc, float bpm, float length)
+void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount,  int globalrank, double ppCount, int countryRank,
+                           float cs, float pp, float ar, float acc, float bpm, float length, double userAccuracy)
 {
     QDir().mkdir(m_folderPath);
 
@@ -150,6 +155,10 @@ void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount, float
     out << isChoosePlayer;
     out << userId;
     out << playCount;
+    out << globalrank;
+    out << ppCount;
+    out << countryRank;
+    out << userAccuracy;
 
     out << cs;
     out << pp;

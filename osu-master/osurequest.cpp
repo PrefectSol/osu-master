@@ -70,6 +70,10 @@ void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
 {
     m_userId = jsonDocument["id"].toInt();
     m_playCount = jsonDocument["statistics"]["play_count"].toInt();
+    m_globalRank = jsonDocument["statistics"]["global_rank"].toInt();
+    m_ppCount = jsonDocument["statistics"]["pp"].toDouble();
+    m_countryRank = jsonDocument["statistics"]["country_rank"].toInt();
+    m_accuracy = jsonDocument["statistics"]["hit_accuracy"].toDouble();
 
     m_userJson = jsonDocument;
 }
@@ -409,4 +413,45 @@ void OsuRequest::initLengthAvg()
     }
 
     avgLength /= m_settings::playLimit;
+}
+
+
+int OsuRequest::getGlobalRank()
+{
+    return m_globalRank;
+}
+
+void OsuRequest::setGlobalRank(int globalrank)
+{
+    m_globalRank = globalrank;
+}
+
+double OsuRequest::getPpCount()
+{
+    return m_ppCount;
+}
+
+void OsuRequest::setPpCount(double ppCount)
+{
+    m_ppCount = ppCount;
+}
+
+int OsuRequest::getcountryRank()
+{
+    return m_countryRank;
+}
+
+void OsuRequest::setcountryRank(int countryRank)
+{
+    m_countryRank = countryRank;
+}
+
+double OsuRequest::getaccuracy()
+{
+    return m_accuracy;
+}
+
+void OsuRequest::setaccuracy(double accuracy)
+{
+    m_accuracy = accuracy;
 }

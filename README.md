@@ -2,16 +2,16 @@
 
 ## Pre-Running
 
-### Linux run
+### Linux run (old version)
 ```bash 
-cd build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/
+cd Osu-Master(Linux)
 
 ./osu-master
 ```
 
 ### Windows run
 ```cmd 
-build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Profile\release
+cd Osu-Master(Windows)\release
 
 .\osu-master.exe
 ```
@@ -22,7 +22,7 @@ build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Profile\release
 
 ## ERRORS
 
- - If there are problems with launching the application, delete the ```appdata/``` folder in the ```build-osu-Manager-Stats-desktops_qt_6_4_2_gcc_64bit-Release/``` directory
+ - If there are problems with launching the application, delete the ```appdata/``` folder in the ```Osu-Master(Windows/Linux)/``` directory
 
 <br>
 
@@ -33,7 +33,8 @@ build-osu-master-Desktop_Qt_6_4_1_MinGW_64_bit-Profile\release
 <br>
 
 ## Development Notes
- - Fix stas update
+ - Added ui
+ - Fix stats update
  - Added optimization
  - Added pre-stats (aim, stamina, accuracy, speed) for Windows
  - Added stats visualizer

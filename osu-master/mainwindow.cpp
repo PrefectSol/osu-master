@@ -15,9 +15,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     int userId = -1;
     int playCount = -1;
+    int globalrank = -1;
+    double ppCount = -1;
+    int countryRank = -1;
+    double userAccuracy = -1;
     float cs, pp, ar, acc, bpm, length;
     cs = pp = ar = acc = bpm = length = -1;
-    dataHandler->loadData(&m_isChoosePlayer, &userId, &playCount, &cs, &pp, &ar, &acc, &bpm, &length);
+    dataHandler->loadData(&m_isChoosePlayer, &userId, &playCount, &globalrank, &ppCount, &countryRank, &cs, &pp, &ar, &acc, &bpm, &length, &userAccuracy);
 
     m_osuParser.setUserId(userId);
     m_osuParser.setPlayCount(playCount);
@@ -27,6 +31,11 @@ MainWindow::MainWindow(QWidget *parent)
     m_osuParser.setAccAvg(acc);
     m_osuParser.setBpmAvg(bpm);
     m_osuParser.setLengthAvg(length);
+    m_osuParser.setGlobalRank(globalrank);
+    m_osuParser.setPpCount(ppCount);
+    m_osuParser.setcountryRank(countryRank);
+    m_osuParser.setaccuracy(userAccuracy);
+
 
     playerSearch = new PlayerSearchDialog(&m_osuParser, this);
     playerSearch->setWindowModality(Qt::ApplicationModal);
@@ -44,7 +53,8 @@ MainWindow::~MainWindow()
     const float bpm = m_osuParser.getBpmAvg();
     const float length = qSqrt(m_osuParser.getLengthAvg());
 
-    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), cs, pp, ar, acc, bpm, length);
+    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), length,m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
+                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, m_osuParser.getaccuracy());
 
     delete ui;
     delete dataHandler;
@@ -122,14 +132,9 @@ void MainWindow::initOverview()
     statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
     scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
 
-    QPixmap pixmapplanet(":/Images/earth.png");
-    QPixmap scaledPixmapplanet = pixmapplanet.scaled(ui->countrylabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    ui->countrylabel->setAlignment(Qt::AlignCenter);
-    ui->countrylabel->setPixmap(scaledPixmapplanet);
+    double accur = m_osuParser.getaccuracy();
+    double RoundedAccuracy = std::round(accur * 100) / 100;
 
-    //QGroupBox* groupBox = new QGroupBox("ProfileLayout");
-    //groupBox->setStyleSheet("border: 1px solid black; background-color: green;");
-    //groupBox->setLayout(/* ваш код компоновки заголовка */);
 
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setRenderHint(QPainter::TextAntialiasing);
@@ -140,6 +145,10 @@ void MainWindow::initOverview()
     ui->usernamelabel_2->setText(ui->chooseUsername->text());
     ui->picturelabel_2->setPixmap(ui->chooseImage->pixmap());
     ui->playcountlabel->setText(QString::number(m_osuParser.getPlayCount()));
+    ui->globalranklabel->setText("#"+QString::number(m_osuParser.getGlobalRank()));
+    ui->PPlabel->setText(QString::number(m_osuParser.getPpCount())+"pp");
+    ui->countrylabel->setText("#"+QString::number(m_osuParser.getcountryRank()));
+    ui->accuracylabel->setText(QString::number(RoundedAccuracy)+"%");
 
 }
 
@@ -169,6 +178,12 @@ void MainWindow::initRankspng()
     QPixmap scaledPixmapA = pixmapA.scaled(ui->label_41->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     ui->label_41->setAlignment(Qt::AlignCenter);
     ui->label_41->setPixmap(scaledPixmapA);
+
+    QPixmap pixmapEarth(":/Images/earth.png");
+    QPixmap scaledPixmapEarth = pixmapEarth.scaled(ui->usercountrylabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->usercountrylabel->setAlignment(Qt::AlignCenter);
+    ui->usercountrylabel->setPixmap(scaledPixmapEarth);
+
 }
 
 void MainWindow::on_goChoosePage_pressed()
