@@ -2,7 +2,7 @@
 
 ## Pre-Running
 
-### Linux run (old version)
+### Linux run
 ```bash 
 cd Osu-Master(Linux)
 
@@ -33,6 +33,8 @@ cd Osu-Master(Windows)\release
 <br>
 
 ## Development Notes
+ - Added country flags
+ - Updated linux version
  - Added ui
  - Fix stats update
  - Added optimization
