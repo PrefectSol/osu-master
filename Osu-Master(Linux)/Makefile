@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = osu-master1.0.0
-DISTDIR = /home/prefect/Code/QtCreator/osu-master/build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/.tmp/osu-master1.0.0
+DISTDIR = /home/prefect/Code/QtCreator/osu-master/Osu-Master(Linux)/.tmp/osu-master1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/prefect/Code/Qt/6.4.2/gcc_64/lib -Wl,-rpath-link,/home/prefect/Code/Qt/6.4.2/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/prefect/Code/Qt/6.4.2/gcc_64/lib/libQt6Widgets.so /home/prefect/Code/Qt/6.4.2/gcc_64/lib/libQt6Gui.so /home/prefect/Code/Qt/6.4.2/gcc_64/lib/libQt6Network.so /home/prefect/Code/Qt/6.4.2/gcc_64/lib/libQt6Core.so -lpthread -lGL   
@@ -200,6 +200,7 @@ DIST          = ../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_post.prf \
+		../osu-master/.qmake.stash \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -372,6 +373,7 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.4.2/gcc_64/mkspecs/linux-g+
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.4.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -530,6 +532,7 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.4.2/gcc_64/mkspecs/linux-g+
 ../../../Qt/6.4.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../../Qt/6.4.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/6.4.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/6.4.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../../Qt/6.4.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -603,6 +606,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../osu-master/resources.qrc \
 		../../../Qt/6.4.2/gcc_64/libexec/rcc \
+		../osu-master/Images/earth.png \
+		../osu-master/Images/ranking-S.png \
+		../osu-master/Images/ranking-A.png \
+		../osu-master/Images/ranking-X.png \
+		../osu-master/Images/ranking-XH.png \
+		../osu-master/Images/ranking-SH.png \
 		../osu-master/Images/icon.png
 	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/rcc -name resources --no-zstd ../osu-master/resources.qrc -o qrc_resources.cpp
 
@@ -788,6 +797,14 @@ moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfileinfo.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QFile \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QtMath \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgroupbox.h \
 		../osu-master/datahandler.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -979,7 +996,7 @@ moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtConcurrent/qtconcurrentversion.h \
 		moc_predefs.h \
 		../../../Qt/6.4.2/gcc_64/libexec/moc
-	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include /home/prefect/Code/QtCreator/osu-master/build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/moc_predefs.h -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/mainwindow.h -o moc_mainwindow.cpp
+	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include '/home/prefect/Code/QtCreator/osu-master/Osu-Master(Linux)/moc_predefs.h' -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/mainwindow.h -o moc_mainwindow.cpp
 
 moc_osurequest.cpp: ../osu-master/osurequest.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -1173,7 +1190,7 @@ moc_osurequest.cpp: ../osu-master/osurequest.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QStringList \
 		moc_predefs.h \
 		../../../Qt/6.4.2/gcc_64/libexec/moc
-	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include /home/prefect/Code/QtCreator/osu-master/build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/moc_predefs.h -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/osurequest.h -o moc_osurequest.cpp
+	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include '/home/prefect/Code/QtCreator/osu-master/Osu-Master(Linux)/moc_predefs.h' -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/osurequest.h -o moc_osurequest.cpp
 
 moc_playersearchdialog.cpp: ../osu-master/playersearchdialog.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QDialog \
@@ -1519,7 +1536,7 @@ moc_playersearchdialog.cpp: ../osu-master/playersearchdialog.h \
 		../osu-master/ui.h \
 		moc_predefs.h \
 		../../../Qt/6.4.2/gcc_64/libexec/moc
-	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include /home/prefect/Code/QtCreator/osu-master/build-osu-master-Desktop_Qt_6_4_2_GCC_64bit-Release/moc_predefs.h -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/playersearchdialog.h -o moc_playersearchdialog.cpp
+	/home/prefect/Code/Qt/6.4.2/gcc_64/libexec/moc $(DEFINES) --include '/home/prefect/Code/QtCreator/osu-master/Osu-Master(Linux)/moc_predefs.h' -I/home/prefect/Code/Qt/6.4.2/gcc_64/mkspecs/linux-g++ -I/home/prefect/Code/QtCreator/osu-master/osu-master -I/home/prefect/Code/Qt/6.4.2/gcc_64/include -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtWidgets -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtGui -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtNetwork -I/home/prefect/Code/Qt/6.4.2/gcc_64/include/QtCore -I. -I/usr/include/c++/13.1.1 -I/usr/include/c++/13.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/13.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed -I/usr/include ../osu-master/playersearchdialog.h -o moc_playersearchdialog.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1717,7 +1734,62 @@ datahandler.o: ../osu-master/datahandler.cpp ../osu-master/datahandler.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication_platform.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QFormLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qformlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QTableWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o datahandler.o ../osu-master/datahandler.cpp
 
 main.o: ../osu-master/main.cpp ../../../Qt/6.4.2/gcc_64/include/QtWidgets/QApplication \
@@ -2090,6 +2162,14 @@ main.o: ../osu-master/main.cpp ../../../Qt/6.4.2/gcc_64/include/QtWidgets/QAppli
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QFile \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QtMath \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgroupbox.h \
 		../osu-master/datahandler.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -2300,6 +2380,14 @@ mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfileinfo.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QFile \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QtMath \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgroupbox.h \
 		../osu-master/datahandler.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -2495,7 +2583,47 @@ mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication_platform.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QFormLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qformlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QTableWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../osu-master/mainwindow.cpp
 
 osurequest.o: ../osu-master/osurequest.cpp ../osu-master/osurequest.h \
@@ -3054,7 +3182,32 @@ playersearchdialog.o: ../osu-master/playersearchdialog.cpp ../osu-master/players
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QUrlQuery \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QEventLoop \
 		../osu-master/ui.h \
-		ui_playersearchdialog.h
+		ui_playersearchdialog.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playersearchdialog.o ../osu-master/playersearchdialog.cpp
 
 qrc_resources.o: qrc_resources.cpp 

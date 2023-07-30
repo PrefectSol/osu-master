@@ -21,7 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
     double userAccuracy = -1;
     float cs, pp, ar, acc, bpm, length;
     cs = pp = ar = acc = bpm = length = -1;
-    dataHandler->loadData(&m_isChoosePlayer, &userId, &playCount, &globalrank, &ppCount, &countryRank, &cs, &pp, &ar, &acc, &bpm, &length, &userAccuracy);
+    QString countryCode;
+    dataHandler->loadData(&m_isChoosePlayer, &userId, &playCount, &globalrank, &ppCount, &countryRank,
+                          &cs, &pp, &ar, &acc, &bpm, &length, &userAccuracy, &countryCode);
 
     m_osuParser.setUserId(userId);
     m_osuParser.setPlayCount(playCount);
@@ -35,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_osuParser.setPpCount(ppCount);
     m_osuParser.setcountryRank(countryRank);
     m_osuParser.setaccuracy(userAccuracy);
-
+    m_osuParser.setCountryCode(countryCode);
 
     playerSearch = new PlayerSearchDialog(&m_osuParser, this);
     playerSearch->setWindowModality(Qt::ApplicationModal);
@@ -54,7 +56,7 @@ MainWindow::~MainWindow()
     const float length = qSqrt(m_osuParser.getLengthAvg());
 
     dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), length,m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
-                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, m_osuParser.getaccuracy());
+                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, m_osuParser.getaccuracy(), m_osuParser.getCountryCode());
 
     delete ui;
     delete dataHandler;
@@ -132,9 +134,8 @@ void MainWindow::initOverview()
     statspol << *aimPoint << *speedPoint << *staminaPoint << *accuracyPoint;
     scene->addPolygon(statspol,QPen(colorPoint,3),QBrush(colorPoint));
 
-    double accur = m_osuParser.getaccuracy();
-    double RoundedAccuracy = std::round(accur * 100) / 100;
-
+    const double accur = m_osuParser.getaccuracy();
+    const double roundedAccuracy = int(accur * 100.0f) / 100.0f;
 
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setRenderHint(QPainter::TextAntialiasing);
@@ -148,8 +149,23 @@ void MainWindow::initOverview()
     ui->globalranklabel->setText("#"+QString::number(m_osuParser.getGlobalRank()));
     ui->PPlabel->setText(QString::number(m_osuParser.getPpCount())+"pp");
     ui->countrylabel->setText("#"+QString::number(m_osuParser.getcountryRank()));
-    ui->accuracylabel->setText(QString::number(RoundedAccuracy)+"%");
+    ui->accuracylabel->setText(QString::number(roundedAccuracy)+"%");
 
+    QPixmap countryPixmap;
+    const QString countryCode = m_osuParser.getCountryCode().toLower();
+    const QUrl countryUrl("https://worldflags.net/assets/flaggor/flags/4x3/" + countryCode + ".svg");
+    loadUrlImage(countryUrl, &countryPixmap);
+    if (countryPixmap.isNull())
+    {
+        ui->usercountrylabel->setAlignment(Qt::AlignCenter);
+        ui->usercountrylabel->setText(countryCode);
+    }
+    else
+    {
+        QPixmap scaledPixmapCountry = countryPixmap.scaled(ui->label_41->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        ui->usercountrylabel->setAlignment(Qt::AlignCenter);
+        ui->usercountrylabel->setPixmap(scaledPixmapCountry);
+    }
 }
 
 void MainWindow::initRankspng()
@@ -178,12 +194,6 @@ void MainWindow::initRankspng()
     QPixmap scaledPixmapA = pixmapA.scaled(ui->label_41->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     ui->label_41->setAlignment(Qt::AlignCenter);
     ui->label_41->setPixmap(scaledPixmapA);
-
-    QPixmap pixmapEarth(":/Images/earth.png");
-    QPixmap scaledPixmapEarth = pixmapEarth.scaled(ui->usercountrylabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    ui->usercountrylabel->setAlignment(Qt::AlignCenter);
-    ui->usercountrylabel->setPixmap(scaledPixmapEarth);
-
 }
 
 void MainWindow::on_goChoosePage_pressed()
@@ -291,6 +301,24 @@ void MainWindow::on_goOtherToolsButton_pressed()
 void MainWindow::on_goSettingsPage_pressed()
 {
     ui->contentViewer->setCurrentIndex(7);
+}
+
+void MainWindow::loadUrlImage(const QUrl &url, QPixmap *pixmap)
+{
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    if(reply->error() == QNetworkReply::NoError)
+    {
+        QByteArray imageData = reply->readAll();
+        pixmap->loadFromData(imageData);
+    }
+
+    reply->deleteLater();
 }
 
 void MainWindow::loadAvatar(QPixmap *pixmap)

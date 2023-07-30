@@ -73,6 +73,8 @@ private slots:
     void on_userTable_cellDoubleClicked(int row, int column);
 
 private:
+    void loadUrlImage(const QUrl &url, QPixmap *pixmap);
+
     void loadAvatar(QPixmap *pixmap);
 
     QString getSearchPlayer(bool *isOk);

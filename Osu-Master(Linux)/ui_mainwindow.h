@@ -12,7 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDial>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -73,17 +75,58 @@ public:
     QTableWidget *userTable;
     QTextBrowser *jsonViewer;
     QWidget *overviewPage_2;
-    QGridLayout *gridLayout_4;
-    QSpacerItem *horizontalSpacer_14;
-    QSpacerItem *horizontalSpacer_12;
-    QVBoxLayout *verticalLayout_17;
-    QSpacerItem *verticalSpacer_10;
-    QWidget *playerViewer_3;
-    QVBoxLayout *verticalLayout_18;
+    QGridLayout *gridLayout_2;
+    QLabel *label_44;
+    QGridLayout *gridLayout_3;
+    QLabel *label_27;
+    QLabel *label_28;
+    QLabel *label_26;
+    QGraphicsView *graphicsView;
+    QLabel *label;
+    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *verticalSpacer_6;
+    QSpacerItem *verticalSpacer_7;
+    QGridLayout *ProfileLayout;
     QLabel *usernamelabel_2;
+    QLabel *globalranklabel;
     QLabel *picturelabel_2;
-    QSpacerItem *verticalSpacer_11;
-    QSpacerItem *verticalSpacer_9;
+    QLabel *label_34;
+    QLabel *PPlabel;
+    QLabel *label_36;
+    QLabel *playcountlabel;
+    QLabel *label_35;
+    QLabel *accuracylabel;
+    QLabel *label_33;
+    QLabel *label_43;
+    QHBoxLayout *horizontalLayout_21;
+    QLabel *label_37;
+    QLabel *sSSlabel;
+    QLabel *label_38;
+    QLabel *SSlabel;
+    QLabel *label_39;
+    QLabel *sSlabel;
+    QLabel *label_40;
+    QLabel *Slabel;
+    QLabel *label_41;
+    QLabel *Alabel;
+    QLabel *countrylabel;
+    QLabel *usercountrylabel;
+    QVBoxLayout *verticalLayout_7;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_29;
+    QLabel *aimValueLabel;
+    QHBoxLayout *horizontalLayout_18;
+    QLabel *label_30;
+    QLabel *accuracyValueLabel;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *label_31;
+    QLabel *speedValueLabel;
+    QHBoxLayout *horizontalLayout_20;
+    QLabel *label_32;
+    QLabel *staminaValueLabel;
+    QSpacerItem *verticalSpacer_5;
     QWidget *recentPage;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_2;
@@ -122,6 +165,7 @@ public:
     QPushButton *pushButton_2;
     QSpacerItem *horizontalSpacer_13;
     QLabel *label_20;
+    QLabel *label_22;
     QHBoxLayout *horizontalLayout_17;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_12;
@@ -131,7 +175,6 @@ public:
     QLabel *label_13;
     QLabel *label_14;
     QSpacerItem *horizontalSpacer_15;
-    QLabel *label_22;
     QLabel *label_23;
     QTextBrowser *roomJsonViewer;
     QWidget *settingsPage;
@@ -151,14 +194,19 @@ public:
     QLabel *label_18;
     QSpacerItem *verticalSpacer_4;
     QWidget *otherPage;
-    QVBoxLayout *verticalLayout_7;
+    QGridLayout *gridLayout_5;
+    QSpacerItem *verticalSpacer_9;
+    QSpacerItem *horizontalSpacer_14;
+    QDial *dial;
+    QSpacerItem *verticalSpacer_10;
     QLabel *label_7;
+    QSpacerItem *horizontalSpacer_16;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(961, 652);
+        MainWindow->resize(1083, 709);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         formLayout = new QFormLayout(centralwidget);
@@ -387,53 +435,356 @@ public:
         contentViewer->addWidget(choosePage);
         overviewPage_2 = new QWidget();
         overviewPage_2->setObjectName("overviewPage_2");
-        gridLayout_4 = new QGridLayout(overviewPage_2);
-        gridLayout_4->setObjectName("gridLayout_4");
-        horizontalSpacer_14 = new QSpacerItem(238, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout_2 = new QGridLayout(overviewPage_2);
+        gridLayout_2->setObjectName("gridLayout_2");
+        label_44 = new QLabel(overviewPage_2);
+        label_44->setObjectName("label_44");
 
-        gridLayout_4->addItem(horizontalSpacer_14, 0, 3, 1, 1);
+        gridLayout_2->addWidget(label_44, 1, 0, 1, 1);
 
-        horizontalSpacer_12 = new QSpacerItem(238, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName("gridLayout_3");
+        label_27 = new QLabel(overviewPage_2);
+        label_27->setObjectName("label_27");
+        QFont font1;
+        font1.setStyleStrategy(QFont::PreferAntialias);
+        label_27->setFont(font1);
+        label_27->setAlignment(Qt::AlignCenter);
 
-        gridLayout_4->addItem(horizontalSpacer_12, 0, 0, 1, 1);
+        gridLayout_3->addWidget(label_27, 0, 1, 1, 1);
 
-        verticalLayout_17 = new QVBoxLayout();
-        verticalLayout_17->setObjectName("verticalLayout_17");
-        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label_28 = new QLabel(overviewPage_2);
+        label_28->setObjectName("label_28");
+        label_28->setFont(font1);
+        label_28->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_17->addItem(verticalSpacer_10);
+        gridLayout_3->addWidget(label_28, 1, 2, 1, 1);
 
-        playerViewer_3 = new QWidget(overviewPage_2);
-        playerViewer_3->setObjectName("playerViewer_3");
-        sizePolicy.setHeightForWidth(playerViewer_3->sizePolicy().hasHeightForWidth());
-        playerViewer_3->setSizePolicy(sizePolicy);
-        verticalLayout_18 = new QVBoxLayout(playerViewer_3);
-        verticalLayout_18->setObjectName("verticalLayout_18");
-        usernamelabel_2 = new QLabel(playerViewer_3);
+        label_26 = new QLabel(overviewPage_2);
+        label_26->setObjectName("label_26");
+        label_26->setFont(font1);
+        label_26->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_26, 2, 1, 1, 1);
+
+        graphicsView = new QGraphicsView(overviewPage_2);
+        graphicsView->setObjectName("graphicsView");
+        graphicsView->setMinimumSize(QSize(250, 250));
+
+        gridLayout_3->addWidget(graphicsView, 1, 1, 1, 1);
+
+        label = new QLabel(overviewPage_2);
+        label->setObjectName("label");
+        label->setFont(font1);
+        label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label, 1, 0, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout_3, 2, 2, 2, 3);
+
+        horizontalSpacer_5 = new QSpacerItem(287, 89, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_5, 5, 4, 1, 2);
+
+        horizontalSpacer_7 = new QSpacerItem(101, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_7, 5, 8, 1, 1);
+
+        horizontalSpacer_6 = new QSpacerItem(101, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_6, 5, 0, 1, 1);
+
+        verticalSpacer_6 = new QSpacerItem(20, 123, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_6, 6, 7, 1, 1);
+
+        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+
+        gridLayout_2->addItem(verticalSpacer_7, 4, 2, 1, 1);
+
+        ProfileLayout = new QGridLayout();
+        ProfileLayout->setObjectName("ProfileLayout");
+        usernamelabel_2 = new QLabel(overviewPage_2);
         usernamelabel_2->setObjectName("usernamelabel_2");
-        usernamelabel_2->setFont(font);
+        usernamelabel_2->setMinimumSize(QSize(0, 0));
+        QFont font2;
+        font2.setBold(true);
+        font2.setItalic(false);
+        font2.setUnderline(true);
+        font2.setStyleStrategy(QFont::PreferAntialias);
+        usernamelabel_2->setFont(font2);
+        usernamelabel_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        verticalLayout_18->addWidget(usernamelabel_2);
+        ProfileLayout->addWidget(usernamelabel_2, 0, 2, 1, 1);
 
-        picturelabel_2 = new QLabel(playerViewer_3);
+        globalranklabel = new QLabel(overviewPage_2);
+        globalranklabel->setObjectName("globalranklabel");
+        globalranklabel->setFont(font1);
+        globalranklabel->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(globalranklabel, 1, 1, 1, 1);
+
+        picturelabel_2 = new QLabel(overviewPage_2);
         picturelabel_2->setObjectName("picturelabel_2");
-        picturelabel_2->setMinimumSize(QSize(110, 110));
+        picturelabel_2->setMinimumSize(QSize(100, 100));
+        picturelabel_2->setSizeIncrement(QSize(0, 0));
+        picturelabel_2->setFrameShape(QFrame::NoFrame);
+        picturelabel_2->setFrameShadow(QFrame::Plain);
+        picturelabel_2->setLineWidth(3);
+        picturelabel_2->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_18->addWidget(picturelabel_2);
+        ProfileLayout->addWidget(picturelabel_2, 0, 0, 1, 1);
+
+        label_34 = new QLabel(overviewPage_2);
+        label_34->setObjectName("label_34");
+        QFont font3;
+        font3.setBold(true);
+        font3.setStyleStrategy(QFont::PreferAntialias);
+        label_34->setFont(font3);
+        label_34->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(label_34, 3, 0, 1, 1);
+
+        PPlabel = new QLabel(overviewPage_2);
+        PPlabel->setObjectName("PPlabel");
+        PPlabel->setFont(font1);
+        PPlabel->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(PPlabel, 3, 1, 1, 1);
+
+        label_36 = new QLabel(overviewPage_2);
+        label_36->setObjectName("label_36");
+        label_36->setFont(font3);
+        label_36->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(label_36, 2, 0, 1, 1);
+
+        playcountlabel = new QLabel(overviewPage_2);
+        playcountlabel->setObjectName("playcountlabel");
+        playcountlabel->setFont(font1);
+        playcountlabel->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(playcountlabel, 5, 1, 1, 1);
+
+        label_35 = new QLabel(overviewPage_2);
+        label_35->setObjectName("label_35");
+        label_35->setFont(font3);
+        label_35->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(label_35, 1, 0, 1, 1);
+
+        accuracylabel = new QLabel(overviewPage_2);
+        accuracylabel->setObjectName("accuracylabel");
+        accuracylabel->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(accuracylabel, 4, 1, 1, 1);
+
+        label_33 = new QLabel(overviewPage_2);
+        label_33->setObjectName("label_33");
+        label_33->setFont(font3);
+        label_33->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(label_33, 5, 0, 1, 1);
+
+        label_43 = new QLabel(overviewPage_2);
+        label_43->setObjectName("label_43");
+        QFont font4;
+        font4.setBold(true);
+        label_43->setFont(font4);
+        label_43->setAlignment(Qt::AlignCenter);
+
+        ProfileLayout->addWidget(label_43, 4, 0, 1, 1);
+
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setObjectName("horizontalLayout_21");
+        label_37 = new QLabel(overviewPage_2);
+        label_37->setObjectName("label_37");
+        label_37->setMinimumSize(QSize(20, 20));
+        label_37->setMaximumSize(QSize(20, 20));
+        label_37->setFont(font3);
+        label_37->setScaledContents(true);
+        label_37->setAlignment(Qt::AlignCenter);
+        label_37->setWordWrap(false);
+        label_37->setOpenExternalLinks(false);
+
+        horizontalLayout_21->addWidget(label_37);
+
+        sSSlabel = new QLabel(overviewPage_2);
+        sSSlabel->setObjectName("sSSlabel");
+        sSSlabel->setMaximumSize(QSize(30, 20));
+        sSSlabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(sSSlabel);
+
+        label_38 = new QLabel(overviewPage_2);
+        label_38->setObjectName("label_38");
+        label_38->setMinimumSize(QSize(20, 20));
+        label_38->setMaximumSize(QSize(20, 20));
+        label_38->setFont(font3);
+        label_38->setScaledContents(true);
+        label_38->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(label_38);
+
+        SSlabel = new QLabel(overviewPage_2);
+        SSlabel->setObjectName("SSlabel");
+        SSlabel->setMaximumSize(QSize(30, 20));
+        SSlabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(SSlabel);
+
+        label_39 = new QLabel(overviewPage_2);
+        label_39->setObjectName("label_39");
+        label_39->setMinimumSize(QSize(20, 20));
+        label_39->setMaximumSize(QSize(20, 20));
+        label_39->setFont(font3);
+        label_39->setScaledContents(true);
+        label_39->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(label_39);
+
+        sSlabel = new QLabel(overviewPage_2);
+        sSlabel->setObjectName("sSlabel");
+        sSlabel->setMaximumSize(QSize(30, 20));
+        sSlabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(sSlabel);
+
+        label_40 = new QLabel(overviewPage_2);
+        label_40->setObjectName("label_40");
+        label_40->setMinimumSize(QSize(20, 20));
+        label_40->setMaximumSize(QSize(20, 20));
+        label_40->setFont(font3);
+        label_40->setScaledContents(true);
+        label_40->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(label_40);
+
+        Slabel = new QLabel(overviewPage_2);
+        Slabel->setObjectName("Slabel");
+        Slabel->setMaximumSize(QSize(30, 20));
+        Slabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(Slabel);
+
+        label_41 = new QLabel(overviewPage_2);
+        label_41->setObjectName("label_41");
+        label_41->setMinimumSize(QSize(20, 20));
+        label_41->setMaximumSize(QSize(20, 20));
+        label_41->setFont(font3);
+        label_41->setScaledContents(true);
+        label_41->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(label_41);
+
+        Alabel = new QLabel(overviewPage_2);
+        Alabel->setObjectName("Alabel");
+        Alabel->setMaximumSize(QSize(30, 20));
+        Alabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(Alabel);
 
 
-        verticalLayout_17->addWidget(playerViewer_3);
+        ProfileLayout->addLayout(horizontalLayout_21, 6, 0, 1, 3);
 
-        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        countrylabel = new QLabel(overviewPage_2);
+        countrylabel->setObjectName("countrylabel");
+        countrylabel->setPixmap(QPixmap(QString::fromUtf8(":/png-clipart-earth-globe-computer-icons-earth-globe-wikimedia-commons.png")));
+        countrylabel->setScaledContents(true);
+        countrylabel->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_17->addItem(verticalSpacer_11);
+        ProfileLayout->addWidget(countrylabel, 2, 1, 1, 1);
+
+        usercountrylabel = new QLabel(overviewPage_2);
+        usercountrylabel->setObjectName("usercountrylabel");
+        usercountrylabel->setMaximumSize(QSize(30, 30));
+
+        ProfileLayout->addWidget(usercountrylabel, 0, 1, 1, 1);
 
 
-        gridLayout_4->addLayout(verticalLayout_17, 0, 2, 1, 1);
+        gridLayout_2->addLayout(ProfileLayout, 2, 7, 4, 1);
 
-        verticalSpacer_9 = new QSpacerItem(20, 297, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName("verticalLayout_7");
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        label_29 = new QLabel(overviewPage_2);
+        label_29->setObjectName("label_29");
+        label_29->setFont(font3);
+        label_29->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        gridLayout_4->addItem(verticalSpacer_9, 1, 3, 1, 1);
+        horizontalLayout_5->addWidget(label_29);
+
+        aimValueLabel = new QLabel(overviewPage_2);
+        aimValueLabel->setObjectName("aimValueLabel");
+        aimValueLabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_5->addWidget(aimValueLabel);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_5);
+
+        horizontalLayout_18 = new QHBoxLayout();
+        horizontalLayout_18->setObjectName("horizontalLayout_18");
+        label_30 = new QLabel(overviewPage_2);
+        label_30->setObjectName("label_30");
+        label_30->setFont(font3);
+        label_30->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        horizontalLayout_18->addWidget(label_30);
+
+        accuracyValueLabel = new QLabel(overviewPage_2);
+        accuracyValueLabel->setObjectName("accuracyValueLabel");
+        accuracyValueLabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_18->addWidget(accuracyValueLabel);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_18);
+
+        horizontalLayout_19 = new QHBoxLayout();
+        horizontalLayout_19->setObjectName("horizontalLayout_19");
+        label_31 = new QLabel(overviewPage_2);
+        label_31->setObjectName("label_31");
+        label_31->setFont(font3);
+        label_31->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        horizontalLayout_19->addWidget(label_31);
+
+        speedValueLabel = new QLabel(overviewPage_2);
+        speedValueLabel->setObjectName("speedValueLabel");
+        speedValueLabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_19->addWidget(speedValueLabel);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_19);
+
+        horizontalLayout_20 = new QHBoxLayout();
+        horizontalLayout_20->setObjectName("horizontalLayout_20");
+        label_32 = new QLabel(overviewPage_2);
+        label_32->setObjectName("label_32");
+        label_32->setFont(font3);
+        label_32->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        horizontalLayout_20->addWidget(label_32);
+
+        staminaValueLabel = new QLabel(overviewPage_2);
+        staminaValueLabel->setObjectName("staminaValueLabel");
+        staminaValueLabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_20->addWidget(staminaValueLabel);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_20);
+
+
+        gridLayout_2->addLayout(verticalLayout_7, 5, 2, 1, 2);
+
+        verticalSpacer_5 = new QSpacerItem(114, 116, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_5, 1, 2, 1, 1);
 
         contentViewer->addWidget(overviewPage_2);
         recentPage = new QWidget();
@@ -488,9 +839,9 @@ public:
 
         label_10 = new QLabel(bitmapDownloaderPage);
         label_10->setObjectName("label_10");
-        QFont font1;
-        font1.setPointSize(13);
-        label_10->setFont(font1);
+        QFont font5;
+        font5.setPointSize(13);
+        label_10->setFont(font5);
 
         horizontalLayout_14->addWidget(label_10);
 
@@ -533,6 +884,7 @@ public:
         verticalLayout_10->setObjectName("verticalLayout_10");
         label_25 = new QLabel(bitmapDownloaderPage);
         label_25->setObjectName("label_25");
+        label_25->setMinimumSize(QSize(0, 0));
         label_25->setAlignment(Qt::AlignCenter);
 
         verticalLayout_10->addWidget(label_25);
@@ -602,6 +954,11 @@ public:
 
         verticalLayout_11->addWidget(label_20);
 
+        label_22 = new QLabel(bitmapDownloaderPage);
+        label_22->setObjectName("label_22");
+
+        verticalLayout_11->addWidget(label_22);
+
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName("horizontalLayout_17");
         verticalLayout_9 = new QVBoxLayout();
@@ -645,11 +1002,6 @@ public:
 
 
         verticalLayout_11->addLayout(horizontalLayout_17);
-
-        label_22 = new QLabel(bitmapDownloaderPage);
-        label_22->setObjectName("label_22");
-
-        verticalLayout_11->addWidget(label_22);
 
         label_23 = new QLabel(bitmapDownloaderPage);
         label_23->setObjectName("label_23");
@@ -739,12 +1091,34 @@ public:
         contentViewer->addWidget(settingsPage);
         otherPage = new QWidget();
         otherPage->setObjectName("otherPage");
-        verticalLayout_7 = new QVBoxLayout(otherPage);
-        verticalLayout_7->setObjectName("verticalLayout_7");
+        gridLayout_5 = new QGridLayout(otherPage);
+        gridLayout_5->setObjectName("gridLayout_5");
+        verticalSpacer_9 = new QSpacerItem(20, 88, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_5->addItem(verticalSpacer_9, 0, 2, 1, 1);
+
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer_14, 1, 3, 1, 1);
+
+        dial = new QDial(otherPage);
+        dial->setObjectName("dial");
+        dial->setMinimumSize(QSize(400, 400));
+
+        gridLayout_5->addWidget(dial, 1, 1, 2, 2);
+
+        verticalSpacer_10 = new QSpacerItem(20, 88, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_5->addItem(verticalSpacer_10, 3, 2, 1, 1);
+
         label_7 = new QLabel(otherPage);
         label_7->setObjectName("label_7");
 
-        verticalLayout_7->addWidget(label_7);
+        gridLayout_5->addWidget(label_7, 4, 0, 1, 2);
+
+        horizontalSpacer_16 = new QSpacerItem(178, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer_16, 1, 0, 1, 1);
 
         contentViewer->addWidget(otherPage);
 
@@ -754,7 +1128,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        contentViewer->setCurrentIndex(0);
+        contentViewer->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -780,8 +1154,42 @@ public:
         label_16->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
         viewJsonCheckBox->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
-        usernamelabel_2->setText(QCoreApplication::translate("MainWindow", "name", nullptr));
-        picturelabel_2->setText(QCoreApplication::translate("MainWindow", "pic", nullptr));
+        label_44->setText(QString());
+        label_27->setText(QCoreApplication::translate("MainWindow", "AIM", nullptr));
+        label_28->setText(QCoreApplication::translate("MainWindow", "SPEED", nullptr));
+        label_26->setText(QCoreApplication::translate("MainWindow", "STAMINA", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "ACCURACY", nullptr));
+        usernamelabel_2->setText(QString());
+        globalranklabel->setText(QString());
+        picturelabel_2->setText(QCoreApplication::translate("MainWindow", "Avatar", nullptr));
+        label_34->setText(QCoreApplication::translate("MainWindow", "pp:", nullptr));
+        PPlabel->setText(QString());
+        label_36->setText(QCoreApplication::translate("MainWindow", "Country Rank:", nullptr));
+        playcountlabel->setText(QString());
+        label_35->setText(QCoreApplication::translate("MainWindow", "Rank:", nullptr));
+        accuracylabel->setText(QString());
+        label_33->setText(QCoreApplication::translate("MainWindow", "Playcount:", nullptr));
+        label_43->setText(QCoreApplication::translate("MainWindow", "Accuracy:", nullptr));
+        label_37->setText(QString());
+        sSSlabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_38->setText(QString());
+        SSlabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_39->setText(QString());
+        sSlabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_40->setText(QString());
+        Slabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_41->setText(QString());
+        Alabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        countrylabel->setText(QString());
+        usercountrylabel->setText(QString());
+        label_29->setText(QCoreApplication::translate("MainWindow", "Aim:", nullptr));
+        aimValueLabel->setText(QString());
+        label_30->setText(QCoreApplication::translate("MainWindow", "Accuracy:", nullptr));
+        accuracyValueLabel->setText(QString());
+        label_31->setText(QCoreApplication::translate("MainWindow", "Speed:", nullptr));
+        speedValueLabel->setText(QString());
+        label_32->setText(QCoreApplication::translate("MainWindow", "Stamina:", nullptr));
+        staminaValueLabel->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "RECENT PLAYS", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "VISUALIZER", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "TOP", nullptr));
@@ -796,11 +1204,11 @@ public:
         startDownloaderButton->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
         label_20->setText(QString());
+        label_22->setText(QString());
         label_11->setText(QCoreApplication::translate("MainWindow", "Status:", nullptr));
         label_12->setText(QString());
         label_13->setText(QCoreApplication::translate("MainWindow", "Current bitmap:", nullptr));
         label_14->setText(QString());
-        label_22->setText(QString());
         label_23->setText(QCoreApplication::translate("MainWindow", "Room json:", nullptr));
         saveDataCheckBox->setText(QCoreApplication::translate("MainWindow", "Save application data", nullptr));
         removeDataButton->setText(QCoreApplication::translate("MainWindow", "Remove data folder", nullptr));

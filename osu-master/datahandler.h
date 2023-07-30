@@ -14,10 +14,12 @@ public:
     DataHandler(const QString &folderPath, Ui::MainWindow *ui);
 
     void loadData(bool *isChooseUser, int *userId, int *playCount, int *globalrank, double *ppCount, int *countryRank,
-                float *cs, float *pp, float *ar, float *acc, float *bpm, float *length, double *userAccuracy);
+                  float *cs, float *pp, float *ar, float *acc, float *bpm, float *length, double *userAccuracy,
+                  QString *countryCode);
 
     void saveData(bool isChooseUser, int userId, int playCount, int globalrank, double ppCount, int countryRank,
-                  float cs, float pp, float ar, float acc, float bpm, float length, double userAccuracy);
+                  float cs, float pp, float ar, float acc, float bpm, float length, double userAccuracy,
+                  QString countryCode);
 
     void deleteData();
 

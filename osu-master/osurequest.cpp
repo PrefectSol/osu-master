@@ -74,6 +74,7 @@ void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
     m_ppCount = jsonDocument["statistics"]["pp"].toDouble();
     m_countryRank = jsonDocument["statistics"]["country_rank"].toInt();
     m_accuracy = jsonDocument["statistics"]["hit_accuracy"].toDouble();
+    m_countryCode = jsonDocument["country_code"].toString();
 
     m_userJson = jsonDocument;
 }
@@ -454,4 +455,14 @@ double OsuRequest::getaccuracy()
 void OsuRequest::setaccuracy(double accuracy)
 {
     m_accuracy = accuracy;
+}
+
+QString OsuRequest::getCountryCode()
+{
+    return m_countryCode;
+}
+
+void OsuRequest::setCountryCode(const QString &countryCode)
+{
+    m_countryCode = countryCode;
 }

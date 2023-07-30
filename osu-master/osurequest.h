@@ -40,6 +40,10 @@ public:
 
     void setUserJson(const QString &json);
 
+    QString getCountryCode();
+
+    void setCountryCode(const QString &countryCode);
+
     void setTopScoresJson(const QString &json);
 
     QString getTopScoresInfo();
@@ -156,6 +160,7 @@ private:
 
     double m_accuracy;
 
+    QString m_countryCode;
 };
 
 #endif // OSUREQUEST_H
