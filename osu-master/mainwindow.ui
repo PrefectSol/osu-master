@@ -215,7 +215,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="contentViewer">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
@@ -233,7 +233,7 @@
             <item>
              <widget class="QPushButton" name="addButton">
               <property name="text">
-               <string>Add new player</string>
+               <string>Set the player</string>
               </property>
              </widget>
             </item>

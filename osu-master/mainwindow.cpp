@@ -55,8 +55,8 @@ MainWindow::~MainWindow()
     const float bpm = m_osuParser.getBpmAvg();
     const float length = qSqrt(m_osuParser.getLengthAvg());
 
-    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), length,m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
-                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, m_osuParser.getaccuracy(), m_osuParser.getCountryCode());
+    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(),m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
+                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, length, m_osuParser.getaccuracy(), m_osuParser.getCountryCode());
 
     delete ui;
     delete dataHandler;
@@ -564,9 +564,18 @@ void MainWindow::on_removeDataButton_pressed()
     dataHandler->deleteData();
 }
 
-void MainWindow::on_userTable_cellDoubleClicked(int, int)
-{
-    on_chooseButton_pressed();
+void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
+{ 
+    QWidget *widget = ui->userTable->cellWidget(row, column);
+
+    if (widget == nullptr)
+    {
+        on_addButton_pressed();
+    }
+    else
+    {
+        on_chooseButton_pressed();
+    }
 }
 
 void MainWindow::loadTopScores()

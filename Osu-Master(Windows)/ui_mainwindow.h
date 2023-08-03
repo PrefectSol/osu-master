@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.2
+** Created by: Qt User Interface Compiler version 6.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -1128,7 +1128,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        contentViewer->setCurrentIndex(6);
+        contentViewer->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1149,7 +1149,7 @@ public:
         goSettingsPage->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         goOtherToolsButton->setText(QCoreApplication::translate("MainWindow", "Other tools", nullptr));
         chooseButton->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
-        addButton->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
+        addButton->setText(QCoreApplication::translate("MainWindow", "Set the player", nullptr));
         clearButton->setText(QCoreApplication::translate("MainWindow", "Clear player", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
