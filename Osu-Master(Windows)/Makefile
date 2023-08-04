@@ -330,6 +330,7 @@ Makefile: ../osu-master/osu-master.pro E:/Qt/6.5.2/mingw_64/mkspecs/win32-g++/qm
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/qt_config.prf \
 		E:/Qt/6.5.2/mingw_64/mkspecs/win32-g++/qmake.conf \
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/exclusive_builds.prf \
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/toolchain.prf \
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/default_pre.prf \
@@ -360,7 +361,6 @@ Makefile: ../osu-master/osu-master.pro E:/Qt/6.5.2/mingw_64/mkspecs/win32-g++/qm
 		E:/Qt/6.5.2/mingw_64/lib/Qt6Network.prl \
 		E:/Qt/6.5.2/mingw_64/lib/Qt6Core.prl \
 		E:/Qt/6.5.2/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		E:/Qt/6.5.2/mingw_64/mkspecs/features/build_pass.prf \
 		../osu-master/resources.qrc
 	$(QMAKE) -o Makefile ..\osu-master\osu-master.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
@@ -624,6 +624,7 @@ E:/Qt/6.5.2/mingw_64/mkspecs/features/qt_functions.prf:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/qt_config.prf:
 E:/Qt/6.5.2/mingw_64/mkspecs/win32-g++/qmake.conf:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/exclusive_builds.prf:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/toolchain.prf:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/default_pre.prf:
@@ -654,7 +655,6 @@ E:/Qt/6.5.2/mingw_64/lib/Qt6Gui.prl:
 E:/Qt/6.5.2/mingw_64/lib/Qt6Network.prl:
 E:/Qt/6.5.2/mingw_64/lib/Qt6Core.prl:
 E:/Qt/6.5.2/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 E:/Qt/6.5.2/mingw_64/mkspecs/features/build_pass.prf:
 ../osu-master/resources.qrc:
 qmake: FORCE

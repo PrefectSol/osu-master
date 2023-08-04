@@ -33,6 +33,7 @@ cd Osu-Master(Windows)\release
 <br>
 
 ## Development Notes
+ - Updated ui
  - Added country flags
  - Updated linux version
  - Added ui

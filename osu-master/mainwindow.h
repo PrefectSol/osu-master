@@ -24,7 +24,7 @@
 #include "osurequest.h"
 #include "playersearchdialog.h"
 #include "ui.h"
-
+#include <QLayout>
 
 class MainWindow : public QMainWindow
 {
@@ -107,7 +107,7 @@ private:
 
     int aimValue, staminaValue, speedValue, accuracyValue;
 
-    void initRankspng();
+    void initpngs();
 
     void loadTopScores();
 };

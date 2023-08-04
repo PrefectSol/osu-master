@@ -125,6 +125,9 @@ debug/qrc_resources.cpp: ../osu-master/resources.qrc \
 		../osu-master/Images/earth.png \
 		../osu-master/Images/ranking-S.png \
 		../osu-master/Images/ranking-A.png \
+		../osu-master/Images/BG3.jpg \
+		../osu-master/Images/BG1.jpg \
+		../osu-master/Images/BG2.jpg \
 		../osu-master/Images/ranking-X.png \
 		../osu-master/Images/ranking-XH.png \
 		../osu-master/Images/ranking-SH.png \
@@ -528,6 +531,11 @@ debug/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
 		debug/moc_predefs.h \
 		E:/Qt/6.5.2/mingw_64/bin/moc.exe
 	E:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "C:/Users/ALEX/Desktop/osu-master/Osu-Master(Windows)/debug/moc_predefs.h" -IE:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ALEX/Desktop/osu-master/osu-master -IE:/Qt/6.5.2/mingw_64/include -IE:/Qt/6.5.2/mingw_64/include/QtWidgets -IE:/Qt/6.5.2/mingw_64/include/QtGui -IE:/Qt/6.5.2/mingw_64/include/QtNetwork -IE:/Qt/6.5.2/mingw_64/include/QtCore -I. -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IE:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IE:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\osu-master\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -1331,7 +1339,71 @@ debug/datahandler.o: ../osu-master/datahandler.cpp ../osu-master/datahandler.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/QVariant \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QCheckBox \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qcheckbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QDial \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qdial.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QFormLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qformlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsView \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qscrollarea.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGridLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGroupBox \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgroupbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QHeaderView \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qheaderview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qvalidator.h \
+		E:/Qt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qslider.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstyle.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtabbar.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qrubberband.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLabel \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpicture.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QSpinBox \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qspinbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QStackedWidget \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstackedwidget.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QTableWidget \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtableview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QTextBrowser \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtextbrowser.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\datahandler.o ..\osu-master\datahandler.cpp
 
 debug/main.o: ../osu-master/main.cpp E:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
@@ -1763,7 +1835,12 @@ debug/main.o: ../osu-master/main.cpp E:/Qt/6.5.2/mingw_64/include/QtWidgets/QApp
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentmap.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
-		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentversion.h
+		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\osu-master\main.cpp
 
 debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
@@ -2154,13 +2231,59 @@ debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		E:/Qt/6.5.2/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
 		../osu-master/settings.hpp \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
 		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
 		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QCheckBox \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qcheckbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QDial \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qdial.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QFormLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qformlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsView \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qscrollarea.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QGridLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QHeaderView \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qheaderview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qvalidator.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qslider.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstyle.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtabbar.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qrubberband.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLabel \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpicture.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QSpinBox \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qspinbox.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QStackedWidget \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qstackedwidget.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QTableWidget \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qtableview.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\osu-master\mainwindow.cpp
 
 debug/osurequest.o: ../osu-master/osurequest.cpp ../osu-master/osurequest.h \
@@ -2758,7 +2881,32 @@ debug/playersearchdialog.o: ../osu-master/playersearchdialog.cpp ../osu-master/p
 		E:/Qt/6.5.2/mingw_64/include/QtCore/QUrlQuery \
 		E:/Qt/6.5.2/mingw_64/include/QtCore/QEventLoop \
 		../osu-master/ui.h \
-		ui_playersearchdialog.h
+		ui_playersearchdialog.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLabel \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpicture.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
+		E:/Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/Qt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\playersearchdialog.o ..\osu-master\playersearchdialog.cpp
 
 debug/qrc_resources.o: debug/qrc_resources.cpp 
