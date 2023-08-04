@@ -191,39 +191,6 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.5.1/mingw_64/mkspecs/win32-
 		../../../Qt/6.5.1/mingw_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.5.1/mingw_64/mkspecs/win32-g++/qmake.conf \
 		../../../Qt/6.5.1/mingw_64/mkspecs/features/spec_post.prf \
-<<<<<<< HEAD
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/toolchain.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/default_pre.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/default_pre.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/resolve_config.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds_post.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/default_post.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/qtquickcompiler.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/entrypoint.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/precompile_header.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/warn_on.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/qt.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/resources_functions.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/resources.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/moc.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/opengl.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/uic.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/qmake_use.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/file_copies.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/windows.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/testcase_targets.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/exceptions.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/yacc.prf \
-		../../../Qt/6.5.1/mingw_64/mkspecs/features/lex.prf \
-		../osu-master/osu-master.pro \
-		../../../Qt/6.5.1/mingw_64/lib/Qt6Widgets.prl \
-		../../../Qt/6.5.1/mingw_64/lib/Qt6Gui.prl \
-		../../../Qt/6.5.1/mingw_64/lib/Qt6Network.prl \
-		../../../Qt/6.5.1/mingw_64/lib/Qt6Core.prl \
-		../../../Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
-=======
 		.qmake.stash \
 		../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.5.1/mingw_64/mkspecs/features/toolchain.prf \
@@ -255,7 +222,6 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.5.1/mingw_64/mkspecs/win32-
 		../../../Qt/6.5.1/mingw_64/lib/Qt6Network.prl \
 		../../../Qt/6.5.1/mingw_64/lib/Qt6Core.prl \
 		../../../Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl \
->>>>>>> ui-fixes
 		../../../Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf \
 		../osu-master/resources.qrc
 	$(QMAKE) -o Makefile ..\osu-master\osu-master.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
@@ -380,39 +346,6 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.5.1/mingw_64/mkspecs/win32-
 ../../../Qt/6.5.1/mingw_64/mkspecs/features/qt_config.prf:
 ../../../Qt/6.5.1/mingw_64/mkspecs/win32-g++/qmake.conf:
 ../../../Qt/6.5.1/mingw_64/mkspecs/features/spec_post.prf:
-<<<<<<< HEAD
-../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/toolchain.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/default_pre.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/default_pre.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/resolve_config.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds_post.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/default_post.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/qtquickcompiler.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/entrypoint.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/precompile_header.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/warn_on.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/qt.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/resources_functions.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/resources.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/moc.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/opengl.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/uic.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/qmake_use.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/file_copies.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/win32/windows.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/testcase_targets.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/exceptions.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/yacc.prf:
-../../../Qt/6.5.1/mingw_64/mkspecs/features/lex.prf:
-../osu-master/osu-master.pro:
-../../../Qt/6.5.1/mingw_64/lib/Qt6Widgets.prl:
-../../../Qt/6.5.1/mingw_64/lib/Qt6Gui.prl:
-../../../Qt/6.5.1/mingw_64/lib/Qt6Network.prl:
-../../../Qt/6.5.1/mingw_64/lib/Qt6Core.prl:
-../../../Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
-=======
 .qmake.stash:
 ../../../Qt/6.5.1/mingw_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/6.5.1/mingw_64/mkspecs/features/toolchain.prf:
@@ -444,7 +377,6 @@ Makefile: ../osu-master/osu-master.pro ../../../Qt/6.5.1/mingw_64/mkspecs/win32-
 ../../../Qt/6.5.1/mingw_64/lib/Qt6Network.prl:
 ../../../Qt/6.5.1/mingw_64/lib/Qt6Core.prl:
 ../../../Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl:
->>>>>>> ui-fixes
 ../../../Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf:
 ../osu-master/resources.qrc:
 qmake: FORCE

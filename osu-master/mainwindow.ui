@@ -37,7 +37,18 @@
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_8">
-<<<<<<< HEAD
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="viewJsonCheckBox">
+          <property name="font">
+           <font>
+            <stylestrategy>PreferAntialias</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>View Json</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -139,17 +150,25 @@
           </item>
          </layout>
         </item>
-=======
->>>>>>> ui-fixes
-        <item row="0" column="1">
-         <widget class="QCheckBox" name="viewJsonCheckBox">
-          <property name="font">
-           <font>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
+        <item row="1" column="1">
+         <widget class="QTextBrowser" name="jsonViewer">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="text">
-           <string>View Json</string>
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>16777215</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -191,171 +210,6 @@
           <attribute name="verticalHeaderDefaultSectionSize">
            <number>150</number>
           </attribute>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QTextBrowser" name="jsonViewer">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>500</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="chooseButtons">
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QWidget" name="upButtons" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QPushButton" name="chooseButton">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Choose</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="addButton">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Set the player</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="clearButton">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Clear player</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_4">
-               <item>
-                <widget class="QLabel" name="label_16">
-                 <property name="font">
-                  <font>
-                   <stylestrategy>PreferAntialias</stylestrategy>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Rows:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="rowsSpinBox">
-                 <property name="font">
-                  <font>
-                   <stylestrategy>PreferAntialias</stylestrategy>
-                  </font>
-                 </property>
-                 <property name="minimum">
-                  <number>0</number>
-                 </property>
-                 <property name="maximum">
-                  <number>10</number>
-                 </property>
-                 <property name="value">
-                  <number>0</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_32">
-               <item>
-                <widget class="QLabel" name="label_17">
-                 <property name="font">
-                  <font>
-                   <stylestrategy>PreferAntialias</stylestrategy>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Columns:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="colsSpinBox">
-                 <property name="font">
-                  <font>
-                   <stylestrategy>PreferAntialias</stylestrategy>
-                  </font>
-                 </property>
-                 <property name="maximum">
-                  <number>20</number>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-          </layout>
          </widget>
         </item>
        </layout>

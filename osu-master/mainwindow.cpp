@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
                                    "QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");    ui->userTable->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->jsonViewer->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->playerViewer->setStyleSheet("QWidget { border: none; }");
-    ui->chooseButtons->setStyleSheet("QGroupBox { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+    ui->chooseButton->setStyleSheet("QGroupBox { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
 
     srand(time(NULL));
     const int imageNum = rand() % m_settings::availableImagesCount + 1;
@@ -605,11 +605,7 @@ void MainWindow::on_removeDataButton_pressed()
 }
 
 void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
-<<<<<<< HEAD
-{ 
-=======
 {
->>>>>>> ui-fixes
     QWidget *widget = ui->userTable->cellWidget(row, column);
 
     if (widget == nullptr)
@@ -619,12 +615,8 @@ void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
     else
     {
         on_chooseButton_pressed();
-<<<<<<< HEAD
     }
 }
-=======
-    }}
->>>>>>> ui-fixes
 
 void MainWindow::loadTopScores()
 {

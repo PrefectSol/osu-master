@@ -42,11 +42,7 @@ public:
     QWidget *choosePage;
     QGridLayout *gridLayout_8;
     QCheckBox *viewJsonCheckBox;
-    QTableWidget *userTable;
-    QTextBrowser *jsonViewer;
-    QGroupBox *chooseButtons;
     QVBoxLayout *verticalLayout_2;
-    QWidget *upButtons;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *chooseButton;
     QPushButton *addButton;
@@ -60,6 +56,8 @@ public:
     QLabel *label_17;
     QSpinBox *colsSpinBox;
     QSpacerItem *horizontalSpacer_3;
+    QTextBrowser *jsonViewer;
+    QTableWidget *userTable;
     QWidget *overviewPage_2;
     QGridLayout *gridLayout_4;
     QLabel *label_44;
@@ -238,6 +236,90 @@ public:
 
         gridLayout_8->addWidget(viewJsonCheckBox, 0, 1, 1, 1);
 
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        chooseButton = new QPushButton(choosePage);
+        chooseButton->setObjectName("chooseButton");
+
+        horizontalLayout_2->addWidget(chooseButton);
+
+        addButton = new QPushButton(choosePage);
+        addButton->setObjectName("addButton");
+
+        horizontalLayout_2->addWidget(addButton);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+        clearButton = new QPushButton(choosePage);
+        clearButton->setObjectName("clearButton");
+
+        horizontalLayout_2->addWidget(clearButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        label_16 = new QLabel(choosePage);
+        label_16->setObjectName("label_16");
+
+        horizontalLayout_4->addWidget(label_16);
+
+        rowsSpinBox = new QSpinBox(choosePage);
+        rowsSpinBox->setObjectName("rowsSpinBox");
+        rowsSpinBox->setMinimum(0);
+        rowsSpinBox->setMaximum(10);
+        rowsSpinBox->setValue(0);
+
+        horizontalLayout_4->addWidget(rowsSpinBox);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout_4);
+
+        horizontalLayout_32 = new QHBoxLayout();
+        horizontalLayout_32->setObjectName("horizontalLayout_32");
+        label_17 = new QLabel(choosePage);
+        label_17->setObjectName("label_17");
+
+        horizontalLayout_32->addWidget(label_17);
+
+        colsSpinBox = new QSpinBox(choosePage);
+        colsSpinBox->setObjectName("colsSpinBox");
+        colsSpinBox->setMaximum(20);
+
+        horizontalLayout_32->addWidget(colsSpinBox);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_32->addItem(horizontalSpacer_3);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout_32);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+
+        gridLayout_8->addLayout(verticalLayout_2, 0, 0, 1, 1);
+
+        jsonViewer = new QTextBrowser(choosePage);
+        jsonViewer->setObjectName("jsonViewer");
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(jsonViewer->sizePolicy().hasHeightForWidth());
+        jsonViewer->setSizePolicy(sizePolicy);
+        jsonViewer->setMinimumSize(QSize(30, 0));
+        jsonViewer->setMaximumSize(QSize(500, 16777215));
+
+        gridLayout_8->addWidget(jsonViewer, 1, 1, 1, 1);
+
         userTable = new QTableWidget(choosePage);
         userTable->setObjectName("userTable");
         userTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -254,104 +336,6 @@ public:
         userTable->verticalHeader()->setDefaultSectionSize(150);
 
         gridLayout_8->addWidget(userTable, 1, 0, 1, 1);
-
-        jsonViewer = new QTextBrowser(choosePage);
-        jsonViewer->setObjectName("jsonViewer");
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(jsonViewer->sizePolicy().hasHeightForWidth());
-        jsonViewer->setSizePolicy(sizePolicy);
-        jsonViewer->setMinimumSize(QSize(30, 0));
-        jsonViewer->setMaximumSize(QSize(500, 16777215));
-
-        gridLayout_8->addWidget(jsonViewer, 1, 1, 1, 1);
-
-        chooseButtons = new QGroupBox(choosePage);
-        chooseButtons->setObjectName("chooseButtons");
-        verticalLayout_2 = new QVBoxLayout(chooseButtons);
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        upButtons = new QWidget(chooseButtons);
-        upButtons->setObjectName("upButtons");
-        horizontalLayout_2 = new QHBoxLayout(upButtons);
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        chooseButton = new QPushButton(upButtons);
-        chooseButton->setObjectName("chooseButton");
-        QFont font1;
-        font1.setBold(false);
-        font1.setStyleStrategy(QFont::PreferAntialias);
-        chooseButton->setFont(font1);
-
-        horizontalLayout_2->addWidget(chooseButton);
-
-        addButton = new QPushButton(upButtons);
-        addButton->setObjectName("addButton");
-        addButton->setFont(font1);
-
-        horizontalLayout_2->addWidget(addButton);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_2);
-
-        clearButton = new QPushButton(upButtons);
-        clearButton->setObjectName("clearButton");
-        clearButton->setFont(font1);
-
-        horizontalLayout_2->addWidget(clearButton);
-
-
-        verticalLayout_2->addWidget(upButtons);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_16 = new QLabel(chooseButtons);
-        label_16->setObjectName("label_16");
-        label_16->setFont(font);
-
-        horizontalLayout_4->addWidget(label_16);
-
-        rowsSpinBox = new QSpinBox(chooseButtons);
-        rowsSpinBox->setObjectName("rowsSpinBox");
-        rowsSpinBox->setFont(font);
-        rowsSpinBox->setMinimum(0);
-        rowsSpinBox->setMaximum(10);
-        rowsSpinBox->setValue(0);
-
-        horizontalLayout_4->addWidget(rowsSpinBox);
-
-
-        horizontalLayout_3->addLayout(horizontalLayout_4);
-
-        horizontalLayout_32 = new QHBoxLayout();
-        horizontalLayout_32->setObjectName("horizontalLayout_32");
-        label_17 = new QLabel(chooseButtons);
-        label_17->setObjectName("label_17");
-        label_17->setFont(font);
-
-        horizontalLayout_32->addWidget(label_17);
-
-        colsSpinBox = new QSpinBox(chooseButtons);
-        colsSpinBox->setObjectName("colsSpinBox");
-        colsSpinBox->setFont(font);
-        colsSpinBox->setMaximum(20);
-
-        horizontalLayout_32->addWidget(colsSpinBox);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_32->addItem(horizontalSpacer_3);
-
-
-        horizontalLayout_3->addLayout(horizontalLayout_32);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_3);
-
-
-        gridLayout_8->addWidget(chooseButtons, 0, 0, 1, 1);
 
         contentViewer->addWidget(choosePage);
         overviewPage_2 = new QWidget();
@@ -377,9 +361,9 @@ public:
         formLayout_2->setObjectName("formLayout_2");
         MainPlayerStats = new QGroupBox(overviewPage_2);
         MainPlayerStats->setObjectName("MainPlayerStats");
-        QFont font2;
-        font2.setBold(false);
-        MainPlayerStats->setFont(font2);
+        QFont font1;
+        font1.setBold(false);
+        MainPlayerStats->setFont(font1);
         MainPlayerStats->setAlignment(Qt::AlignCenter);
         MainPlayerStats->setFlat(false);
         MainPlayerStats->setCheckable(false);
@@ -387,7 +371,10 @@ public:
         gridLayout_2->setObjectName("gridLayout_2");
         playcountlabel = new QLabel(MainPlayerStats);
         playcountlabel->setObjectName("playcountlabel");
-        playcountlabel->setFont(font1);
+        QFont font2;
+        font2.setBold(false);
+        font2.setStyleStrategy(QFont::PreferAntialias);
+        playcountlabel->setFont(font2);
         playcountlabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(playcountlabel, 6, 1, 1, 1);
@@ -438,7 +425,7 @@ public:
 
         countrylabel = new QLabel(MainPlayerStats);
         countrylabel->setObjectName("countrylabel");
-        countrylabel->setFont(font1);
+        countrylabel->setFont(font2);
         countrylabel->setScaledContents(true);
         countrylabel->setAlignment(Qt::AlignCenter);
 
@@ -450,7 +437,7 @@ public:
 
         globalranklabel = new QLabel(MainPlayerStats);
         globalranklabel->setObjectName("globalranklabel");
-        globalranklabel->setFont(font1);
+        globalranklabel->setFont(font2);
         globalranklabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(globalranklabel, 1, 1, 1, 1);
@@ -550,14 +537,14 @@ public:
         accuracylabel = new QLabel(MainPlayerStats);
         accuracylabel->setObjectName("accuracylabel");
         accuracylabel->setEnabled(true);
-        accuracylabel->setFont(font1);
+        accuracylabel->setFont(font2);
         accuracylabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(accuracylabel, 5, 1, 1, 1);
 
         PPlabel = new QLabel(MainPlayerStats);
         PPlabel->setObjectName("PPlabel");
-        PPlabel->setFont(font1);
+        PPlabel->setFont(font2);
         PPlabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(PPlabel, 3, 1, 1, 1);
@@ -1201,11 +1188,7 @@ public:
 
         retranslateUi(MainWindow);
 
-<<<<<<< HEAD
         contentViewer->setCurrentIndex(0);
-=======
-        contentViewer->setCurrentIndex(1);
->>>>>>> ui-fixes
 
 
         QMetaObject::connectSlotsByName(MainWindow);

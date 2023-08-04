@@ -345,10 +345,7 @@ debug/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
->>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -534,14 +531,11 @@ debug/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
-<<<<<<< HEAD
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
->>>>>>> ui-fixes
 		debug/moc_predefs.h \
 		../../../Qt/6.5.1/mingw_64/bin/moc.exe
 	C:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Code/osu-master/build-osu-master-Desktop_Qt_6_5_1_MinGW_64_bit-Release/debug/moc_predefs.h -IC:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Code/osu-master/osu-master -IC:/Qt/6.5.1/mingw_64/include -IC:/Qt/6.5.1/mingw_64/include/QtWidgets -IC:/Qt/6.5.1/mingw_64/include/QtGui -IC:/Qt/6.5.1/mingw_64/include/QtNetwork -IC:/Qt/6.5.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\osu-master\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -1345,9 +1339,6 @@ debug/datahandler.o: ../osu-master/datahandler.cpp ../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
-<<<<<<< HEAD
-		ui_mainwindow.h
-=======
 		ui_mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QVariant \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QCheckBox \
@@ -1413,7 +1404,6 @@ debug/datahandler.o: ../osu-master/datahandler.cpp ../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtextedit.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QWidget
->>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\datahandler.o ..\osu-master\datahandler.cpp
 
 debug/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
@@ -1811,10 +1801,7 @@ debug/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidget
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
->>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -1849,16 +1836,12 @@ debug/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidget
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentmap.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
-<<<<<<< HEAD
-		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h
->>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\osu-master\main.cpp
 
 debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
@@ -2064,10 +2047,7 @@ debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
->>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -2253,23 +2233,17 @@ debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
-<<<<<<< HEAD
-=======
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
->>>>>>> ui-fixes
 		../osu-master/settings.hpp \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
-<<<<<<< HEAD
-		ui_mainwindow.h
-=======
 		ui_mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QCheckBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qcheckbox.h \
@@ -2312,7 +2286,6 @@ debug/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtableview.h \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QWidget
->>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\osu-master\mainwindow.cpp
 
 debug/osurequest.o: ../osu-master/osurequest.cpp ../osu-master/osurequest.h \
