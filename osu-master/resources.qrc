@@ -7,8 +7,7 @@
         <file>Images/ranking-X.png</file>
         <file>Images/ranking-XH.png</file>
         <file>Images/earth.png</file>
-        <file>Images/BG1.jpg</file>
-        <file>Images/BG2.jpg</file>
-        <file>Images/BG3.jpg</file>
+        <file>Images/BG1.png</file>
+        <file>Images/BG2.png</file>
     </qresource>
 </RCC>

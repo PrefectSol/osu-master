@@ -19,6 +19,7 @@
 #include <QGroupBox>
 
 #include <future>
+#include <QPalette>
 
 #include "datahandler.h"
 #include "osurequest.h"
@@ -75,6 +76,8 @@ private slots:
 private:
     void loadUrlImage(const QUrl &url, QPixmap *pixmap);
 
+    void resizeEvent(QResizeEvent *event) override;
+
     void loadAvatar(QPixmap *pixmap);
 
     QString getSearchPlayer(bool *isOk);
@@ -110,5 +113,7 @@ private:
     void initpngs();
 
     void loadTopScores();
+
+    QString m_backgroundImagePath;
 };
 #endif // MAINWINDOW_H

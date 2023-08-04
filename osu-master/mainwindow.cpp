@@ -44,22 +44,17 @@ MainWindow::MainWindow(QWidget *parent)
     playerSearch->setWindowFlags(Qt::Window);
 
     ui->contentViewer->setCurrentIndex(0);
-    ui->buttonPanel->setStyleSheet("QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
-    ui->userTable->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+    ui->buttonPanel->setStyleSheet("QPushButton { border: none; border-radius: 0; background-color: transparent; }"
+                                   "QPushButton:hover { background-color: blue; }"
+                                   "QPushButton:pressed { background-color: red; }"
+                                   "QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");    ui->userTable->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->jsonViewer->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->playerViewer->setStyleSheet("QWidget { border: none; }");
     ui->chooseButtons->setStyleSheet("QGroupBox { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
 
-    //QPixmap bkgnd(":/Images/BG1.jpg");
-    //bkgnd = bkgnd.scaled(this->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-    //QPalette palette;
-    //palette.setBrush(QPalette::Window, bkgnd);
-    //this->setPalette(palette);
-
-    QPixmap bkgnd(":/Images/BG1.jpg");
-    QPalette palette;
-    palette.setBrush(QPalette::Window, bkgnd.scaled(this->size(), Qt::KeepAspectRatioByExpanding));
-    this->setPalette(palette);
+    srand(time(NULL));
+    const int imageNum = rand() % m_settings::availableImagesCount + 1;
+    m_backgroundImagePath = ":/Images/BG" + QString::number(imageNum) + ".png";
 }
 
 MainWindow::~MainWindow()
@@ -71,12 +66,24 @@ MainWindow::~MainWindow()
     const float bpm = m_osuParser.getBpmAvg();
     const float length = qSqrt(m_osuParser.getLengthAvg());
 
-    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(), length,m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
-                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, m_osuParser.getaccuracy(), m_osuParser.getCountryCode());
+    dataHandler->saveData(m_isChoosePlayer, m_osuParser.getUserId(), m_osuParser.getPlayCount(),m_osuParser.getGlobalRank(), m_osuParser.getPpCount(),
+                          m_osuParser.getcountryRank(), cs, pp, ar, acc, bpm, length, m_osuParser.getaccuracy(), m_osuParser.getCountryCode());
 
     delete ui;
     delete dataHandler;
     delete playerSearch;
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QPixmap bkgnd(m_backgroundImagePath);
+    bkgnd = bkgnd.scaled(size(), Qt::KeepAspectRatioByExpanding);
+    QPalette p = palette();
+
+    p.setBrush(QPalette::Window, bkgnd);
+    setPalette(p);
+
+    QMainWindow::resizeEvent(event);
 }
 
 void MainWindow::initStats()
@@ -597,10 +604,18 @@ void MainWindow::on_removeDataButton_pressed()
     dataHandler->deleteData();
 }
 
-void MainWindow::on_userTable_cellDoubleClicked(int, int)
+void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
 {
-    on_chooseButton_pressed();
-}
+    QWidget *widget = ui->userTable->cellWidget(row, column);
+
+    if (widget == nullptr)
+    {
+        on_addButton_pressed();
+    }
+    else
+    {
+        on_chooseButton_pressed();
+    }}
 
 void MainWindow::loadTopScores()
 {

@@ -8,14 +8,14 @@ QMAKE_CXX.COMPILER_MACROS = \
     QMAKE_GCC_MINOR_VERSION \
     QMAKE_GCC_PATCH_VERSION
 QMAKE_CXX.INCDIRS = \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed \
-    E:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ \
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 \
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward \
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include \
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed \
+    C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include
 QMAKE_CXX.LIBDIRS = \
-    E:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0 \
-    E:/Qt/Tools/mingw1120_64/lib/gcc \
-    E:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/lib \
-    E:/Qt/Tools/mingw1120_64/lib
+    C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0 \
+    C:/Qt/Tools/mingw1120_64/lib/gcc \
+    C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/lib \
+    C:/Qt/Tools/mingw1120_64/lib

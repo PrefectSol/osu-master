@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.2
+** Created by: Qt User Interface Compiler version 6.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -64,6 +64,8 @@ public:
     QGridLayout *gridLayout_4;
     QLabel *label_44;
     QSpacerItem *verticalSpacer_5;
+    QSpacerItem *horizontalSpacer_5;
+    QVBoxLayout *verticalLayout_12;
     QFormLayout *formLayout_2;
     QGroupBox *MainPlayerStats;
     QGridLayout *gridLayout_2;
@@ -107,9 +109,6 @@ public:
     QHBoxLayout *horizontalLayout_20;
     QLabel *label_32;
     QLabel *staminaValueLabel;
-    QSpacerItem *horizontalSpacer_6;
-    QSpacerItem *verticalSpacer_8;
-    QSpacerItem *horizontalSpacer_4;
     QGroupBox *graphicbox;
     QGridLayout *gridLayout_3;
     QLabel *label_27;
@@ -117,7 +116,7 @@ public:
     QLabel *label_28;
     QGraphicsView *graphicsView;
     QLabel *label_26;
-    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_4;
     QSpacerItem *verticalSpacer_6;
     QWidget *recentPage;
     QHBoxLayout *horizontalLayout_6;
@@ -215,7 +214,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1039, 800);
+        MainWindow->resize(1039, 741);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         formLayout = new QFormLayout(centralwidget);
@@ -364,10 +363,16 @@ public:
 
         gridLayout_4->addWidget(label_44, 0, 0, 1, 1);
 
-        verticalSpacer_5 = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_5 = new QSpacerItem(20, 17, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_4->addItem(verticalSpacer_5, 0, 1, 1, 1);
+        gridLayout_4->addItem(verticalSpacer_5, 0, 2, 1, 1);
 
+        horizontalSpacer_5 = new QSpacerItem(186, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_5, 1, 1, 1, 1);
+
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setObjectName("verticalLayout_12");
         formLayout_2 = new QFormLayout();
         formLayout_2->setObjectName("formLayout_2");
         MainPlayerStats = new QGroupBox(overviewPage_2);
@@ -601,7 +606,7 @@ public:
         label_29 = new QLabel(StatsCountbox);
         label_29->setObjectName("label_29");
         label_29->setFont(font4);
-        label_29->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_29->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_5->addWidget(label_29);
 
@@ -619,7 +624,7 @@ public:
         label_30 = new QLabel(StatsCountbox);
         label_30->setObjectName("label_30");
         label_30->setFont(font4);
-        label_30->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_30->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_18->addWidget(label_30);
 
@@ -637,7 +642,7 @@ public:
         label_31 = new QLabel(StatsCountbox);
         label_31->setObjectName("label_31");
         label_31->setFont(font4);
-        label_31->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_31->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_19->addWidget(label_31);
 
@@ -655,7 +660,7 @@ public:
         label_32 = new QLabel(StatsCountbox);
         label_32->setObjectName("label_32");
         label_32->setFont(font4);
-        label_32->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_32->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_20->addWidget(label_32);
 
@@ -672,19 +677,7 @@ public:
         formLayout_2->setWidget(0, QFormLayout::FieldRole, StatsCountbox);
 
 
-        gridLayout_4->addLayout(formLayout_2, 1, 1, 1, 3);
-
-        horizontalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_6, 1, 4, 1, 1);
-
-        verticalSpacer_8 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(verticalSpacer_8, 2, 3, 1, 1);
-
-        horizontalSpacer_4 = new QSpacerItem(196, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_4, 3, 0, 1, 1);
+        verticalLayout_12->addLayout(formLayout_2);
 
         graphicbox = new QGroupBox(overviewPage_2);
         graphicbox->setObjectName("graphicbox");
@@ -725,15 +718,18 @@ public:
         gridLayout_3->addWidget(label_26, 2, 1, 1, 1);
 
 
-        gridLayout_4->addWidget(graphicbox, 3, 1, 2, 3);
+        verticalLayout_12->addWidget(graphicbox);
 
-        horizontalSpacer_5 = new QSpacerItem(198, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_4->addItem(horizontalSpacer_5, 4, 4, 1, 1);
+        gridLayout_4->addLayout(verticalLayout_12, 1, 2, 1, 1);
 
-        verticalSpacer_6 = new QSpacerItem(20, 97, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        horizontalSpacer_4 = new QSpacerItem(185, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_4->addItem(verticalSpacer_6, 5, 2, 1, 1);
+        gridLayout_4->addItem(horizontalSpacer_4, 1, 3, 1, 1);
+
+        verticalSpacer_6 = new QSpacerItem(20, 37, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_4->addItem(verticalSpacer_6, 2, 2, 1, 1);
 
         contentViewer->addWidget(overviewPage_2);
         recentPage = new QWidget();
@@ -1216,7 +1212,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "osu! master", nullptr));
         viewJsonCheckBox->setText(QCoreApplication::translate("MainWindow", "View Json", nullptr));
         chooseButton->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
-        addButton->setText(QCoreApplication::translate("MainWindow", "Add new player", nullptr));
+        addButton->setText(QCoreApplication::translate("MainWindow", "Set the player", nullptr));
         clearButton->setText(QCoreApplication::translate("MainWindow", "Clear player", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Rows:", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Columns:", nullptr));
