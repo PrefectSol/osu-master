@@ -156,10 +156,10 @@ void DataHandler::saveData(bool isChoosePlayer, int userId, int playCount,  int 
     out << m_ui->songsFolderPath->document()->toPlainText();
 
     //out << m_userJson;
-
     out << isChoosePlayer;
     out << userId;
     out << playCount;
+
     out << globalrank;
     out << ppCount;
     out << countryRank;

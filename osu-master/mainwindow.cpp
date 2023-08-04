@@ -44,6 +44,17 @@ MainWindow::MainWindow(QWidget *parent)
     playerSearch->setWindowFlags(Qt::Window);
 
     ui->contentViewer->setCurrentIndex(0);
+    ui->buttonPanel->setStyleSheet("QPushButton { border: none; border-radius: 0; background-color: transparent; }"
+                                   "QPushButton:hover { background-color: blue; }"
+                                   "QPushButton:pressed { background-color: red; }"
+                                   "QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");    ui->userTable->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+    ui->jsonViewer->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+    ui->playerViewer->setStyleSheet("QWidget { border: none; }");
+    ui->chooseButtons->setStyleSheet("QGroupBox { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+
+    srand(time(NULL));
+    const int imageNum = rand() % m_settings::availableImagesCount + 1;
+    m_backgroundImagePath = ":/Images/BG" + QString::number(imageNum) + ".png";
 }
 
 MainWindow::~MainWindow()
@@ -61,6 +72,18 @@ MainWindow::~MainWindow()
     delete ui;
     delete dataHandler;
     delete playerSearch;
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QPixmap bkgnd(m_backgroundImagePath);
+    bkgnd = bkgnd.scaled(size(), Qt::KeepAspectRatioByExpanding);
+    QPalette p = palette();
+
+    p.setBrush(QPalette::Window, bkgnd);
+    setPalette(p);
+
+    QMainWindow::resizeEvent(event);
 }
 
 void MainWindow::initStats()
@@ -93,10 +116,12 @@ void MainWindow::initStats()
 void MainWindow::initOverview()
 {
     initStats();
-    initRankspng();
+    initpngs();
     ui->graphicsView->setStyleSheet("background-color:rgba(0, 0, 0, 0); border: none; ");
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
+
+    //ui->jsonViewer->setText(m_osuParser.getTopScoresInfo());
 
     QColor colorQPen(45, 45, 45, 255);
     QColor colorPol(190, 190, 190, 255);
@@ -151,6 +176,15 @@ void MainWindow::initOverview()
     ui->countrylabel->setText("#"+QString::number(m_osuParser.getcountryRank()));
     ui->accuracylabel->setText(QString::number(roundedAccuracy)+"%");
 
+    ui->MainPlayerStats->setStyleSheet("QGroupBox { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
+    ui->StatsCountbox->setStyleSheet("QGroupBox { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
+    ui->graphicbox->setStyleSheet("QGroupBox { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
+    ui->contentViewer->setStyleSheet("QStackWidget { background-color: rgba(255, 255, 255, 0); }");
+
+
+    //roundedPixmap.setMask(roundedPixmap.createHeuristicMask());
+    ui->chooseImage->setStyleSheet("QLabel { border: 2px solid grey; border-radius: 12px; }");
+
     QPixmap countryPixmap;
     const QString countryCode = m_osuParser.getCountryCode().toLower();
     const QUrl countryUrl("https://worldflags.net/assets/flaggor/flags/4x3/" + countryCode + ".svg");
@@ -168,7 +202,7 @@ void MainWindow::initOverview()
     }
 }
 
-void MainWindow::initRankspng()
+void MainWindow::initpngs()
 {
     QPixmap pixmapsSS(":/Images/ranking-XH.png");
     QPixmap scaledPixmapsSS = pixmapsSS.scaled(ui->label_37->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
@@ -412,6 +446,10 @@ void MainWindow::on_addButton_pressed()
     QVBoxLayout *layout = new QVBoxLayout(player);
     layout->addWidget(usernameLabel, 0, Qt::AlignHCenter | Qt::AlignTop);
     layout->addWidget(imageLabel, 0, Qt::AlignHCenter | Qt::AlignVCenter);
+    usernameLabel->setStyleSheet("QLabel { border: none; }");
+    QFont font = usernameLabel->font();
+    font.setWeight(QFont::Bold);
+    usernameLabel->setFont(font);
 
     table->setCellWidget(currentIndex.row(), currentIndex.column(), player);
 
@@ -506,6 +544,8 @@ void MainWindow::on_chooseButton_pressed()
             uiImage->setPixmap(imageLabel->pixmap());
             uiImage->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
+            ui->playerViewer->setStyleSheet("QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
+
             QString jsonString = dataHandler->getUsersValue(usernameLabel->text());
             QString topScoresInfo = dataHandler->getTopScoresValue(usernameLabel->text());
             QJsonDocument json = QJsonDocument::fromJson(jsonString.toUtf8());
@@ -565,7 +605,11 @@ void MainWindow::on_removeDataButton_pressed()
 }
 
 void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
+<<<<<<< HEAD
 { 
+=======
+{
+>>>>>>> ui-fixes
     QWidget *widget = ui->userTable->cellWidget(row, column);
 
     if (widget == nullptr)
@@ -575,8 +619,12 @@ void MainWindow::on_userTable_cellDoubleClicked(int row, int column)
     else
     {
         on_chooseButton_pressed();
+<<<<<<< HEAD
     }
 }
+=======
+    }}
+>>>>>>> ui-fixes
 
 void MainWindow::loadTopScores()
 {

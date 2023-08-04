@@ -19,12 +19,13 @@
 #include <QGroupBox>
 
 #include <future>
+#include <QPalette>
 
 #include "datahandler.h"
 #include "osurequest.h"
 #include "playersearchdialog.h"
 #include "ui.h"
-
+#include <QLayout>
 
 class MainWindow : public QMainWindow
 {
@@ -75,6 +76,8 @@ private slots:
 private:
     void loadUrlImage(const QUrl &url, QPixmap *pixmap);
 
+    void resizeEvent(QResizeEvent *event) override;
+
     void loadAvatar(QPixmap *pixmap);
 
     QString getSearchPlayer(bool *isOk);
@@ -107,8 +110,10 @@ private:
 
     int aimValue, staminaValue, speedValue, accuracyValue;
 
-    void initRankspng();
+    void initpngs();
 
     void loadTopScores();
+
+    QString m_backgroundImagePath;
 };
 #endif // MAINWINDOW_H

@@ -124,8 +124,10 @@ release/qrc_resources.cpp: ../osu-master/resources.qrc \
 		../../../Qt/6.5.1/mingw_64/bin/rcc.exe \
 		../osu-master/Images/earth.png \
 		../osu-master/Images/ranking-S.png \
+		../osu-master/Images/BG1.png \
 		../osu-master/Images/ranking-A.png \
 		../osu-master/Images/ranking-X.png \
+		../osu-master/Images/BG2.png \
 		../osu-master/Images/ranking-XH.png \
 		../osu-master/Images/ranking-SH.png \
 		../osu-master/Images/icon.png
@@ -343,6 +345,10 @@ release/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
+<<<<<<< HEAD
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
+>>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -528,6 +534,14 @@ release/moc_mainwindow.cpp: ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+<<<<<<< HEAD
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
+>>>>>>> ui-fixes
 		release/moc_predefs.h \
 		../../../Qt/6.5.1/mingw_64/bin/moc.exe
 	C:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Code/osu-master/build-osu-master-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release/moc_predefs.h -IC:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Code/osu-master/osu-master -IC:/Qt/6.5.1/mingw_64/include -IC:/Qt/6.5.1/mingw_64/include/QtWidgets -IC:/Qt/6.5.1/mingw_64/include/QtGui -IC:/Qt/6.5.1/mingw_64/include/QtNetwork -IC:/Qt/6.5.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\osu-master\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1331,7 +1345,75 @@ release/datahandler.o: ../osu-master/datahandler.cpp ../osu-master/datahandler.h
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
 		ui_mainwindow.h
+=======
+		ui_mainwindow.h \
+		../../../Qt/6.5.1/mingw_64/include/QtCore/QVariant \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QCheckBox \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QDial \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qdial.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QFormLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qformlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpainter.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextoption.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpen.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QHeaderView \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qheaderview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/6.5.1/mingw_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.5.1/mingw_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLabel \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpicture.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextformat.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QTableWidget \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QWidget
+>>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\datahandler.o ..\osu-master\datahandler.cpp
 
 release/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
@@ -1729,6 +1811,10 @@ release/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidg
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
+<<<<<<< HEAD
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
+>>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -1763,7 +1849,16 @@ release/main.o: ../osu-master/main.cpp ../../../Qt/6.5.1/mingw_64/include/QtWidg
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentmap.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
+<<<<<<< HEAD
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h
+>>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\osu-master\main.cpp
 
 release/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
@@ -1969,6 +2064,10 @@ release/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QtMath \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgroupbox.h \
+<<<<<<< HEAD
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtGui/QPalette \
+>>>>>>> ui-fixes
 		../osu-master/datahandler.h \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QDir \
 		../osu-master/ui.h \
@@ -2154,13 +2253,66 @@ release/mainwindow.o: ../osu-master/mainwindow.cpp ../osu-master/mainwindow.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrenttask.h \
 		../../../Qt/6.5.1/mingw_64/include/QtConcurrent/qtconcurrentversion.h \
+<<<<<<< HEAD
+=======
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
+>>>>>>> ui-fixes
 		../osu-master/settings.hpp \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
 		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
 		ui_mainwindow.h
+=======
+		ui_mainwindow.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QCheckBox \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QDial \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qdial.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QFormLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qformlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpainter.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QHeaderView \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qheaderview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLabel \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpicture.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QTableWidget \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QWidget
+>>>>>>> ui-fixes
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\osu-master\mainwindow.cpp
 
 release/osurequest.o: ../osu-master/osurequest.cpp ../osu-master/osurequest.h \
@@ -2758,7 +2910,32 @@ release/playersearchdialog.o: ../osu-master/playersearchdialog.cpp ../osu-master
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QUrlQuery \
 		../../../Qt/6.5.1/mingw_64/include/QtCore/QEventLoop \
 		../osu-master/ui.h \
-		ui_playersearchdialog.h
+		ui_playersearchdialog.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLabel \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpicture.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextformat.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qpen.h \
+		../../../Qt/6.5.1/mingw_64/include/QtGui/qtextoption.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\playersearchdialog.o ..\osu-master\playersearchdialog.cpp
 
 release/qrc_resources.o: release/qrc_resources.cpp 

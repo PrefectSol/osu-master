@@ -27,6 +27,8 @@ namespace m_settings
     inline const int searchPageSize = 20;
 
     inline const int playLimit = 100;
+
+    inline const int availableImagesCount = 2;
 };
 QT_END_NAMESPACE
 
