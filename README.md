@@ -1,6 +1,20 @@
-# Osu-Master ( in progress... )
+# Osu-Master
 
-## Pre-Running
+## Comments
+ - Although this project has received its first release, it is still under development and needs to be finalized.
+ - You can also find developers on the discord server: https://discord.gg/wxWKxn2sjt
+
+## Fast Running
+
+...
+
+## Source Running
+
+### Getting source files
+```bash
+git clone https://github.com/PrefectSol/osu-master.git
+```
+ - Or download and unzip the ZIP archive.
 
 ### Linux run
 ```bash 
@@ -10,13 +24,11 @@ cd Osu-Master(Linux)
 ```
 
 ### Windows run
-```cmd 
+```bash 
 cd Osu-Master(Windows)\release
 
 .\osu-master.exe
 ```
-
-- The Release will be available after the main features are added
 
 <br>
 
@@ -33,6 +45,7 @@ cd Osu-Master(Windows)\release
 <br>
 
 ## Development Notes
+ - Published a first release
  - Added background images
  - Updated ui
  - Added country flags
@@ -52,3 +65,9 @@ cd Osu-Master(Windows)\release
  - Added osu player verification
  - Added a table of players
  - Added player selection
+
+
+ </br> </br>
+
+
+ By ***Prefect*** & ***Alexsho***
