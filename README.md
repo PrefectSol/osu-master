@@ -49,6 +49,7 @@ cd V1-Release-Windows
 <br>
 
 ## Development Notes
+ - Updated ui again
  - Published a first release
  - Added background images
  - Updated ui
