@@ -45,12 +45,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->contentViewer->setCurrentIndex(0);
     ui->buttonPanel->setStyleSheet("QPushButton { border: none; border-radius: 0; background-color: transparent; }"
-                                   "QPushButton:hover { background-color: blue; }"
-                                   "QPushButton:pressed { background-color: red; }"
+                                   "QPushButton:hover { background-color: white; }"
+                                   "QPushButton:pressed { background-color: gray; }"
                                    "QWidget { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");    ui->userTable->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->jsonViewer->setStyleSheet("QWidget { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
     ui->playerViewer->setStyleSheet("QWidget { border: none; }");
     ui->chooseButton->setStyleSheet("QGroupBox { border: 2px solid grey; background-color: rgba(215, 215, 215, 168); }");
+
+    ui->chooseImage->setStyleSheet("border: 2px solid grey; border-radius: 12px;");
+
 
     srand(time(NULL));
     const int imageNum = rand() % m_settings::availableImagesCount + 1;
@@ -181,10 +184,6 @@ void MainWindow::initOverview()
     ui->graphicbox->setStyleSheet("QGroupBox { border: 2px solid grey; border-radius: 12px; background-color: rgba(215, 215, 215, 168); }");
     ui->contentViewer->setStyleSheet("QStackWidget { background-color: rgba(255, 255, 255, 0); }");
 
-
-    //roundedPixmap.setMask(roundedPixmap.createHeuristicMask());
-    ui->chooseImage->setStyleSheet("QLabel { border: 2px solid grey; border-radius: 12px; }");
-
     QPixmap countryPixmap;
     const QString countryCode = m_osuParser.getCountryCode().toLower();
     const QUrl countryUrl("https://worldflags.net/assets/flaggor/flags/4x3/" + countryCode + ".svg");
@@ -200,6 +199,9 @@ void MainWindow::initOverview()
         ui->usercountrylabel->setAlignment(Qt::AlignCenter);
         ui->usercountrylabel->setPixmap(scaledPixmapCountry);
     }
+    QPixmap *roundedPixmap = new QPixmap;
+    roundedPixmap->setMask(roundedPixmap->createHeuristicMask());
+    ui->chooseImage->setStyleSheet("QLabel { border: 2px solid grey; border-radius: 12px; }");
 }
 
 void MainWindow::initpngs()
