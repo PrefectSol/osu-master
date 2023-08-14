@@ -6,7 +6,10 @@
 
 ## Fast Running
 
-...
+Download the archive from:
+https://github.com/PrefectSol/osu-master/releases/tag/osu-master-release and start
+
+</br>
 
 ## Source Running
 
@@ -15,20 +18,21 @@
 git clone https://github.com/PrefectSol/osu-master.git
 ```
  - Or download and unzip the ZIP archive.
-
+ 
 ### Linux run
 ```bash 
-cd Osu-Master(Linux)
+cd V1-Release-Linux
 
 ./osu-master
 ```
 
 ### Windows run
 ```bash 
-cd Osu-Master(Windows)\release
+cd V1-Release-Windows
 
 .\osu-master.exe
 ```
+
 
 <br>
 
