@@ -77,7 +77,9 @@ void MainWindow::on_goChoosePage_pressed()
     m_ui->contentViewer->setCurrentIndex(0);
     m_ui->goChoosePage->setStyleSheet(special::buttonActiveStyle);
     m_ui->goOverviewPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAimAssistPage->setStyleSheet(special::buttonInactiveStyle);
     m_ui->goSettingsPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAboutAppPage->setStyleSheet(special::buttonInactiveStyle);
 }
 
 void MainWindow::on_goOverviewPage_pressed()
@@ -96,7 +98,9 @@ void MainWindow::on_goOverviewPage_pressed()
         m_ui->contentViewer->setCurrentIndex(1);
         m_ui->goChoosePage->setStyleSheet(special::buttonInactiveStyle);
         m_ui->goOverviewPage->setStyleSheet(special::buttonActiveStyle);
+        m_ui->goAimAssistPage->setStyleSheet(special::buttonInactiveStyle);
         m_ui->goSettingsPage->setStyleSheet(special::buttonInactiveStyle);
+        m_ui->goAboutAppPage->setStyleSheet(special::buttonInactiveStyle);
     }
     else
     {
@@ -104,12 +108,34 @@ void MainWindow::on_goOverviewPage_pressed()
     }
 }
 
-void MainWindow::on_goSettingsPage_pressed()
+void MainWindow::on_goAimAssistPage_pressed()
 {
     m_ui->contentViewer->setCurrentIndex(2);
     m_ui->goChoosePage->setStyleSheet(special::buttonInactiveStyle);
     m_ui->goOverviewPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAimAssistPage->setStyleSheet(special::buttonActiveStyle);
+    m_ui->goSettingsPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAboutAppPage->setStyleSheet(special::buttonInactiveStyle);
+}
+
+void MainWindow::on_goSettingsPage_pressed()
+{
+    m_ui->contentViewer->setCurrentIndex(3);
+    m_ui->goChoosePage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goOverviewPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAimAssistPage->setStyleSheet(special::buttonInactiveStyle);
     m_ui->goSettingsPage->setStyleSheet(special::buttonActiveStyle);
+    m_ui->goAboutAppPage->setStyleSheet(special::buttonInactiveStyle);
+}
+
+void MainWindow::on_goAboutAppPage_pressed()
+{
+    m_ui->contentViewer->setCurrentIndex(4);
+    m_ui->goChoosePage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goOverviewPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAimAssistPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goSettingsPage->setStyleSheet(special::buttonInactiveStyle);
+    m_ui->goAboutAppPage->setStyleSheet(special::buttonActiveStyle);
 }
 
 void MainWindow::on_removeDataButton_pressed()
@@ -533,3 +559,5 @@ void MainWindow::on_tableModeButton_pressed()
 
     setTableMode();
 }
+
+

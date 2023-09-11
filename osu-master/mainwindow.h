@@ -62,6 +62,10 @@ private slots:
 
     void on_tableModeButton_pressed();
 
+    void on_goAimAssistPage_pressed();
+
+    void on_goAboutAppPage_pressed();
+
 private:
     void initialize();
 
