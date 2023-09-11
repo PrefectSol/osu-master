@@ -30,7 +30,7 @@ OsuRequest::OsuRequest() : m_clientId("23205"), m_clientSecret("JBzsoPDOaIA0wdG2
     reply->deleteLater();
 }
 
-bool OsuRequest::isPlayerExist(const QString &username)
+bool OsuRequest::setPlayer(const QString &username)
 {
     QUrl url(m_apiUrl + "/users/" + username);
 
@@ -68,6 +68,8 @@ bool OsuRequest::isPlayerExist(const QString &username)
 
 void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
 {
+    m_avatarUrl = jsonDocument["avatar_url"].toString().replace("\\/", "/");
+    m_username = jsonDocument["username"].toString();
     m_userId = jsonDocument["id"].toInt();
     m_playCount = jsonDocument["statistics"]["play_count"].toInt();
     m_globalRank = jsonDocument["statistics"]["global_rank"].toInt();
@@ -77,6 +79,16 @@ void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
     m_countryCode = jsonDocument["country_code"].toString();
 
     m_userJson = jsonDocument;
+}
+
+QString OsuRequest::getAvatarUrl()
+{
+    return m_avatarUrl;
+}
+
+QString OsuRequest::getUsername()
+{
+    return m_username;
 }
 
 void OsuRequest::setUserJson(const QString &json)
@@ -204,11 +216,6 @@ QString OsuRequest::getUserInfo()
 QJsonDocument OsuRequest::getUserJson()
 {
     return m_userJson;
-}
-
-bool OsuRequest::initUserJson(const QString &username)
-{
-    return isPlayerExist(username);
 }
 
 QJsonDocument OsuRequest::getTopScores(int userId)

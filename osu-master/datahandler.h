@@ -2,51 +2,63 @@
 #define DATAHANDLER_H
 
 #include <QMainWindow>
-
 #include <QFile>
 #include <QDir>
-
-#include "ui.h"
+#include <QVector>
+#include <QPixmap>
 
 class DataHandler
 {
 public:
-    DataHandler(const QString &folderPath, Ui::MainWindow *ui);
+    typedef struct UserPersistentData
+    {
+    public:
+        int userId = -1;
+        int playCount = -1;
+        int globalrank = -1;
+        int countryRank = -1;
+        int pp = -1;
+        float accuracy = -1.0f;
+        float avrCs = -1.0f;
+        float avrPp = -1.0f;
+        float avrAr = -1.0f;
+        float avrAccuracy = -1.0f;
+        float avrBpm = -1.0f;
+        float avrLength = -1.0f;
+        QString countryCode;
+    } UserPersistentData;
 
-    void loadData(bool *isChooseUser, int *userId, int *playCount, int *globalrank, double *ppCount, int *countryRank,
-                  float *cs, float *pp, float *ar, float *acc, float *bpm, float *length, double *userAccuracy,
-                  QString *countryCode);
+    typedef struct UserTableData
+    {
+        QString username;
+        QString userInfo;
+        QString userScoresInfo;
+        QPixmap image;
+    public:
+    } UserTableData;
 
-    void saveData(bool isChooseUser, int userId, int playCount, int globalrank, double ppCount, int countryRank,
-                  float cs, float pp, float ar, float acc, float bpm, float length, double userAccuracy,
-                  QString countryCode);
+    typedef struct AppPersistentData
+    {
+    public:
+        bool isChooseUser = false;
+        bool isTableModeAdd = true;
+        int usersTableRowCount = 0;
+        int usersTableColumnCount = 0;
+        QVector<QVector<UserTableData>> users;
+    } AppPersistentData;
 
-    void deleteData();
+    DataHandler(const QString &folderPath);
 
-    void usersRemove(const QString &key);
+    void loadData(DataHandler::AppPersistentData *appData, DataHandler::UserPersistentData *userData);
 
-    void usersInsert(const QString &key, const QString &value);
+    void saveData(const DataHandler::AppPersistentData &appData, const DataHandler::UserPersistentData &userData);
 
-    QString getUsersValue(const QString &key);
-
-    void topScoresRemove(const QString &key);
-
-    void topScoresInsert(const QString &key, const QString &value);
-
-    QString getTopScoresValue(const QString &key);
+    void deleteDataFile();
 
 private:
     const QString m_folderPath;
 
     const QString m_filePath;
-
-    Ui::MainWindow *m_ui;
-
-    QMap<QString, QString> m_users;
-
-    QMap<QString, QString> m_topScores;
-
-    bool m_isChooseUsername;
 
 protected:
 };

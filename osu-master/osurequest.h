@@ -26,6 +26,10 @@ class OsuRequest : public QMainWindow
 public:
     explicit OsuRequest();
 
+    QString getAvatarUrl();
+
+    QString getUsername();
+
     void getSearchUsers(const QString &keyword, QStringList *users);
 
     QString getMatchID(const QString &roomName);
@@ -114,9 +118,7 @@ public:
 
     QString getMatchInfo();
 
-    bool isPlayerExist(const QString &username);
-
-    bool initUserJson(const QString &username);
+    bool setPlayer(const QString &username);
 
 signals:
     void topScoreFinished();
@@ -139,6 +141,10 @@ private:
     QString m_matchInfo;
 
     QString m_topScoresInfo;
+
+    QString m_avatarUrl;
+
+    QString m_username;
 
     QJsonDocument m_userJson;
 

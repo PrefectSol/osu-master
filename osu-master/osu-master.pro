@@ -15,20 +15,17 @@ SOURCES += \
     datahandler.cpp \
     main.cpp \
     mainwindow.cpp \
-    osurequest.cpp \
-    playersearchdialog.cpp
+    osurequest.cpp
 
 HEADERS += \
     datahandler.h \
     mainwindow.h \
     osurequest.h \
-    playersearchdialog.h \
     settings.hpp \
     ui.h
 
 FORMS += \
-    mainwindow.ui \
-    playersearchdialog.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

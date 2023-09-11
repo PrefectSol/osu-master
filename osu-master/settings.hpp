@@ -6,30 +6,27 @@
 QT_BEGIN_NAMESPACE
 namespace settings
 {
+    inline bool isSaveData = false;
+
     inline bool isViewJson = false;
-
-    inline bool isSearcher = false;
-
 };
 QT_END_NAMESPACE
 
 QT_BEGIN_NAMESPACE
 namespace m_settings
 {
-    inline const QString saveFolder = "/appdata";
+    inline const QString dataFolder = "/appdata";
 
-    inline const QString saveFile = "/data.dat";
+    inline const QString dataFile = "/data.dat";
 
-    inline const QString endPoint = "-----------------END-----------------";
+    constexpr inline const int pixmapSize = 100;
 
-    inline const int pixmapSize = 100;
+    constexpr inline const int searchPageSize = 20;
 
-    inline const int searchPageSize = 20;
+    constexpr inline const int playLimit = 50;
 
-    inline const int playLimit = 100;
-
-    inline const int availableImagesCount = 2;
+    constexpr inline const int tableSize = 16;
 };
 QT_END_NAMESPACE
 
-#endif // SETTINGS_HPP
+#endif // !SETTINGS_HPP

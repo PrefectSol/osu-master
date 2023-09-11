@@ -17,15 +17,27 @@
 #include <QGraphicsPolygonItem>
 #include <QtMath>
 #include <QGroupBox>
+#include <QLayout>
 
 #include <future>
 #include <QPalette>
+#include <QVector2D>
+#include <QPoint>
 
 #include "datahandler.h"
 #include "osurequest.h"
-#include "playersearchdialog.h"
 #include "ui.h"
-#include <QLayout>
+
+namespace Special
+{
+    const inline QString tableModeAdd = "➕";
+
+    const inline QString tableModeRemove = "➖";
+
+    const inline QString buttonActiveStyle = "QPushButton { background-color: #bcbdbb; }";
+
+    const inline QString buttonInactiveStyle = "QPushButton { background-color: #ff3333; }";
+};
 
 class MainWindow : public QMainWindow
 {
@@ -36,84 +48,75 @@ public:
 
     ~MainWindow();
 
-    QJsonDocument m_userJson;
-
 private slots:
-    void on_addButton_pressed();
-
-    void on_rowsSpinBox_valueChanged(int rows);
-
-    void on_colsSpinBox_valueChanged(int columns);
-
-    void on_clearButton_pressed();
-
-    void on_chooseButton_pressed();
-
     void on_viewJsonCheckBox_stateChanged(int state);
 
     void on_userTable_cellClicked(int row, int column);
 
     void on_goChoosePage_pressed();
 
-    void on_goSettingsPage_pressed();
+    void on_goOverviewPage_pressed();
 
-    void on_goOverviewButton_pressed();
+    void on_goSettingsPage_pressed();
 
     void on_removeDataButton_pressed();
 
-    void on_goRecentButton_pressed();
-
-    void on_goBitmapLoaderButton_pressed();
-
-    void on_goOtherToolsButton_pressed();
-
-    void on_setFolderButton_pressed();
-
-    void on_startDownloaderButton_pressed();
-
     void on_userTable_cellDoubleClicked(int row, int column);
 
+    void on_verticalSlider_valueChanged(int value);
+
+    void on_horizontalSlider_valueChanged(int value);
+
+    void on_tableModeButton_pressed();
+
 private:
-    void loadUrlImage(const QUrl &url, QPixmap *pixmap);
+    void initialize();
 
-    void resizeEvent(QResizeEvent *event) override;
+    void setStyleSheets();
 
-    void loadAvatar(QPixmap *pixmap);
+    void addCell(int row, int column);
 
-    QString getSearchPlayer(bool *isOk);
+    void chooseCell(int row, int column);
 
-    QString getUsernameFromCell(int row, int column);
+    void clearCell(int row, int column);
 
-    void initOverview();
+    void loadUserScores();
 
-    void initStats();
+    void loadUrlImage(QPixmap *pixmap, const QUrl &url);
 
-    Ui::MainWindow *ui;
+    void setTableMode();
 
-    DataHandler *dataHandler;
+    void setTableUsers();
 
-    PlayerSearchDialog *playerSearch;
+    void setUserTable(int row, int column, const QString &username, const QPixmap &avatar);
+
+    QString getUserJsonFromUsername(const QString &username);
+
+//    void initOverview();
+
+//    void initStats();
+
+    Ui::MainWindow *m_ui;
+
+    DataHandler *m_dataHandler;
+
+    DataHandler::AppPersistentData m_appPersistentData;
+
+    DataHandler::UserPersistentData m_userPersistentData;
 
     OsuRequest m_osuParser;
 
-    QString m_avatarUrl;
+    std::future<void> m_future1;
 
-    QString m_username;
+//    QString m_userInfo;
 
-    bool m_isChoosePlayer;
+//    QGraphicsScene *scene;
 
-    QString m_userInfo;
+//    QPoint *aimPoint, *staminaPoint, *speedPoint, *accuracyPoint;
 
-    QGraphicsScene *scene;
+//    int aimValue, staminaValue, speedValue, accuracyValue;
 
-    QPoint *aimPoint, *staminaPoint, *speedPoint, *accuracyPoint;
-
-    int aimValue, staminaValue, speedValue, accuracyValue;
-
-    void initpngs();
-
-    void loadTopScores();
-
-    QString m_backgroundImagePath;
+//    void initpngs();
 };
+
 #endif // MAINWINDOW_H

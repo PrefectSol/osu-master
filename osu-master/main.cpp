@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QMessageBox>
+#include <QFile>
 #include <QtNetwork>
 #include <QEventLoop>
 #include <QTimer>
@@ -8,9 +9,11 @@
 
 bool isOnline()
 {
+    const QNetworkRequest request(QUrl("http://www.google.com"));
+
     QNetworkAccessManager manager;
-    QNetworkRequest request(QUrl("http://www.google.com"));
-    QNetworkReply *reply = manager.get(request);
+    const QNetworkReply *reply = manager.get(request);
+
     QEventLoop loop;
     QTimer timeoutTimer;
 
@@ -22,28 +25,28 @@ bool isOnline()
 
     loop.exec();
 
-    bool isOnline = false;
-
-    if (reply->bytesAvailable())
-    {
-        isOnline = true;
-    }
-
-    return isOnline;
+    return reply->bytesAvailable();
 }
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QApplication::setWindowIcon(QIcon(":/Images/icon.png"));
+    app.setWindowIcon(QIcon(":/Assets/icon.png"));
+
+    QFile file(":/Style/style.qss");
+    file.open(QFile::ReadOnly);
+
+    const QString styleSheet { QLatin1String(file.readAll()) };
+    app.setStyleSheet(styleSheet);
+
+    file.close();
 
     MainWindow window;
-
     window.show();
 
     if (!isOnline())
     {
-        QMessageBox::warning(nullptr, "Connection is not availiable", "Connection is not availiable");
+        QMessageBox::warning(nullptr, "Connection is not availiable", "Some functions may not be available");
     }
 
     return app.exec();
