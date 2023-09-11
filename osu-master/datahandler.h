@@ -7,12 +7,25 @@
 #include <QVector>
 #include <QPixmap>
 
+#include "settings.hpp"
+
 class DataHandler
 {
+private:
+    typedef struct UserData
+    {
+    public:
+        QString username = "";
+        QString userInfo = "";
+        QString userScoresInfo = "";
+        QPixmap image = QPixmap();
+    } UserData;
+
 public:
     typedef struct UserPersistentData
     {
     public:
+        bool isChooseUser = false;
         int userId = -1;
         int playCount = -1;
         int globalrank = -1;
@@ -25,33 +38,35 @@ public:
         float avrAccuracy = -1.0f;
         float avrBpm = -1.0f;
         float avrLength = -1.0f;
-        QString countryCode;
+        QString countryCode = "";
     } UserPersistentData;
-
-    typedef struct UserTableData
-    {
-        QString username;
-        QString userInfo;
-        QString userScoresInfo;
-        QPixmap image;
-    public:
-    } UserTableData;
 
     typedef struct AppPersistentData
     {
     public:
-        bool isChooseUser = false;
         bool isTableModeAdd = true;
         int usersTableRowCount = 0;
         int usersTableColumnCount = 0;
-        QVector<QVector<UserTableData>> users;
     } AppPersistentData;
+
+    typedef struct ArrayPersistentData
+    {
+    public:
+        QVector<QVector<UserData>> users =
+                QVector<QVector<UserData>>(m_settings::tableSize, QVector<UserData>(m_settings::tableSize));
+
+        UserData chooseUser = UserData();
+    } ArrayPersistentData;
 
     DataHandler(const QString &folderPath);
 
-    void loadData(DataHandler::AppPersistentData *appData, DataHandler::UserPersistentData *userData);
+    void loadData(DataHandler::AppPersistentData *appData,
+                  DataHandler::UserPersistentData *userData,
+                  DataHandler::ArrayPersistentData *arrayData);
 
-    void saveData(const DataHandler::AppPersistentData &appData, const DataHandler::UserPersistentData &userData);
+    void saveData(const DataHandler::AppPersistentData &appData,
+                  const DataHandler::UserPersistentData &userData,
+                  const DataHandler::ArrayPersistentData &arrayData);
 
     void deleteDataFile();
 

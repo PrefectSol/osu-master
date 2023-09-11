@@ -19,25 +19,18 @@
 #include <QGroupBox>
 #include <QLayout>
 
-#include <future>
 #include <QPalette>
 #include <QVector2D>
+#include <QVector>
 #include <QPoint>
+
+#include <QtConcurrent/QtConcurrent>
+#include <QFutureWatcher>
+#include <QList>
 
 #include "datahandler.h"
 #include "osurequest.h"
 #include "ui.h"
-
-namespace Special
-{
-    const inline QString tableModeAdd = "➕";
-
-    const inline QString tableModeRemove = "➖";
-
-    const inline QString buttonActiveStyle = "QPushButton { background-color: #bcbdbb; }";
-
-    const inline QString buttonInactiveStyle = "QPushButton { background-color: #ff3333; }";
-};
 
 class MainWindow : public QMainWindow
 {
@@ -80,43 +73,47 @@ private:
 
     void clearCell(int row, int column);
 
-    void loadUserScores();
-
     void loadUrlImage(QPixmap *pixmap, const QUrl &url);
 
     void setTableMode();
 
     void setTableUsers();
 
+    void setChooseUser();
+
     void setUserTable(int row, int column, const QString &username, const QPixmap &avatar);
 
+    void waitCellOperation(int row, int column);
+
+    void initOverviewImages();
+
+    void initOverview();
+
+    void initUserStats();
+
+    void initOverviewGraphics();
+
+    void drawStatsPolygon();
+
     QString getUserJsonFromUsername(const QString &username);
-
-//    void initOverview();
-
-//    void initStats();
 
     Ui::MainWindow *m_ui;
 
     DataHandler *m_dataHandler;
 
+    QGraphicsScene *m_statsScene;
+
+    OsuRequest m_osuParser;
+
     DataHandler::AppPersistentData m_appPersistentData;
 
     DataHandler::UserPersistentData m_userPersistentData;
 
-    OsuRequest m_osuParser;
+    DataHandler::ArrayPersistentData m_arrayPersistentData;
 
-    std::future<void> m_future1;
+    QList<QFuture<void>> m_tableThreads;
 
-//    QString m_userInfo;
-
-//    QGraphicsScene *scene;
-
-//    QPoint *aimPoint, *staminaPoint, *speedPoint, *accuracyPoint;
-
-//    int aimValue, staminaValue, speedValue, accuracyValue;
-
-//    void initpngs();
+    int m_aimValue, m_staminaValue, m_speedValue, m_accuracyValue;
 };
 
 #endif // MAINWINDOW_H

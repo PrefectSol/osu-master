@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>845</width>
-    <height>681</height>
+    <height>757</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,8 +82,17 @@
               <height>110</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>110</width>
+              <height>110</height>
+             </size>
+            </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -255,7 +264,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_7">
@@ -580,7 +589,7 @@
                 </widget>
                </item>
                <item row="0" column="0">
-                <widget class="QLabel" name="picturelabel_2">
+                <widget class="QLabel" name="picturelabel">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -664,7 +673,7 @@
                <item row="8" column="0" colspan="2">
                 <layout class="QHBoxLayout" name="horizontalLayout_21">
                  <item>
-                  <widget class="QLabel" name="label_37">
+                  <widget class="QLabel" name="SSHRankImage">
                    <property name="minimumSize">
                     <size>
                      <width>20</width>
@@ -717,7 +726,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_38">
+                  <widget class="QLabel" name="SSRankImage">
                    <property name="minimumSize">
                     <size>
                      <width>20</width>
@@ -764,7 +773,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_39">
+                  <widget class="QLabel" name="SHRankImage">
                    <property name="minimumSize">
                     <size>
                      <width>20</width>
@@ -811,7 +820,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_40">
+                  <widget class="QLabel" name="SRankImage">
                    <property name="minimumSize">
                     <size>
                      <width>20</width>
@@ -858,7 +867,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_41">
+                  <widget class="QLabel" name="ARankImage">
                    <property name="minimumSize">
                     <size>
                      <width>20</width>
@@ -960,7 +969,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="usernamelabel_2">
+                  <widget class="QLabel" name="usernamelabel">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -1246,7 +1255,7 @@
            <widget class="QLabel" name="label_2">
             <property name="font">
              <font>
-              <pointsize>13</pointsize>
+              <pointsize>16</pointsize>
              </font>
             </property>
             <property name="text">

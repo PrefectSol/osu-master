@@ -17,7 +17,6 @@
 #include <QUrlQuery>
 
 #include <QEventLoop>
-
 #include <QStringList>
 
 class OsuRequest : public QMainWindow
