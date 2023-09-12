@@ -19,112 +19,98 @@
 #include <QEventLoop>
 #include <QStringList>
 
+
 class OsuRequest : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit OsuRequest();
 
-    QString getAvatarUrl();
-
-    QString getUsername();
-
-    void getSearchUsers(const QString &keyword, QStringList *users);
-
-    QString getMatchID(const QString &roomName);
-
-    QJsonDocument getUserJson();
-
-    QJsonDocument getMatchJson(const QString &roomID);
-
-    QJsonDocument getTopScores(int userId);
+    bool setPlayer(const QString &username);
 
     void setUserVariables(const QJsonDocument &jsonDocument);
 
-    void setUserJson(const QString &json);
-
-    QString getCountryCode();
-
-    void setCountryCode(const QString &countryCode);
-
-    void setTopScoresJson(const QString &json);
-
-    QString getTopScoresInfo();
-
-    int getUserId();
-
-    void setUserId(int userId);
-
-    int getGlobalRank();
-
-    void setGlobalRank(int globalrank);
-
-    double getPpCount();
-
-    void setPpCount(double ppCount);
-
-    int getcountryRank();
-
-    void setcountryRank(int countryRank);
-
-    double getaccuracy();
-
-    void setaccuracy(double accuracy);
-
-    int getPlayCount();
-
-    void setPlayCount(int playCount);
-
-    float getPpAvg();
-
-    void setPpAvg(float avgPp);
-
-    void initPpAvg();
-
-    float getCsAvg();
-
-    void setCsAvg(float avgCs);
-
-    void initCspAvg();
-
-    float getAccAvg();
-
-    void setAccAvg(float avgAcc);
-
-    void initAccAvg();
-
-    float getArAvg();
-
-    void setArAvg(float avgAr);
-
-    void initArAvg();
-
-    float getBpmAvg();
-
-    void setBpmAvg(float avgBpm);
-
-    void initBpmAvg();
-
-    float getLengthAvg();
-
-    void setLengthAvg(float avgLength);
-
-    void initLengthAvg();
-
-    void initStats();
-
     QString getUserInfo();
 
-    QString getMatchInfo();
+    QJsonDocument getUserScores(int userId);
 
-    bool setPlayer(const QString &username);
+    QString getUserScoresInfo();
+
+    void calculateAvr();
+
+    void setUserJson(const QString &json);
+
+    void setUserScoresJson(const QString &json);
+
+    QString getAvatarUrl() const;
+    void setAvatarUrl(const QString &newAvatarUrl);
+
+    QString getUsername() const;
+    void setUsername(const QString &newUsername);
+
+    QString getCountryCode() const;
+    void setCountryCode(const QString &newCountryCode);
+
+    int getUserId() const;
+    void setUserId(int newUserId);
+
+    int getPlayCount() const;
+    void setPlayCount(int newPlayCount);
+
+    int getGlobalRank() const;
+    void setGlobalRank(int newGlobalRank);
+
+    int getCountryRank() const;
+    void setCountryRank(int newCountryRank);
+
+    int getPpCount() const;
+    void setPpCount(int newPpCount);
+
+    float getAccuracy() const;
+    void setAccuracy(float newAccuracy);
+
+    int getAvgPP() const;
+    void setAvgPP(int newAvgPP);
+
+    float getAvgAcc() const;
+    void setAvgAcc(float newAvgAcc);
+
+    float getAvgCs() const;
+    void setAvgCs(float newAvgCs);
+
+    float getAvgAr() const;
+    void setAvgAr(float newAvgAr);
+
+    float getAvgBpm() const;
+    void setAvgBpm(float newAvgBpm);
+
+    float getAvgLength() const;
+    void setAvgLength(float newAvgLength);
 
 signals:
-    void topScoreFinished();
-
-protected:
+    void userScoresFinished();
 
 private:
+    typedef struct UserField
+    {
+    public:
+        QString avatarUrl = "";
+        QString username = "";
+        QString countryCode = "";
+        int userId = 0;
+        int playCount = 0;
+        int globalRank = 0;
+        int countryRank = 0;
+        int ppCount = 0;
+        float accuracy = 0.0f;
+        float avgPP = 0.0f;
+        float avgCs = 0.0f;
+        float avgAcc = 0.0f;
+        float avgAr = 0.0f;
+        float avgBpm = 0.0f;
+        float avgLength = 0.0f;
+    } UserField;
+
     const QString m_clientId;
 
     const QString m_clientSecret;
@@ -137,35 +123,15 @@ private:
 
     QString m_userInfo;
 
-    QString m_matchInfo;
-
-    QString m_topScoresInfo;
-
-    QString m_avatarUrl;
-
-    QString m_username;
+    QString m_userScoresInfo;
 
     QJsonDocument m_userJson;
 
-    QJsonDocument m_matchJson;
+    QJsonDocument m_userScoresJson;
 
-    QJsonDocument m_topScoresJson;
+    UserField m_user;
 
-    int m_userId;
-
-    float avgPP, avgCs, avgAcc, avgAr, avgBpm, avgLength;
-
-    int m_playCount;
-
-    int m_globalRank;
-
-    double m_ppCount;
-
-    int m_countryRank;
-
-    double m_accuracy;
-
-    QString m_countryCode;
+protected:
 };
 
 #endif // OSUREQUEST_H

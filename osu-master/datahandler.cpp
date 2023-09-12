@@ -111,3 +111,13 @@ void DataHandler::deleteDataFile()
         folderDir.removeRecursively();
     }
 }
+
+QString DataHandler::getOsuSecret()
+{
+    return congif::congifuration.value("Credentials/clientSecret").toString();
+}
+
+QString DataHandler::getOsuId()
+{
+    return congif::congifuration.value("Credentials/clientId").toString();
+}

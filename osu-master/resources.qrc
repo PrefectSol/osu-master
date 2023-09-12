@@ -7,5 +7,6 @@
         <file>Assets/ranking-X.png</file>
         <file>Assets/ranking-XH.png</file>
         <file>Style/style.qss</file>
+        <file>congif/config.ini</file>
     </qresource>
 </RCC>

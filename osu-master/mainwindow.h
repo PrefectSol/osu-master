@@ -97,6 +97,10 @@ private:
 
     void initOverviewGraphics();
 
+    void initOsuRequestStats();
+
+    void saveOsuRequestStats();
+
     void drawStatsPolygon();
 
     QString getUserJsonFromUsername(const QString &username);

@@ -1,7 +1,8 @@
 #include "osurequest.h"
 #include "settings.hpp"
+#include "datahandler.h"
 
-OsuRequest::OsuRequest() : m_clientId("23205"), m_clientSecret("JBzsoPDOaIA0wdG2fiB5nfjy3rMbRa8Liy8ZYfzc"),
+OsuRequest::OsuRequest() : m_clientId(DataHandler::getOsuId()), m_clientSecret(DataHandler::getOsuSecret()),
     m_apiUrl("https://osu.ppy.sh/api/v2"), m_tokenUrl("https://osu.ppy.sh/oauth/token")
 {
     QNetworkAccessManager manager;
@@ -68,157 +69,20 @@ bool OsuRequest::setPlayer(const QString &username)
 
 void OsuRequest::setUserVariables(const QJsonDocument &jsonDocument)
 {
-    m_avatarUrl = jsonDocument["avatar_url"].toString().replace("\\/", "/");
-    m_username = jsonDocument["username"].toString();
-    m_userId = jsonDocument["id"].toInt();
-    m_playCount = jsonDocument["statistics"]["play_count"].toInt();
-    m_globalRank = jsonDocument["statistics"]["global_rank"].toInt();
-    m_ppCount = jsonDocument["statistics"]["pp"].toDouble();
-    m_countryRank = jsonDocument["statistics"]["country_rank"].toInt();
-    m_accuracy = jsonDocument["statistics"]["hit_accuracy"].toDouble();
-    m_countryCode = jsonDocument["country_code"].toString();
+    m_user.avatarUrl = jsonDocument["avatar_url"].toString().replace("\\/", "/");
+    m_user.username = jsonDocument["username"].toString();
+    m_user.countryCode = jsonDocument["country_code"].toString();
+    m_user.userId = jsonDocument["id"].toInt();
+    m_user.playCount = jsonDocument["statistics"]["play_count"].toInt();
+    m_user.globalRank = jsonDocument["statistics"]["global_rank"].toInt();
+    m_user.ppCount = jsonDocument["statistics"]["pp"].toDouble();
+    m_user.countryRank = jsonDocument["statistics"]["country_rank"].toInt();
+    m_user.accuracy = jsonDocument["statistics"]["hit_accuracy"].toDouble();
 
     m_userJson = jsonDocument;
 }
 
-QString OsuRequest::getAvatarUrl()
-{
-    return m_avatarUrl;
-}
-
-QString OsuRequest::getUsername()
-{
-    return m_username;
-}
-
-void OsuRequest::setUserJson(const QString &json)
-{
-    const QJsonDocument jsonDocument = QJsonDocument::fromJson(json.toUtf8());
-    m_userInfo = json;
-    setUserVariables(jsonDocument);
-}
-
-void OsuRequest::setTopScoresJson(const QString &json)
-{
-    const QJsonDocument jsonDocument = QJsonDocument::fromJson(json.toUtf8());
-    m_topScoresJson = jsonDocument;
-    m_topScoresInfo = json;
-    initStats();
-}
-
-void OsuRequest::getSearchUsers(const QString &keyword, QStringList *users)
-{
-    QUrl url(m_apiUrl + "/search");
-
-    QUrlQuery query;
-    query.addQueryItem("mode", "user");
-    query.addQueryItem("query", keyword);
-    query.addQueryItem("page", "1");
-
-    url.setQuery(query.query());
-
-    QNetworkRequest request(url);
-    request.setRawHeader("Content-Type", "application/json");
-    request.setRawHeader("Accept", "application/json");
-    request.setRawHeader("Authorization", ("Bearer " + m_token).toUtf8());
-
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(request);
-
-    QEventLoop loop;
-    QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    const QString response = QString(reply->readAll());
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(response.toUtf8());
-
-    reply->deleteLater();
-
-    const int pageSize = m_settings::searchPageSize;
-    const int total = jsonDocument["user"]["total"].toInt();
-    const int size = total - pageSize >= 0 ? pageSize : total;
-
-    for(int i = 0; i < size; i++)
-    {
-        (*users) << jsonDocument["user"]["data"][i]["username"].toString();
-    }
-}
-
-QString OsuRequest::getMatchID(const QString &roomName)
-{
-    QUrl url(m_apiUrl + "/matches");
-
-    QNetworkRequest request(url);
-    request.setRawHeader("Content-Type", "application/json");
-    request.setRawHeader("Accept", "application/json");
-    request.setRawHeader("Authorization", ("Bearer " + m_token).toUtf8());
-
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(request);
-
-    QEventLoop loop;
-    QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    QString response = QString(reply->readAll());
-    QJsonDocument matchJson = QJsonDocument::fromJson(response.toUtf8());
-
-    reply->deleteLater();
-
-    const int limit = matchJson["params"]["limit"].toInt();
-
-    for(int i = 0; i < limit; i++)
-    {
-        const QString name = matchJson["matches"][i]["name"].toString();
-        if (name == roomName)
-        {
-            return QString::number(matchJson["matches"][i]["id"].toInt());
-        }
-    }
-
-    return QString();
-}
-
-QJsonDocument OsuRequest::getMatchJson(const QString &roomID)
-{
-    QUrl url(m_apiUrl + "/matches/" + roomID);
-
-    QNetworkRequest request(url);
-    request.setRawHeader("Content-Type", "application/json");
-    request.setRawHeader("Accept", "application/json");
-    request.setRawHeader("Authorization", ("Bearer " + m_token).toUtf8());
-
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(request);
-
-    QEventLoop loop;
-    QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    m_matchInfo = QString(reply->readAll());
-    m_matchJson = QJsonDocument::fromJson(m_matchInfo.toUtf8());
-
-    reply->deleteLater();
-
-    return m_matchJson;
-}
-
-QString OsuRequest::getMatchInfo()
-{
-    return m_matchInfo;
-}
-
-QString OsuRequest::getUserInfo()
-{
-    return m_userInfo;
-}
-
-QJsonDocument OsuRequest::getUserJson()
-{
-    return m_userJson;
-}
-
-QJsonDocument OsuRequest::getTopScores(int userId)
+QJsonDocument OsuRequest::getUserScores(int userId)
 {
     QUrl url(m_apiUrl + "/users/" + QString::number(userId) + "/scores/best");
     QUrlQuery query;
@@ -239,237 +103,210 @@ QJsonDocument OsuRequest::getTopScores(int userId)
     QObject::connect(&manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     loop.exec();
 
-    m_topScoresInfo = QString(reply->readAll());
-    m_topScoresJson = QJsonDocument::fromJson(m_topScoresInfo.toUtf8());
+    m_userScoresInfo = QString(reply->readAll());
+    m_userScoresJson = QJsonDocument::fromJson(m_userScoresInfo.toUtf8());
 
     reply->deleteLater();
 
-    emit topScoreFinished();
+    emit userScoresFinished();
 
-    return m_topScoresJson;
+    return m_userScoresJson;
 }
 
-QString OsuRequest::getTopScoresInfo()
+QString OsuRequest::getUserScoresInfo()
 {
-    return m_topScoresInfo;
+    return m_userScoresInfo;
 }
 
-void OsuRequest::setUserId(int userId)
+void OsuRequest::calculateAvr()
 {
-    m_userId = userId;
-}
-
-int OsuRequest::getUserId()
-{
-    return m_userId;
-}
-
-void OsuRequest::setPlayCount(int playCount)
-{
-    m_playCount = playCount;
-}
-
-int OsuRequest::getPlayCount()
-{
-    return m_playCount;
-}
-
-float OsuRequest::getPpAvg()
-{
-    return avgPP;
-}
-
-void OsuRequest::setPpAvg(float avgPp)
-{
-    avgPP = avgPp;
-}
-
-void OsuRequest::initPpAvg()
-{
-    avgPP = 0;
     for(int i = 0; i < m_settings::playLimit; i++)
     {
-        avgPP += m_topScoresJson[i]["weight"]["pp"].toDouble();
+        m_user.avgBpm += m_userScoresJson[i]["beatmap"]["bpm"].toDouble();
+        m_user.avgAr += m_userScoresJson[i]["beatmap"]["ar"].toDouble();
+        m_user.avgAcc += m_userScoresJson[i]["accuracy"].toDouble() * 100.0f;
+        m_user.avgCs += m_userScoresJson[i]["beatmap"]["cs"].toDouble();
+        m_user.avgPP += m_userScoresJson[i]["weight"]["pp"].toDouble();
+        m_user.avgLength += m_userScoresJson[i]["beatmap"]["count_circles"].toDouble() +
+                            m_userScoresJson[i]["beatmap"]["count_sliders"].toDouble() +
+                            m_userScoresJson[i]["beatmap"]["count_spinners"].toDouble();
     }
 
-    avgPP /= m_settings::playLimit;
+    m_user.avgBpm /= m_settings::playLimit;
+    m_user.avgAr /= m_settings::playLimit;
+    m_user.avgCs /= m_settings::playLimit;
+    m_user.avgAcc /= m_settings::playLimit;
+    m_user.avgPP /= m_settings::playLimit;
+    m_user.avgLength /= m_settings::playLimit;
 }
 
-float OsuRequest::getCsAvg()
+void OsuRequest::setUserJson(const QString &json)
 {
-    return avgCs;
+    const QJsonDocument jsonDocument = QJsonDocument::fromJson(json.toUtf8());
+    m_userInfo = json;
+
+    setUserVariables(jsonDocument);
 }
 
-void OsuRequest::setCsAvg(float avgCs)
+void OsuRequest::setUserScoresJson(const QString &json)
 {
-    this->avgCs = avgCs;
+    m_userScoresJson = QJsonDocument::fromJson(json.toUtf8());
+    m_userScoresInfo = json;
+
+    calculateAvr();
 }
 
-void OsuRequest::initCspAvg()
+QString OsuRequest::getUserInfo()
 {
-    avgCs = 0;
-    for(int i = 0; i < m_settings::playLimit; i++)
-    {
-        avgCs += m_topScoresJson[i]["beatmap"]["cs"].toDouble();
-    }
-
-    avgCs /= m_settings::playLimit;
+    return m_userInfo;
 }
 
-float OsuRequest::getAccAvg()
+QString OsuRequest::getAvatarUrl() const
 {
-    return avgAcc;
+    return m_user.avatarUrl;
 }
 
-void OsuRequest::setAccAvg(float avgAcc)
+void OsuRequest::setAvatarUrl(const QString &newAvatarUrl)
 {
-    this->avgAcc = avgAcc;
+    m_user.avatarUrl = newAvatarUrl;
 }
 
-void OsuRequest::initAccAvg()
+QString OsuRequest::getUsername() const
 {
-    avgAcc = 0;
-    for(int i = 0; i < m_settings::playLimit; i++)
-    {
-        avgAcc += m_topScoresJson[i]["accuracy"].toDouble() * 100;
-    }
-
-    avgAcc /= m_settings::playLimit;
+    return m_user.username;
 }
 
-float OsuRequest::getArAvg()
+void OsuRequest::setUsername(const QString &newUsername)
 {
-    return avgAr;
+    m_user.username = newUsername;
 }
 
-void OsuRequest::setArAvg(float avgAr)
+QString OsuRequest::getCountryCode() const
 {
-    this->avgAr = avgAr;
+    return m_user.countryCode;
 }
 
-void OsuRequest::initArAvg()
+void OsuRequest::setCountryCode(const QString &newCountryCode)
 {
-    avgAr = 0;
-    for(int i = 0; i < m_settings::playLimit; i++)
-    {
-        avgAr += m_topScoresJson[i]["beatmap"]["ar"].toDouble();
-    }
-
-    avgAr /= m_settings::playLimit;
+    m_user.countryCode = newCountryCode;
 }
 
-float OsuRequest::getBpmAvg()
+int OsuRequest::getUserId() const
 {
-    return avgBpm;
+    return m_user.userId;
 }
 
-void OsuRequest::setBpmAvg(float avgBpm)
+void OsuRequest::setUserId(int newUserId)
 {
-    this->avgBpm = avgBpm;
+    m_user.userId = newUserId;
 }
 
-void OsuRequest::initBpmAvg()
+int OsuRequest::getPlayCount() const
 {
-    avgBpm = 0;
-    for(int i = 0; i < m_settings::playLimit; i++)
-    {
-        avgBpm += m_topScoresJson[i]["beatmap"]["bpm"].toDouble();
-    }
-
-    avgBpm /= m_settings::playLimit;
+    return m_user.playCount;
 }
 
-void OsuRequest::initStats()
+void OsuRequest::setPlayCount(int newPlayCount)
 {
-    const int limit = m_settings::playLimit;
-    avgAcc = avgAr = avgBpm = avgCs = avgPP = avgLength = 0;
-
-    for(int i = 0; i < limit; i++)
-    {
-        avgBpm += m_topScoresJson[i]["beatmap"]["bpm"].toDouble();
-        avgAr += m_topScoresJson[i]["beatmap"]["ar"].toDouble();
-        avgAcc += m_topScoresJson[i]["accuracy"].toDouble() * 100;
-        avgCs += m_topScoresJson[i]["beatmap"]["cs"].toDouble();
-        avgPP += m_topScoresJson[i]["weight"]["pp"].toDouble();
-        avgLength += m_topScoresJson[i]["beatmap"]["count_circles"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_sliders"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_spinners"].toDouble();
-    }
-
-    avgBpm /= limit;
-    avgAr /= limit;
-    avgCs /= limit;
-    avgAcc /= limit;
-    avgPP /= limit;
-    avgLength /= limit;
+    m_user.playCount = newPlayCount;
 }
 
-float OsuRequest::getLengthAvg()
+int OsuRequest::getGlobalRank() const
 {
-    return avgLength;
+    return m_user.globalRank;
 }
 
-void OsuRequest::setLengthAvg(float avgLength)
+void OsuRequest::setGlobalRank(int newGlobalRank)
 {
-    this->avgLength = avgLength;
+    m_user.globalRank = newGlobalRank;
 }
 
-void OsuRequest::initLengthAvg()
+int OsuRequest::getCountryRank() const
 {
-    avgLength = 0;
-    for(int i = 0; i < m_settings::playLimit; i++)
-    {
-        avgLength += m_topScoresJson[i]["beatmap"]["count_circles"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_sliders"].toDouble() +  m_topScoresJson[i]["beatmap"]["count_spinners"].toDouble();
-    }
-
-    avgLength /= m_settings::playLimit;
+    return m_user.countryRank;
 }
 
-
-int OsuRequest::getGlobalRank()
+void OsuRequest::setCountryRank(int newCountryRank)
 {
-    return m_globalRank;
+    m_user.countryRank = newCountryRank;
 }
 
-void OsuRequest::setGlobalRank(int globalrank)
+int OsuRequest::getPpCount() const
 {
-    m_globalRank = globalrank;
+    return m_user.ppCount;
 }
 
-double OsuRequest::getPpCount()
+void OsuRequest::setPpCount(int newPpCount)
 {
-    return m_ppCount;
+    m_user.ppCount = newPpCount;
 }
 
-void OsuRequest::setPpCount(double ppCount)
+float OsuRequest::getAccuracy() const
 {
-    m_ppCount = ppCount;
+    return m_user.accuracy;
 }
 
-int OsuRequest::getcountryRank()
+void OsuRequest::setAccuracy(float newAccuracy)
 {
-    return m_countryRank;
+    m_user.accuracy = newAccuracy;
 }
 
-void OsuRequest::setcountryRank(int countryRank)
+int OsuRequest::getAvgPP() const
 {
-    m_countryRank = countryRank;
+    return m_user.avgPP;
 }
 
-double OsuRequest::getaccuracy()
+void OsuRequest::setAvgPP(int newAvgPP)
 {
-    return m_accuracy;
+    m_user.avgPP = newAvgPP;
 }
 
-void OsuRequest::setaccuracy(double accuracy)
+float OsuRequest::getAvgCs() const
 {
-    m_accuracy = accuracy;
+    return m_user.avgAr;
 }
 
-QString OsuRequest::getCountryCode()
+void OsuRequest::setAvgCs(float newAvgCs)
 {
-    return m_countryCode;
+    m_user.avgCs = newAvgCs;
 }
 
-void OsuRequest::setCountryCode(const QString &countryCode)
+float OsuRequest::getAvgAcc() const
 {
-    m_countryCode = countryCode;
+    return m_user.avgAcc;
+}
+
+void OsuRequest::setAvgAcc(float newAvgAcc)
+{
+    m_user.avgAcc = newAvgAcc;
+}
+
+float OsuRequest::getAvgAr() const
+{
+    return m_user.avgAr;
+}
+
+void OsuRequest::setAvgAr(float newAvgAr)
+{
+    m_user.avgAr = newAvgAr;
+}
+
+float OsuRequest::getAvgBpm() const
+{
+    return m_user.avgBpm;
+}
+
+void OsuRequest::setAvgBpm(float newAvgBpm)
+{
+    m_user.avgBpm = newAvgBpm;
+}
+
+float OsuRequest::getAvgLength() const
+{
+    return m_user.avgLength;
+}
+
+void OsuRequest::setAvgLength(float newAvgLength)
+{
+    m_user.avgLength = newAvgLength;
 }

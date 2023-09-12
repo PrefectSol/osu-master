@@ -70,6 +70,10 @@ public:
 
     void deleteDataFile();
 
+    static QString getOsuSecret();
+
+    static QString getOsuId();
+
 private:
     const QString m_folderPath;
 

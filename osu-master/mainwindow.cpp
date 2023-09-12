@@ -25,6 +25,8 @@ MainWindow::~MainWindow()
     m_appPersistentData.usersTableRowCount = m_ui->verticalSlider->value();
     m_appPersistentData.usersTableColumnCount = m_ui->horizontalSlider->value();
 
+    saveOsuRequestStats();
+
     m_dataHandler->saveData(m_appPersistentData, m_userPersistentData, m_arrayPersistentData);
 
     delete m_ui;
@@ -68,6 +70,7 @@ void MainWindow::initialize()
 
     initOverviewImages();
     initOverviewGraphics();
+    initOsuRequestStats();
 
     on_goChoosePage_pressed();
 }
@@ -196,6 +199,11 @@ void MainWindow::setTableUsers()
 
 void MainWindow::setChooseUser()
 {
+    if (!m_userPersistentData.isChooseUser)
+    {
+        return;
+    }
+
     const QString username = m_arrayPersistentData.chooseUser.username;
     const QPixmap image = m_arrayPersistentData.chooseUser.image;
 
@@ -267,7 +275,7 @@ void MainWindow::initOverview()
     initUserStats();
     drawStatsPolygon();
 
-    const float userAccuracy = m_osuParser.getaccuracy();
+    const float userAccuracy = m_osuParser.getAccuracy();
     const float roundedAccuracy = int(userAccuracy * 100.0f) / 100.0f;
 
     m_ui->usernamelabel->setText(m_ui->chooseUsername->text());
@@ -275,7 +283,7 @@ void MainWindow::initOverview()
     m_ui->playcountlabel->setText(QString::number(m_osuParser.getPlayCount()));
     m_ui->globalranklabel->setText("#" + QString::number(m_osuParser.getGlobalRank()));
     m_ui->PPlabel->setText(QString::number(m_osuParser.getPpCount()) + "pp");
-    m_ui->countrylabel->setText("#" + QString::number(m_osuParser.getcountryRank()));
+    m_ui->countrylabel->setText("#" + QString::number(m_osuParser.getCountryRank()));
     m_ui->accuracylabel->setText(QString::number(roundedAccuracy) + "%");
 
     const QString countryCode = m_osuParser.getCountryCode().toLower();
@@ -300,12 +308,12 @@ void MainWindow::initOverview()
 
 void MainWindow::initUserStats()
 {
-    const float cs = m_osuParser.getCsAvg();
-    const float pp = m_osuParser.getPpAvg();
-    const float ar = m_osuParser.getArAvg();
-    const float acc = m_osuParser.getAccAvg();
-    const float bpm = m_osuParser.getBpmAvg();
-    const float length = qSqrt(m_osuParser.getLengthAvg());
+    const float cs = m_osuParser.getAvgCs();
+    const float pp = m_osuParser.getAvgPP();
+    const float ar = m_osuParser.getAvgAr();
+    const float acc = m_osuParser.getAvgAcc();
+    const float bpm = m_osuParser.getAvgBpm();
+    const float length = qSqrt(m_osuParser.getAvgLength());
 
     m_aimValue = (ar * qPow(cs, 0.1) / qPow(6, 0.1) / qPow(ar + cs, 0.1) * pp / (ar + cs + pp) * 100) +
                 (1.25 * qPow((cs + pp + ar + acc) / 4, 1.3));
@@ -357,8 +365,51 @@ void MainWindow::initOverviewGraphics()
                               m_graphics::polygonSize - tab * (i + 1), m_graphics::streakWidth);
         m_statsScene->addLine(-m_graphics::streakWidth, m_graphics::polygonSize - tab * (i + 1),
                               m_graphics::streakWidth, m_graphics::polygonSize - tab * (i + 1));
-
     }
+}
+
+void MainWindow::initOsuRequestStats()
+{
+    if (!m_userPersistentData.isChooseUser)
+    {
+        return;
+    }
+
+    m_osuParser.setUserId(m_userPersistentData.userId);
+    m_osuParser.setPlayCount(m_userPersistentData.playCount);
+    m_osuParser.setGlobalRank(m_userPersistentData.globalrank);
+    m_osuParser.setCountryRank(m_userPersistentData.countryRank);
+    m_osuParser.setPpCount(m_userPersistentData.pp);
+    m_osuParser.setAccuracy(m_userPersistentData.accuracy);
+    m_osuParser.setAvgCs(m_userPersistentData.avrCs);
+    m_osuParser.setAvgPP(m_userPersistentData.avrPp);
+    m_osuParser.setAvgAr(m_userPersistentData.avrAr);
+    m_osuParser.setAvgAcc(m_userPersistentData.avrAccuracy);
+    m_osuParser.setAvgBpm(m_userPersistentData.avrBpm);
+    m_osuParser.setAvgLength(m_userPersistentData.avrLength);
+    m_osuParser.setCountryCode(m_userPersistentData.countryCode);
+}
+
+void MainWindow::saveOsuRequestStats()
+{
+    if (!settings::isSaveData)
+    {
+        return;
+    }
+
+    m_userPersistentData.userId = m_osuParser.getUserId();
+    m_userPersistentData.playCount = m_osuParser.getPlayCount();
+    m_userPersistentData.globalrank = m_osuParser.getGlobalRank();
+    m_userPersistentData.countryRank = m_osuParser.getCountryRank();
+    m_userPersistentData.pp = m_osuParser.getPpCount();
+    m_userPersistentData.accuracy = m_osuParser.getAccuracy();
+    m_userPersistentData.avrCs = m_osuParser.getAvgCs();
+    m_userPersistentData.avrPp = m_osuParser.getAvgPP();
+    m_userPersistentData.avrAr = m_osuParser.getAvgAr();
+    m_userPersistentData.avrAccuracy = m_osuParser.getAvgAcc();
+    m_userPersistentData.avrBpm = m_osuParser.getAvgBpm();
+    m_userPersistentData.avrLength = m_osuParser.getAvgLength();
+    m_userPersistentData.countryCode = m_osuParser.getCountryCode();
 }
 
 void MainWindow::drawStatsPolygon()
@@ -413,8 +464,8 @@ void MainWindow::addCell(int row, int column)
     QFuture<void> future = QtConcurrent::run([=]()
     {
         m_arrayPersistentData.users[row][column].userScoresInfo =
-                QString::fromUtf8(m_osuParser.getTopScores(m_osuParser.getUserId()).toJson());
-        m_osuParser.initStats();
+                QString::fromUtf8(m_osuParser.getUserScores(m_osuParser.getUserId()).toJson());
+        m_osuParser.calculateAvr();
     });
 
     const int index = row * m_settings::tableSize + column;
@@ -469,6 +520,9 @@ void MainWindow::chooseCell(int row, int column)
     m_arrayPersistentData.chooseUser.image = image;
     m_arrayPersistentData.chooseUser.userInfo = m_arrayPersistentData.users[row][column].userInfo;
     m_arrayPersistentData.chooseUser.userScoresInfo = m_arrayPersistentData.users[row][column].userScoresInfo;
+
+    m_osuParser.setUserJson(m_arrayPersistentData.chooseUser.userInfo);
+    m_osuParser.setUserScoresJson(m_arrayPersistentData.chooseUser.userScoresInfo);
 
     m_userPersistentData.isChooseUser = true;
 }
@@ -559,5 +613,3 @@ void MainWindow::on_tableModeButton_pressed()
 
     setTableMode();
 }
-
-

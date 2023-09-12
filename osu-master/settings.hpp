@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QColor>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace settings
@@ -61,5 +62,11 @@ namespace special
 };
 QT_END_NAMESPACE
 
+QT_BEGIN_NAMESPACE
+namespace congif
+{
+    const inline QSettings congifuration(":/congif/config.ini", QSettings::IniFormat);
+};
+QT_END_NAMESPACE
 
 #endif // !SETTINGS_HPP
