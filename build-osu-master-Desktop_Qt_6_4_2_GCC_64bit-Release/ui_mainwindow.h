@@ -159,13 +159,15 @@ public:
     QLabel *label_13;
     QSpacerItem *horizontalSpacer_11;
     QSpacerItem *verticalSpacer_9;
-    QHBoxLayout *horizontalLayout_7;
+    QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer_10;
     QVBoxLayout *verticalLayout_13;
-    QLabel *label_5;
-    QVBoxLayout *verticalLayout_11;
     QLabel *label_6;
+    QVBoxLayout *verticalLayout_11;
+    QLabel *label_5;
+    QHBoxLayout *horizontalLayout_7;
     QLabel *label_7;
+    QLineEdit *lineEdit_2;
     QSpacerItem *horizontalSpacer_8;
     QVBoxLayout *verticalLayout_10;
     QLabel *label_8;
@@ -958,44 +960,62 @@ public:
 
         verticalLayout_14->addItem(verticalSpacer_9);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
         horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_7->addItem(horizontalSpacer_10);
+        horizontalLayout_9->addItem(horizontalSpacer_10);
 
         verticalLayout_13 = new QVBoxLayout();
         verticalLayout_13->setObjectName("verticalLayout_13");
-        label_5 = new QLabel(aboutAppPage);
-        label_5->setObjectName("label_5");
-        label_5->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_13->addWidget(label_5);
-
-        verticalLayout_11 = new QVBoxLayout();
-        verticalLayout_11->setObjectName("verticalLayout_11");
         label_6 = new QLabel(aboutAppPage);
         label_6->setObjectName("label_6");
         label_6->setFont(font4);
         label_6->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_11->addWidget(label_6);
+        verticalLayout_13->addWidget(label_6);
 
+        verticalLayout_11 = new QVBoxLayout();
+        verticalLayout_11->setObjectName("verticalLayout_11");
+        label_5 = new QLabel(aboutAppPage);
+        label_5->setObjectName("label_5");
+        label_5->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_11->addWidget(label_5);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
         label_7 = new QLabel(aboutAppPage);
         label_7->setObjectName("label_7");
         label_7->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_11->addWidget(label_7);
+        horizontalLayout_7->addWidget(label_7);
+
+        lineEdit_2 = new QLineEdit(aboutAppPage);
+        lineEdit_2->setObjectName("lineEdit_2");
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy3);
+        lineEdit_2->setMinimumSize(QSize(30, 0));
+        lineEdit_2->setMaximumSize(QSize(100, 16777215));
+        lineEdit_2->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_7->addWidget(lineEdit_2);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_7);
 
 
         verticalLayout_13->addLayout(verticalLayout_11);
 
 
-        horizontalLayout_7->addLayout(verticalLayout_13);
+        horizontalLayout_9->addLayout(verticalLayout_13);
 
         horizontalSpacer_8 = new QSpacerItem(178, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_7->addItem(horizontalSpacer_8);
+        horizontalLayout_9->addItem(horizontalSpacer_8);
 
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setObjectName("verticalLayout_10");
@@ -1019,14 +1039,14 @@ public:
         verticalLayout_10->addWidget(label_10);
 
 
-        horizontalLayout_7->addLayout(verticalLayout_10);
+        horizontalLayout_9->addLayout(verticalLayout_10);
 
         horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_7->addItem(horizontalSpacer_12);
+        horizontalLayout_9->addItem(horizontalSpacer_12);
 
 
-        verticalLayout_14->addLayout(horizontalLayout_7);
+        verticalLayout_14->addLayout(horizontalLayout_9);
 
         verticalSpacer_10 = new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -1084,9 +1104,9 @@ public:
 
         lineEdit = new QLineEdit(aboutAppPage);
         lineEdit->setObjectName("lineEdit");
-        sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy);
-        lineEdit->setMinimumSize(QSize(300, 0));
+        sizePolicy3.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy3);
+        lineEdit->setMinimumSize(QSize(350, 0));
         lineEdit->setAlignment(Qt::AlignCenter);
         lineEdit->setReadOnly(true);
 
@@ -1184,12 +1204,13 @@ public:
         checkBox_3->setText(QCoreApplication::translate("MainWindow", "Lorem ipsum", nullptr));
         label_19->setText(QString());
         label_18->setText(QString());
-        label_4->setText(QCoreApplication::translate("MainWindow", "About App", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "A B O U T    A P P", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "osu! Master - This is a multifunctional application that contains some OSU tools!", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Developer: Prefect", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "C O N T A C T", nullptr));
-        label_7->setText(QCoreApplication::translate("MainWindow", "Discord: prefectsol", nullptr));
-        label_8->setText(QCoreApplication::translate("MainWindow", "C O N T R I B U R O R S", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Developer: Prefect", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "Discord:", nullptr));
+        lineEdit_2->setText(QCoreApplication::translate("MainWindow", "prefectsol", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "C O N T R I B U T O R S", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "Alexsho - design v.1", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "Akoliboba - cursor handler", nullptr));
         label_14->setText(QCoreApplication::translate("MainWindow", "Collaboration", nullptr));

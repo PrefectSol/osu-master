@@ -2,7 +2,7 @@
 #include "settings.hpp"
 #include "datahandler.h"
 
-OsuRequest::OsuRequest() : m_clientId(DataHandler::getOsuId()), m_clientSecret(DataHandler::getOsuSecret()),
+OsuRequest::OsuRequest() : m_clientId(DataHandler::getClientId()), m_clientSecret(DataHandler::getClientSecret()),
     m_apiUrl("https://osu.ppy.sh/api/v2"), m_tokenUrl("https://osu.ppy.sh/oauth/token")
 {
     QNetworkAccessManager manager;

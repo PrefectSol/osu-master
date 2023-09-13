@@ -19,7 +19,6 @@
 #include <QEventLoop>
 #include <QStringList>
 
-
 class OsuRequest : public QMainWindow
 {
     Q_OBJECT

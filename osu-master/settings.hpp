@@ -65,7 +65,7 @@ QT_END_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace congif
 {
-    const inline QSettings congifuration(":/congif/config.ini", QSettings::IniFormat);
+    const QSettings congifuration(":/congif/config.ini", QSettings::IniFormat);
 };
 QT_END_NAMESPACE
 

@@ -112,12 +112,12 @@ void DataHandler::deleteDataFile()
     }
 }
 
-QString DataHandler::getOsuSecret()
+QString DataHandler::getClientSecret()
 {
     return congif::congifuration.value("Credentials/clientSecret").toString();
 }
 
-QString DataHandler::getOsuId()
+QString DataHandler::getClientId()
 {
     return congif::congifuration.value("Credentials/clientId").toString();
 }
