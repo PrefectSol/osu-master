@@ -21,6 +21,10 @@ QT_END_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace m_settings
 {
+    inline const int themesSize = 6;
+
+    const QString themes[themesSize] = { "Incrypt", "Medize", "Obit", "SpyBot", "SyNet", "Toolery" };
+
     inline const QString dataFolder = "/appdata";
 
     inline const QString dataFile = "/data.dat";
@@ -32,6 +36,12 @@ namespace m_settings
     constexpr inline const int playLimit = 50;
 
     constexpr inline const int tableSize = 16;
+
+    constexpr inline const int osuMapWidth = 640;
+
+    constexpr inline const int osuMapHeight = 480;
+
+    constexpr inline const int heightOffset = 8;
 };
 QT_END_NAMESPACE
 

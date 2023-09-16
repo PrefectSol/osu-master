@@ -277,7 +277,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="choosePage">
        <layout class="QGridLayout" name="gridLayout_7">
@@ -1446,6 +1446,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </property>
          </spacer>
         </item>
+        <item row="3" column="0">
+         <spacer name="verticalSpacer_14">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>494</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item row="0" column="0" colspan="3">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -1493,10 +1506,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </item>
          </layout>
         </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="label_18">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="0">
          <spacer name="verticalSpacer_12">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -1506,15 +1529,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </property>
          </spacer>
         </item>
-        <item row="2" column="2">
-         <widget class="QLabel" name="label_19">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
+        <item row="2" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_18">
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Theme (Experimental)</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="themes"/>
+          </item>
+         </layout>
         </item>
-        <item row="3" column="1">
-         <widget class="QLabel" name="label_18">
+        <item row="4" column="2">
+         <widget class="QLabel" name="label_19">
           <property name="text">
            <string/>
           </property>

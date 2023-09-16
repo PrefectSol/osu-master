@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "aimassist.h"
 #include "settings.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), m_isLaunchMode(true)
 {
     m_ui = new Ui::MainWindow;
     m_ui->setupUi(this);
@@ -13,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_statsScene = new QGraphicsScene();
 
-    setStyleSheets();
     initialize();
+    setStyleSheets();
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +25,7 @@ MainWindow::~MainWindow()
 
     m_appPersistentData.usersTableRowCount = m_ui->verticalSlider->value();
     m_appPersistentData.usersTableColumnCount = m_ui->horizontalSlider->value();
+    m_appPersistentData.theme = m_ui->themes->currentText().toStdString();
 
     saveOsuRequestStats();
 
@@ -36,6 +38,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setStyleSheets()
 {
+    on_themes_currentIndexChanged(4);
     m_ui->jsonViewer->setStyleSheet("QTextBrowser { color: #ffffff; }");
 }
 
@@ -54,6 +57,13 @@ void MainWindow::initialize()
 
     m_ui->horizontalSlider->setValue(m_appPersistentData.usersTableColumnCount);
     on_horizontalSlider_valueChanged(m_appPersistentData.usersTableColumnCount);
+
+    for (int i = 0; i < m_settings::themesSize; i++)
+    {
+        m_ui->themes->addItem(m_settings::themes[i]);
+    }
+
+    m_ui->themes->setCurrentText(QString::fromStdString(m_appPersistentData.theme));
 
     setTableMode();
     setTableUsers();
@@ -422,10 +432,10 @@ void MainWindow::drawStatsPolygon()
     const int speedValue = m_speedValue * m_graphics::statsFactor;
     const int accuracyValue = m_accuracyValue * m_graphics::statsFactor;
 
-    const QPoint aimPoint(0, -std::min(m_graphics::polygonSize, aimValue));
-    const QPoint staminaPoint(0, std::min(m_graphics::polygonSize, staminaValue));
-    const QPoint speedPoint(std::min(m_graphics::polygonSize, speedValue), 0);
-    const QPoint accuracyPoint(-std::min(m_graphics::polygonSize, accuracyValue), 0);
+    const QPoint aimPoint(0, -qMin(m_graphics::polygonSize, aimValue));
+    const QPoint staminaPoint(0, qMin(m_graphics::polygonSize, staminaValue));
+    const QPoint speedPoint(qMin(m_graphics::polygonSize, speedValue), 0);
+    const QPoint accuracyPoint(-qMin(m_graphics::polygonSize, accuracyValue), 0);
 
     QPolygon statPolygon;
     statPolygon << aimPoint << speedPoint << staminaPoint << accuracyPoint;
@@ -613,7 +623,6 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 void MainWindow::on_tableModeButton_pressed()
 {
     m_appPersistentData.isTableModeAdd = !m_appPersistentData.isTableModeAdd;
-
     setTableMode();
 }
 
@@ -628,6 +637,44 @@ void MainWindow::on_LaunchAssist_pressed()
         return;
     }
 
+    AppHandler m_osuApp;
+    if (m_osuApp.getStatus() != AppHandler::ResultCode::success)
+    {
+        QMessageBox::warning(this, "Aim Assist", "osu! not running");
+        return;
+    }
 
+    m_isLaunchMode = !m_isLaunchMode;
+    if (m_isLaunchMode)
+    {
+        m_assistThread.cancel();
+
+        m_ui->LaunchAssist->setText("Launch");
+        m_ui->LaunchAssist->setStyleSheet(special::buttonInactiveStyle);
+    }
+    else
+    {
+        m_assistThread = QtConcurrent::run([=]()
+        {
+            assist::run();
+        });
+
+        m_ui->LaunchAssist->setText("Stop");
+        m_ui->LaunchAssist->setStyleSheet(special::buttonActiveStyle);
+    }
+}
+
+
+void MainWindow::on_themes_currentIndexChanged(int index)
+{
+    m_appPersistentData.theme = m_settings::themes[index].toStdString();
+
+    QFile file(":/Style/" + QString::fromStdString(m_appPersistentData.theme) + ".qss");
+    file.open(QFile::ReadOnly);
+
+    const QString styleSheet { QLatin1String(file.readAll()) };
+    this->setStyleSheet(styleSheet);
+
+    file.close();
 }
 

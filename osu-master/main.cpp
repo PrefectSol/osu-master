@@ -33,14 +33,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/Assets/icon.png"));
 
-    QFile file(":/Style/style.qss");
-    file.open(QFile::ReadOnly);
-
-    const QString styleSheet { QLatin1String(file.readAll()) };
-    app.setStyleSheet(styleSheet);
-
-    file.close();
-
     MainWindow window;
     window.show();
 

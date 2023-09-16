@@ -6,7 +6,12 @@
         <file>Assets/ranking-SH.png</file>
         <file>Assets/ranking-X.png</file>
         <file>Assets/ranking-XH.png</file>
-        <file>Style/style.qss</file>
         <file>congif/config.ini</file>
+        <file>Style/Incrypt.qss</file>
+        <file>Style/Medize.qss</file>
+        <file>Style/Obit.qss</file>
+        <file>Style/SpyBot.qss</file>
+        <file>Style/SyNet.qss</file>
+        <file>Style/Toolery.qss</file>
     </qresource>
 </RCC>

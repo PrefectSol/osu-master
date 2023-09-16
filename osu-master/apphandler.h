@@ -36,6 +36,8 @@ public:
 
     AppHandler();
 
+    AppHandler::ResultCode initialize();
+
     AppHandler::ResultCode getStatus();
 
     AppHandler::ResultCode getMapPath(std::string *path);
@@ -53,15 +55,15 @@ public:
     int getWidth();
 
 private:
-    const std::wstring m_processName;
-
     const char *m_cfgExtension;
 
     const char *m_osuExtension;
 
-    const std::string m_chat;
+    std::string m_appCfg;
 
-    const std::string m_appCfg;
+    std::wstring m_processName;
+
+    std::string m_chat;
 
     AppHandler::ResultCode m_status;
 

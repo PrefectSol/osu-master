@@ -6,29 +6,40 @@ std::string p_mapProcName;
 std::size_t p_appNameSize;
 
 AppHandler::AppHandler()
-    : m_processName(settings::osuClientName.toStdWString() + L".exe"),
-    m_cfgExtension(".cfg"), m_osuExtension(".osu"), m_chat(settings::osuBotName.toStdString()),
-    m_appCfg(settings::osuClientName.toStdString() + ".cfg"),
+    : m_cfgExtension(".cfg"), m_osuExtension(".osu"),
     m_status(AppHandler::ResultCode()),
     m_pid(0), m_keyOsuLeft(std::string()),
     m_keyOsuRight(std::string()), m_keyPause(std::string()), m_keySkip(std::string()), m_beatmapDirectory(std::string()),
     m_height(0), m_width(0)
 {
+    m_status = initialize();
+}
+
+AppHandler::ResultCode AppHandler::initialize()
+{
+    m_appCfg = settings::osuClientName.toStdString() + ".cfg";
+    m_chat = settings::osuBotName.toStdString();
+    m_processName = settings::osuClientName.toStdWString() + L".exe";
     p_appNameSize = settings::osuClientName.size();
 
-    m_status = initPid();
-    if (m_status != AppHandler::ResultCode::success)
+    const AppHandler::ResultCode isInitPid = initPid();
+    if (isInitPid != AppHandler::ResultCode::success)
     {
-        return;
+        return isInitPid;
     }
 
-    m_status = initAppDirectory();
-    if (m_status != AppHandler::ResultCode::success)
+    const AppHandler::ResultCode isInitAppDir = initAppDirectory();
+    if (isInitAppDir != AppHandler::ResultCode::success)
     {
-        return;
+        return isInitAppDir;
     }
 
-    m_status = parseCfg();
+    return parseCfg();
+}
+
+AppHandler::ResultCode AppHandler::getStatus()
+{
+    return m_status;
 }
 
 AppHandler::ResultCode AppHandler::initPid()

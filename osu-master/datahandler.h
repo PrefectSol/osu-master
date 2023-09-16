@@ -47,6 +47,7 @@ public:
         bool isTableModeAdd = true;
         int usersTableRowCount = 0;
         int usersTableColumnCount = 0;
+        std::string theme = "SyNet";
     } AppPersistentData;
 
     typedef struct ArrayPersistentData

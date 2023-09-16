@@ -12,6 +12,7 @@ TARGET = osu-master
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    aimassist.cpp \
     apphandler.cpp \
     cursorhandler.cpp \
     datahandler.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     HitObject.h \
     TimingPoint.h \
+    aimassist.h \
     apphandler.h \
     cursorhandler.h \
     datahandler.h \

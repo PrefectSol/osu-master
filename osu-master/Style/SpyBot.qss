@@ -23,19 +23,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 /*-----QWidget-----*/
 QWidget
 {
-        background-color: #1a1a1a;
-        color: #000000;
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(27, 39, 50, 255),stop:1 rgba(47, 53, 74, 255));
+	color: #000000;
 
 }
-
 
 
 /*-----QLabel-----*/
 QLabel
 {
-        background-color: transparent;
-        color: #c2c7d5;
-        font-size: 20px;
+	background-color: transparent;
+	color: #c2c7d5;
+	font-size: 13px;
 
 }
 
@@ -43,26 +42,20 @@ QLabel
 /*-----QPushButton-----*/
 QPushButton
 {
-        background-color: #ff3333;
-        color: #fff;
-        font-size: 13px;
-        font-weight: bold;
-        border: none;
-        padding: 5px;
-
-}
-
-
-QPushButton::disabled
-{
-        background-color: #8c8c8c;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.511, x2:1, y2:0.511, stop:0 rgba(0, 172, 149, 255),stop:0.995192 rgba(54, 197, 177, 255));
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	padding: 5px;
 
 }
 
 
 QPushButton::pressed
 {
-        background-color: #ff4747;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.511, x2:1, y2:0.511, stop:0 rgba(0, 207, 179, 255),stop:1 rgba(70, 255, 230, 255));
 
 }
 
@@ -70,12 +63,12 @@ QPushButton::pressed
 /*-----QCheckBox-----*/
 QCheckBox
 {
-        background-color: transparent;
-        color: #fff;
-        font-size: 13px;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
+	background-color: transparent;
+	color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
 
 }
 
@@ -95,30 +88,30 @@ QCheckBox::indicator
 QCheckBox::indicator:checked
 {
     image:url("./ressources/check.png");
-        background-color: #ff3333;
-    border: 1px solid #ff3333;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.511, x2:1, y2:0.511, stop:0 rgba(0, 172, 149, 255),stop:0.995192 rgba(54, 197, 177, 255));;
+    border: 1px solid #607cff;
 
 }
 
 
 QCheckBox::indicator:unchecked:hover
 {
-    border: 1px solid #ff3333;
+    border: 1px solid #08b099;
 
 }
 
 
 QCheckBox::disabled
 {
-        color: #656565;
+	color: #656565;
 
 }
 
 
 QCheckBox::indicator:disabled
 {
-        background-color: #656565;
-        color: #656565;
+	background-color: #656565;
+	color: #656565;
     border: 1px solid #656565;
 
 }
@@ -127,12 +120,12 @@ QCheckBox::indicator:disabled
 /*-----QLineEdit-----*/
 QLineEdit
 {
-        background-color: #c2c7d5;
-        color: #000;
-        font-weight: bold;
-        border: none;
-        border-radius: 2px;
-        padding: 3px;
+	background-color: #c2c7d5;
+	color: #000;
+	font-weight: bold;
+	border: none;
+	border-radius: 2px;
+	padding: 3px;
 
 }
 
@@ -140,111 +133,109 @@ QLineEdit
 /*-----QListView-----*/
 QListView
 {
-        background-color: #333333;
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
-        border: 1px solid #191919;
-        show-decoration-selected: 0;
-        padding-left: -13px;
-        padding-right: -13px;
+	background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(50, 61, 80, 255),stop:1 rgba(44, 49, 69, 255));
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	border: 1px solid #191919;
+	show-decoration-selected: 0;
 
 }
 
 
 QListView::item
 {
-        color: #31cecb;
-        background-color: #454e5e;
-        border: none;
-        padding: 5px;
-        border-radius: 0px;
-        padding-left : 10px;
-        height: 42px;
+	color: #31cecb;
+	background-color: #454e5e;
+	border: none;
+	padding: 5px;
+	border-radius: 0px;
+	padding-left : 10px;
+	height: 42px;
 
 }
 
 QListView::item:selected
 {
-        color: #000;
-        background-color: #ff3333;
+	color: #31cecb;
+	background-color: #454e5e;
 
 }
 
 
 QListView::item:!selected
 {
-        color:white;
-        background-color: transparent;
-        border: none;
-        padding-left : 10px;
+	color:white;
+	background-color: transparent;
+	border: none;
+	padding-left : 10px;
 
 }
 
 
 QListView::item:!selected:hover
 {
-        color: #000;
-        background-color: #bcbdbb;
-        border: none;
-        padding-left : 10px;
+	color: #bbbcba;
+	background-color: #454e5e;
+	border: none;
+	padding-left : 10px;
 
 }
 
 
 /*-----QTreeView-----*/
-QTreeView
+QTreeView 
 {
-        background-color: #252525;
-        show-decoration-selected: 0;
-        color: #c2c8d7;
+	background-color: #232939;
+	show-decoration-selected: 0;
+	color: #c2c8d7;
 
 }
 
 
-QTreeView::item
+QTreeView::item 
 {
-        border-top-color: transparent;
-        border-bottom-color: transparent;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
 
 }
 
 
-QTreeView::item:hover
+QTreeView::item:hover 
 {
-        background-color: #bcbdbb;
-        color: #000;
+	background-color: #606060;
+	color: #fff;
 
 }
 
 
-QTreeView::item:selected
+QTreeView::item:selected 
 {
-        background-color: #ff3333;
-        color: #000;
+	background-color: #0ab19a;
+	color: #fff;
 
 }
 
 
 QTreeView::item:selected:active
 {
-        background-color: #ff3333;
-        color: #000;
+	background-color: #0ab19a;
+	color: #fff;
 
 }
 
 
 QTreeView::branch:has-children:!has-siblings:closed,
-QTreeView::branch:closed:has-children:has-siblings
+QTreeView::branch:closed:has-children:has-siblings 
 {
-        image: url(://tree-closed.png);
+	image: url(://tree-closed.png);
 
 }
 
 QTreeView::branch:open:has-children:!has-siblings,
-QTreeView::branch:open:has-children:has-siblings
+QTreeView::branch:open:has-children:has-siblings  
 {
-        image: url(://tree-open.png);
+	image: url(://tree-open.png);
 
 }
 
@@ -252,10 +243,10 @@ QTreeView::branch:open:has-children:has-siblings
 /*-----QTableView & QTableWidget-----*/
 QTableView
 {
-    background-color: #252525;
-        border: 1px solid gray;
+    background-color: #232939;
+	border: 1px solid gray;
     color: #f0f0f0;
-    gridline-color: gray;
+    gridline-color: #232939;
     outline : 0;
 
 }
@@ -272,18 +263,18 @@ QTableView::disabled
 }
 
 
-QTableView::item:hover
+QTableView::item:hover 
 {
-    background-color: #bcbdbb;
-    color: #000;
+    background-color: #606060;
+    color: #f0f0f0;
 
 }
 
 
-QTableView::item:selected
+QTableView::item:selected 
 {
-        background-color: #ff3333;
-    color: #000;
+	background-color: #0ab19a;
+    color: #F0F0F0;
 
 }
 
@@ -299,7 +290,7 @@ QTableView::item:selected:disabled
 
 QTableCornerButton::section
 {
-        background-color: #343a49;
+	background-color: #343a49;
     color: #fff;
 
 }
@@ -307,14 +298,14 @@ QTableCornerButton::section
 
 QHeaderView::section
 {
-        color: #fff;
-        border-top: 0px;
-        border-bottom: 1px solid gray;
-        border-right: 1px solid gray;
-        background-color: #343a49;
+	color: #fff;
+	border-top: 0px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	background-color: #343a49;
     margin-top:1px;
-        margin-bottom:1px;
-        padding: 5px;
+	margin-bottom:1px;
+	padding: 5px;
 
 }
 
@@ -329,8 +320,8 @@ QHeaderView::section:disabled
 
 QHeaderView::section:checked
 {
-    color: #000;
-    background-color: #ff3333;
+    color: #fff;
+    background-color: #0ab19a;
 
 }
 
@@ -374,7 +365,7 @@ QHeaderView::section::horizontal
 
 
 /*-----QScrollBar-----*/
-QScrollBar:horizontal
+QScrollBar:horizontal 
 {
     background-color: transparent;
     height: 8px;
@@ -384,19 +375,19 @@ QScrollBar:horizontal
 }
 
 
-QScrollBar::handle:horizontal
+QScrollBar::handle:horizontal 
 {
     border: none;
-        min-width: 100px;
-    background-color: #9b9b9b;
+	min-width: 100px;
+    background-color: #56576c;
 
 }
 
 
-QScrollBar::add-line:horizontal,
+QScrollBar::add-line:horizontal, 
 QScrollBar::sub-line:horizontal,
-QScrollBar::add-page:horizontal,
-QScrollBar::sub-page:horizontal
+QScrollBar::add-page:horizontal, 
+QScrollBar::sub-page:horizontal 
 {
     width: 0px;
     background-color: transparent;
@@ -404,7 +395,7 @@ QScrollBar::sub-page:horizontal
 }
 
 
-QScrollBar:vertical
+QScrollBar:vertical 
 {
     background-color: transparent;
     width: 8px;
@@ -413,19 +404,19 @@ QScrollBar:vertical
 }
 
 
-QScrollBar::handle:vertical
+QScrollBar::handle:vertical 
 {
     border: none;
-        min-height: 100px;
-    background-color: #9b9b9b;
+	min-height: 100px;
+    background-color: #56576c;
 
 }
 
 
-QScrollBar::add-line:vertical,
+QScrollBar::add-line:vertical, 
 QScrollBar::sub-line:vertical,
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical
+QScrollBar::add-page:vertical, 
+QScrollBar::sub-page:vertical 
 {
     height: 0px;
     background-color: transparent;

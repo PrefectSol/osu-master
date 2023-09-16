@@ -30,6 +30,7 @@
 
 #include "datahandler.h"
 #include "osurequest.h"
+#include "apphandler.h"
 #include "ui.h"
 
 class MainWindow : public QMainWindow
@@ -67,6 +68,8 @@ private slots:
     void on_goAboutAppPage_pressed();
 
     void on_LaunchAssist_pressed();
+
+    void on_themes_currentIndexChanged(int index);
 
 private:
     void initialize();
@@ -123,7 +126,11 @@ private:
 
     QList<QFuture<void>> m_tableThreads;
 
+    QFuture<void> m_assistThread;
+
     int m_aimValue, m_staminaValue, m_speedValue, m_accuracyValue;
+
+    bool m_isLaunchMode;
 };
 
 #endif // MAINWINDOW_H
