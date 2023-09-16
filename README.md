@@ -21,7 +21,7 @@ cd Osu-Master(Windows_last_release)\release
 
 ## Collaboration
 
- - This project is free for collaboration. Just contact me or make a fork
+ - This project is free for collaboration. Just contact me
 
 <br>
 
