@@ -1,17 +1,10 @@
-# Osu-Master ( in progress... )
+# Osu-Master ( in progress... ) // REWORK README.MD....
 
 ## Pre-Running
 
-### Linux run
-```bash 
-cd Osu-Master(Linux)
-
-./osu-master
-```
-
 ### Windows run
 ```cmd 
-cd Osu-Master(Windows)\release
+cd Osu-Master(Windows_last_release)\release
 
 .\osu-master.exe
 ```

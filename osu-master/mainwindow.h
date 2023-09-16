@@ -66,6 +66,8 @@ private slots:
 
     void on_goAboutAppPage_pressed();
 
+    void on_LaunchAssist_pressed();
+
 private:
     void initialize();
 

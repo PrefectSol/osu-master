@@ -66,6 +66,8 @@ void DataHandler::loadData(DataHandler::AppPersistentData *appData,
     }
 
     reader >> settings::isViewJson;
+    reader >> settings::osuClientName;
+    reader >> settings::osuBotName;
 
     reader.readRawData(reinterpret_cast<char*>(appData), sizeof(DataHandler::AppPersistentData));
     reader.readRawData(reinterpret_cast<char*>(userData), sizeof(DataHandler::UserPersistentData));
@@ -94,6 +96,8 @@ void DataHandler::saveData(const DataHandler::AppPersistentData &appData,
     }
 
     writer << settings::isViewJson;
+    writer << settings::osuClientName;
+    writer << settings::osuBotName;
 
     writer.writeRawData(reinterpret_cast<const char*>(&appData), sizeof(DataHandler::AppPersistentData));
     writer.writeRawData(reinterpret_cast<const char*>(&userData), sizeof(DataHandler::UserPersistentData));

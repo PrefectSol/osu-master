@@ -11,6 +11,10 @@ namespace settings
     inline bool isSaveData = false;
 
     inline bool isViewJson = false;
+
+    inline QString osuClientName = "osu!";
+
+    inline QString osuBotName = "BotiHUN7";
 };
 QT_END_NAMESPACE
 

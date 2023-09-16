@@ -68,6 +68,9 @@ void MainWindow::initialize()
         m_ui->viewJsonCheckBox->setChecked(true);
     }
 
+    m_ui->osuProcessNameLabel->setText(settings::osuClientName);
+    m_ui->osuBotNameLabel->setText(settings::osuBotName);
+
     initOverviewImages();
     initOverviewGraphics();
     initOsuRequestStats();
@@ -613,3 +616,18 @@ void MainWindow::on_tableModeButton_pressed()
 
     setTableMode();
 }
+
+void MainWindow::on_LaunchAssist_pressed()
+{
+    settings::osuClientName = m_ui->osuProcessNameLabel->text();
+    settings::osuBotName = m_ui->osuBotNameLabel->text();
+
+    if (settings::osuClientName.isEmpty() || settings::osuBotName.isEmpty())
+    {
+        QMessageBox::warning(this, "Aim Assist", "Fields is empty");
+        return;
+    }
+
+
+}
+
